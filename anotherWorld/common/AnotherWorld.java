@@ -26,8 +26,8 @@ public class AnotherWorld {
 	//Create clientProxy as a new ClientProxyAnotherWorld instance
 	public static ClientProxyAnotherWorld clientProxy = new ClientProxyAnotherWorld();
 	
-	//Create TabAN as a new CreativeTabAnotherWorld instance DISABLED FOR NOW
-	//public static CreativeTabs TabAN = new CreativeTabAnotherWorld(CreativeTabs.getNextID(), "Another World");
+	//Create TabAN as a new CreativeTabAnotherWorld instance
+	public static CreativeTabs TabAN = new CreativeTabAnotherWorld(CreativeTabs.getNextID(), "Another World");
 	
 	@PreInit 
 	public void Preload(FMLInitializationEvent event) {
