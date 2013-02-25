@@ -16,7 +16,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 @Mod(
 		modid = "anotherWorld", 
 		name = "Another World", 
-		version = "0.0.1")
+		version = "0.0.2")
 
 //Client side required. Server side not required.
 @NetworkMod(
