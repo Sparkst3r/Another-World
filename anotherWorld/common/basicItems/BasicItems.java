@@ -14,6 +14,7 @@ public class BasicItems {
 	public static void addItems() {
 		Glue = new ItemGlue(ItemGlueID);
 		BlueprintPart = new ItemBlueprintPart(ItemBlueprintPartID);
+		Blueprint = new ItemBlueprint(ItemBlueprintID);
 	}
 	
 }
