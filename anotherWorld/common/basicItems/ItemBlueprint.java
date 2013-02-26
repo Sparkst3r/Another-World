@@ -1,5 +1,6 @@
 package anotherWorld.common.basicItems;
 
+import anotherWorld.common.AnotherWorld;
 import anotherWorld.common.ModsExist;
 import ic2.api.Items;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -29,7 +30,7 @@ public class ItemBlueprint extends Item{
 	}
 
 	public String getTextureFile() {
-		return "/anotherWorld/gfx/items.png"; 
+		return AnotherWorld.itemTex; 
 	}
 
 }

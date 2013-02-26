@@ -1,13 +1,14 @@
 package anotherWorld.client;
 
 import net.minecraftforge.client.MinecraftForgeClient;
+import anotherWorld.common.AnotherWorld;
 import anotherWorld.common.CommonProxyAnotherWorld;
 
 public class ClientProxyAnotherWorld extends CommonProxyAnotherWorld{
 	@Override
 	public void registerRenders() {
-		MinecraftForgeClient.preloadTexture("/anotherWorld/gfx/blocks.png");
-		MinecraftForgeClient.preloadTexture("/anotherWorld/gfx/items.png");
-		MinecraftForgeClient.preloadTexture("/anotherWorld/gfx/advanced.png");
+		MinecraftForgeClient.preloadTexture(AnotherWorld.blockTex);
+		MinecraftForgeClient.preloadTexture(AnotherWorld.itemTex);
+		MinecraftForgeClient.preloadTexture(AnotherWorld.texDir + "advanced.png");
 	}
 }

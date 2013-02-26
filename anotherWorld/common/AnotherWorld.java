@@ -55,6 +55,7 @@ public class AnotherWorld {
 	}
 	@PostInit 
 	public void PostLoad(FMLPostInitializationEvent event) {
+		onLoad.onPostLoad();
 	}
 	
 }

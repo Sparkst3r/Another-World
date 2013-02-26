@@ -1,5 +1,7 @@
 package anotherWorld.common.basicItems;
 
+import thermalexpansion.api.crafting.ISmelterManager;
+import thermalexpansion.api.crafting.ISmelterRecipe;
 import anotherWorld.common.AnotherWorld;
 import anotherWorld.common.ModsExist;
 import ic2.api.Items;
@@ -8,31 +10,22 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemGlue extends Item{
-	public static String name = "Glue";
-	public ItemGlue(int id) {
+public class ItemSiliconChip extends Item{
+	public static int energyToSmelt = 80;
+	public static String name = "Silicon Chip";
+	public ItemSiliconChip(int id) {
 		super(id);
 		this.setCreativeTab(anotherWorld.common.AnotherWorld.TabAW);
 		this.setItemName(name);
 		this.setIconIndex(1);
-		addCrafting();
 		GameRegistry.registerItem(this, name);
 		LanguageRegistry.addName(this, name);
 	}
-	
-	private void addCrafting() {
-		if (ModsExist.ic2Exists) {
-			GameRegistry.addRecipe(new ItemStack(this), new Object[]{
-				"SRS", "RGR", "SRS", 
-				'S', Item.slimeBall, 'R', Items.getItem("resin"), 'G', Item.glassBottle 
-			});
-		}
-
-		
-	}
 
 	public String getTextureFile() {
-		return AnotherWorld.itemTex; 
+		return AnotherWorld.itemTex;
 	}
+
+
 
 }
