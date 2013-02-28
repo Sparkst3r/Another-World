@@ -15,7 +15,7 @@ public class ItemSiliconSlag extends Item{
 		super(id);
 		this.setCreativeTab(anotherWorld.common.AnotherWorld.TabAW);
 		this.setItemName(name);
-		this.setIconIndex(1);
+		this.setIconIndex(20);
 		GameRegistry.registerItem(this, name);
 		LanguageRegistry.addName(this, name);
 	}

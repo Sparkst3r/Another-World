@@ -10,7 +10,7 @@ public class BasicBlocks {
 	public static Block EngineeringGlass;
 	
 	public static void addItems() {
-		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, 4, Material.glass);
+		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, 0, Material.glass);
 	}
 	
 }

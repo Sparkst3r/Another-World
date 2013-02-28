@@ -1,6 +1,8 @@
 package anotherWorld.common;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import anotherWorld.api.core.BasicItemRegistry;
 import anotherWorld.client.ClientProxyAnotherWorld;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;

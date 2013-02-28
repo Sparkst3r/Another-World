@@ -9,9 +9,9 @@ import thermalexpansion.api.crafting.ISmelterManager;
 import thermalexpansion.api.crafting.ISmelterRecipe;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import anotherWorld.common.basicBlocks.BasicBlocks;
+import anotherWorld.common.basicBlocks.BasicBlocksCrafting;
 import anotherWorld.common.basicItems.BasicItems;
 import anotherWorld.common.basicItems.BasicItemsCrafting;
-import anotherWorld.common.basicItems.ItemRedLED;
 import anotherWorld.common.village.TradeHandlerVillagerAdvanced;
 
 public class onLoad{
@@ -32,8 +32,7 @@ public class onLoad{
 
 	public static void onPostLoad() { 
 		    BasicItemsCrafting.crafting();
-		    
-			CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Item.redstone, 4), new ItemStack(Block.glass, 4), new ItemStack(BasicBlocks.EngineeringGlass, 4), new ItemStack(BasicItems.SiliconSlag, 1), 5 , false);
+		    BasicBlocksCrafting.crafting();
 		    //Debug Output
 			ItemRegistry.printItemNames();
 	}
