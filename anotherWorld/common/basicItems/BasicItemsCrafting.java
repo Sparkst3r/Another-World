@@ -12,7 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BasicItemsCrafting {
 	public static ItemStack engGlass = new ItemStack(BasicBlocks.EngineeringGlass, 1);
 	public static ItemStack sil = new ItemStack(BasicItems.SiliconChip, 1);
-	
+	public static ItemStack coalDust = Items.getItem("coalDust");
 	public static void crafting() {
 		addCraftingRedLED();
 		addCraftingGreenLED();
@@ -24,7 +24,6 @@ public class BasicItemsCrafting {
 	
 	
 	public static void addMetGradeSiliconRecipe() {
-		ItemStack coalDust = Items.getItem("coalDust");
 		//Using sand until 1.5 adds quartz
 		CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Block.sand, 1), coalDust, new ItemStack(BasicItems.MetGradeSilicon, 2), false);
 		
