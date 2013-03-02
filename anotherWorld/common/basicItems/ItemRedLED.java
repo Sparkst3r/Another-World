@@ -13,15 +13,9 @@ import net.minecraft.item.ItemStack;
 
 
 
-public class ItemRedLED extends Item{
-	public static String name = "Red LED";
+public class ItemRedLED extends BasicItem{
 	public ItemRedLED(int id) {
-		super(id);
-		this.setCreativeTab(anotherWorld.common.AnotherWorld.TabAW);
-		this.setItemName(name);
-		this.setTextureFile(AnotherWorld.itemTex);
-		this.setIconIndex(16);
-		GameRegistry.registerItem(this, name);
-		LanguageRegistry.addName(this, name);
+		super(id, BasicItems.ItemRedLEDName, 16);
+		
 	}
 }

@@ -1,18 +1,14 @@
 package anotherWorld.common;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import thermalexpansion.api.core.ItemRegistry;
-import thermalexpansion.api.crafting.CraftingManagers;
-import thermalexpansion.api.crafting.ISmelterManager;
-import thermalexpansion.api.crafting.ISmelterRecipe;
 import cpw.mods.fml.common.registry.VillagerRegistry;
 import anotherWorld.common.basicBlocks.BasicBlocks;
 import anotherWorld.common.basicBlocks.BasicBlocksCrafting;
 import anotherWorld.common.basicItems.BasicItems;
 import anotherWorld.common.basicItems.BasicItemsCrafting;
 import anotherWorld.common.village.TradeHandlerVillagerAdvanced;
+
+
 
 public class onLoad{
 	
@@ -34,7 +30,7 @@ public class onLoad{
 		    BasicItemsCrafting.crafting();
 		    BasicBlocksCrafting.crafting();
 		    //Debug Output
-			ItemRegistry.printItemNames();
+			//ItemRegistry.printItemNames();
 	}
 
 }

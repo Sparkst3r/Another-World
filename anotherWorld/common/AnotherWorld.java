@@ -2,6 +2,7 @@ package anotherWorld.common;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.Configuration;
 import anotherWorld.api.core.BasicItemRegistry;
 import anotherWorld.client.ClientProxyAnotherWorld;
 import cpw.mods.fml.common.Mod;
@@ -27,6 +28,11 @@ import cpw.mods.fml.common.network.NetworkMod;
 
 
 public class AnotherWorld {
+	public static enum RenderMode {
+		Full, NoDynamic
+	};
+	public static RenderMode render = RenderMode.Full;
+	
 	public static final String modID = "anotherWorld";
 	public static final String modName = "Another World";
 	public static final String modVersion = "0.0.3";
@@ -36,7 +42,7 @@ public class AnotherWorld {
 	public static final String blockTex = texDir + "blocks.png";
 	public static final String itemTex = texDir + "items.png";
 	public static final String guiDir = texDir + "gui/";
-
+	public static Configuration configAW;
 	
 	
 	
@@ -49,6 +55,8 @@ public class AnotherWorld {
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event){    	
     	ModsExist.check();
+		configAW = new Configuration(event.getSuggestedConfigurationFile());
+    	Config.doReadWrite(event);
     }
 	@Init 
 	public void load(FMLInitializationEvent event) {

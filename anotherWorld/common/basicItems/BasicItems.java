@@ -1,31 +1,47 @@
 package anotherWorld.common.basicItems;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class BasicItems {
-	public static int ItemGlueID = 8001;
-	public static int ItemBlueprintID = 8002;
-	public static int ItemBlueprintPartID = 8003;
-	public static int ItemSiliconChipID = 8004;
-	public static int ItemSiliconSlagID = 8005;
-	public static int ItemRedLEDID = 8006;
-	public static int ItemGreenLEDID = 8007;
-	public static int ItemBlueLEDID = 8008;
-	public static int ItemMetGradeSiliconID = 8009;
 	
-	
+	//Glue
 	public static Item Glue;
+	public static String ItemGlueName = "Glue";
+	public static int ItemGlueID = 8001;
+	//Blueprint
 	public static Item Blueprint;
+	public static String ItemBlueprintName = "Blueprint";
+	public static int ItemBlueprintID = 8002;
+	//Blueprint Part
 	public static Item BlueprintPart;
-	public static Item SiliconChip;
+	public static String ItemBlueprintPartName = "Blueprint Part";
+	public static int ItemBlueprintPartID = 8003;
+	//Red LED
 	public static Item RedLED;
+	public static String ItemRedLEDName = "Red LED";
+	public static int ItemRedLEDID = 8004;
+	//Green LED
 	public static Item GreenLED;
+	public static String ItemGreenLEDName = "Green LED";
+	public static int ItemGreenLEDID = 8005;
+	//Blue LED
 	public static Item BlueLED;
+	public static String ItemBlueLEDName = "Blue LED";
+	public static int ItemBlueLEDID = 8006;
+	//Silicon Slag
 	public static Item SiliconSlag;
+	public static String ItemSiliconSlagName = "Silicon Slag";
+	public static int ItemSiliconSlagID = 8007;
+	//Met Grade Silicon
 	public static Item MetGradeSilicon;
+	public static String ItemMetGradeSiliconName = "Metallurgical silicon";
+	public static int ItemMetGradeSiliconID = 8008;
+	//Silicon Chip
+	public static Item SiliconChip;
+	public static String ItemSiliconChipName = "Silicon Chip";
+	public static int ItemSiliconChipID = 8009;
+	
 	
 	public static void addItems() {
 		Glue = new ItemGlue(ItemGlueID);

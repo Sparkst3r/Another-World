@@ -1,13 +1,14 @@
 package anotherWorld.common.basicItems;
 
-import ic2.api.Items;
+import cpw.mods.fml.common.registry.GameRegistry;
 import thermalexpansion.api.crafting.CraftingManagers;
+import ic2.api.Items;
+import anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import anotherWorld.common.ModsExist;
-import anotherWorld.common.basicBlocks.BasicBlocks;
-import cpw.mods.fml.common.registry.GameRegistry;
+
+
 
 public class BasicItemsCrafting {
 	public static ItemStack engGlass = new ItemStack(BasicBlocks.EngineeringGlass, 1);
@@ -18,10 +19,25 @@ public class BasicItemsCrafting {
 		addCraftingGreenLED();
 		addCraftingBlueLED();
 		addMetGradeSiliconRecipe();
+		addBlueprintRecipe();
+		addGlueRecipe();
 	}
 	
 	
 	
+	public static void addGlueRecipe(){
+		GameRegistry.addRecipe(new ItemStack(BasicItems.Glue, 1), new Object[]{
+			"SRS", "RGR", "SRS", 
+			'S', Item.slimeBall, 'R', Items.getItem("resin"), 'G', Item.glassBottle 
+		});
+	}
+	
+	public static void addBlueprintRecipe(){
+		GameRegistry.addRecipe(new ItemStack(BasicItems.Blueprint, 1), new Object[]{
+			"BGB", "G G", "BGB", 
+			'B', BasicItems.BlueprintPart, 'G', BasicItems.Glue
+		});	
+	}
 	
 	public static void addMetGradeSiliconRecipe() {
 		//Using sand until 1.5 adds quartz
@@ -33,11 +49,11 @@ public class BasicItemsCrafting {
 
 
 	public static void addCraftingRedLED() {
-			ItemStack dyeRedLED = new ItemStack(Item.dyePowder, 1, 1);
-			GameRegistry.addRecipe(new ItemStack(BasicItems.RedLED, 4, 1), new Object[]{
-				" G ", " D ", " S ", 
-				'G', engGlass, 'D', dyeRedLED, 'S', sil
-			});
+		ItemStack dyeRedLED = new ItemStack(Item.dyePowder, 1, 1);
+		GameRegistry.addRecipe(new ItemStack(BasicItems.RedLED, 4, 1), new Object[]{
+			" G ", " D ", " S ", 
+			'G', engGlass, 'D', dyeRedLED, 'S', sil
+		});
 	}
 	
 	public static void addCraftingGreenLED() {

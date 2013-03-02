@@ -1,7 +1,6 @@
 package anotherWorld.api.core;
 
 import anotherWorld.common.basicItems.BasicItems;
-import ic2.api.Items;
 import net.minecraft.item.ItemStack;
 
 /**

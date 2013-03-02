@@ -8,19 +8,9 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemMetGradeSilicon extends Item{
+public class ItemMetGradeSilicon extends BasicItem{
 	public static String name = "Metallurgical silicon";
 	public ItemMetGradeSilicon(int id) {
-		super(id);
-		this.setCreativeTab(anotherWorld.common.AnotherWorld.TabAW);
-		this.setItemName(name);
-		this.setIconIndex(2);
-		GameRegistry.registerItem(this, name);
-		LanguageRegistry.addName(this, name);
+		super(id, BasicItems.ItemMetGradeSiliconName, 2);
 	}
-
-	public String getTextureFile() {
-		return AnotherWorld.itemTex; 
-	}
-
 }

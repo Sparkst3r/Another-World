@@ -1,11 +1,13 @@
 package anotherWorld.common.basicBlocks;
 
 import anotherWorld.common.basicItems.BasicItems;
-import thermalexpansion.api.crafting.CraftingManagers;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.liquids.LiquidStack;
+import thermalexpansion.api.crafting.CraftingManagers;
+
+
 
 public class BasicBlocksCrafting {
 	public static void crafting() {
