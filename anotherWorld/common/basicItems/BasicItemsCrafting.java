@@ -7,6 +7,9 @@ import anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraftforge.liquids.LiquidStack;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 
 
@@ -21,10 +24,33 @@ public class BasicItemsCrafting {
 		addMetGradeSiliconRecipe();
 		addBlueprintRecipe();
 		addGlueRecipe();
+		addQuartzCrucibleRecipe();
+		addSiliconBouleRecipe();
+		addSiliconChipRecipe();
 	}
 	
 	
+	public static void addSiliconChipRecipe() {
+		//Using sand until 1.5 adds quartz
+		CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(BasicItems.SiliconChip, 3), true, new Object[]{
+                "CWC", " F ", "CWC",
+                'C', "ingotCopper", 'W', BasicItems.SiliconSlice, 'F', Items.getItem("carbonFiber")    }));
+		
+	}
 	
+	public static void addSiliconBouleRecipe() {
+		CraftingManagers.transposerManager.addFillRecipe(200, new ItemStack(BasicItems.QuartzCrucible, 1), new ItemStack(BasicItems.SiliconBoule, 1), new LiquidStack(BasicBlocks.TriCSStill, 4000), false, false);
+	}
+	
+	
+	public static void addQuartzCrucibleRecipe() {
+		//Using sand until 1.5 adds quartz
+		GameRegistry.addRecipe(new ItemStack(BasicItems.QuartzCrucible, 1), new Object[]{
+			"Q Q", "Q Q", " Q ", 
+			'Q', Block.sand
+		});
+		
+	}
 	public static void addGlueRecipe(){
 		GameRegistry.addRecipe(new ItemStack(BasicItems.Glue, 1), new Object[]{
 			"SRS", "RGR", "SRS", 

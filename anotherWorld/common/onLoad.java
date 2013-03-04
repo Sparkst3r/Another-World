@@ -6,6 +6,7 @@ import anotherWorld.common.basicBlocks.BasicBlocks;
 import anotherWorld.common.basicBlocks.BasicBlocksCrafting;
 import anotherWorld.common.basicItems.BasicItems;
 import anotherWorld.common.basicItems.BasicItemsCrafting;
+import anotherWorld.common.machines.Machines;
 import anotherWorld.common.village.TradeHandlerVillagerAdvanced;
 
 
@@ -15,6 +16,7 @@ public class onLoad{
 	public static void onLoading() {
 		BasicItems.addItems();
 		BasicBlocks.addItems();
+		Machines.addItems();
 		VillagerInit();
 	}
 

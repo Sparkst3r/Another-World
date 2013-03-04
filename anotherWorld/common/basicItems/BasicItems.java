@@ -42,6 +42,21 @@ public class BasicItems {
 	public static String ItemSiliconChipName = "Silicon Chip";
 	public static int ItemSiliconChipID = 8009;
 	
+	//Quartz Crucible
+	public static Item QuartzCrucible;
+	public static String ItemQuartzCrucibleName = "Quartz Crucible";
+	public static int ItemQuartzCrucibleID = 8010;
+		
+	//Silicon Boule
+	public static Item SiliconBoule;
+	public static String ItemSiliconBouleName = "Silicon Boule";
+	public static int ItemSiliconBouleID = 8011;
+	
+	//Silicon Slice
+	public static Item SiliconSlice;
+	public static String ItemSiliconSliceName = "Silicon Wafer";
+	public static int ItemSiliconSliceID = 8012;
+	
 	
 	public static void addItems() {
 		Glue = new ItemGlue(ItemGlueID);
@@ -53,6 +68,9 @@ public class BasicItems {
 		BlueLED = new ItemBlueLED(ItemBlueLEDID);
 		SiliconSlag = new ItemSiliconSlag(ItemSiliconSlagID);
 		MetGradeSilicon = new ItemMetGradeSilicon(ItemMetGradeSiliconID);
+		QuartzCrucible = new ItemQuartzCrucible(ItemQuartzCrucibleID);
+		SiliconBoule = new ItemSiliconBoule(ItemSiliconBouleID);
+		SiliconSlice = new ItemSiliconSlice(ItemSiliconSliceID);
 	}
 	
 }

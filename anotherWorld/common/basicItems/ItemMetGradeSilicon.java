@@ -11,6 +11,6 @@ import net.minecraft.item.ItemStack;
 public class ItemMetGradeSilicon extends BasicItem{
 	public static String name = "Metallurgical silicon";
 	public ItemMetGradeSilicon(int id) {
-		super(id, BasicItems.ItemMetGradeSiliconName, 2);
+		super(id, BasicItems.ItemMetGradeSiliconName, 22);
 	}
 }

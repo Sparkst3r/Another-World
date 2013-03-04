@@ -17,10 +17,10 @@ public class BasicBlocksCrafting {
 	
 	
 	public static void addCraftingEngineeringGlass() {
-		CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Item.redstone, 4), new ItemStack(Block.glass, 4), new ItemStack(BasicBlocks.EngineeringGlass, 4), new ItemStack(BasicItems.SiliconSlag, 1), 5 , false);
+		CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Item.redstone, 4), new ItemStack(Block.glass, 4), new ItemStack(BasicBlocks.EngineeringGlass, 4), new ItemStack(BasicItems.SiliconSlag, 1), 2 , false);
 	}
 	public static void addCraftingTriCS() {
-		CraftingManagers.crucibleManager.addRecipe(5000, new ItemStack(BasicItems.MetGradeSilicon, 1) , new LiquidStack(BasicBlocks.TriCSStill, 500), false);
+		CraftingManagers.crucibleManager.addRecipe(1000, new ItemStack(BasicItems.MetGradeSilicon, 1) , new LiquidStack(BasicBlocks.TriCSStill, 500), false);
 	}
  
 }
