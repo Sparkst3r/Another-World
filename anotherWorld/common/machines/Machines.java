@@ -10,7 +10,7 @@ public class Machines {
 	public static int testID = 3005;
 	
 	public static void addItems() {
-	test = new BlockSeparator(testID, 0, Material.glass);
+	test = new BlockSeparator(testID);
 	}
 	
 }

@@ -4,8 +4,8 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 
 public class ModsExist {
-	public static boolean ic2Exists = true;
-	public static boolean tc3Exists = true;
+	public static boolean ic2Exists = false;
+	public static boolean tc3Exists = false;
 	public static boolean teExists = false;
 	
 	

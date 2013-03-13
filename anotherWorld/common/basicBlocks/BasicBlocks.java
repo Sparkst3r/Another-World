@@ -1,5 +1,7 @@
 package anotherWorld.common.basicBlocks;
 
+import anotherWorld.common.machines.BlockTriCSFlow;
+import anotherWorld.common.machines.BlockTriCSStill;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.liquids.LiquidDictionary;
