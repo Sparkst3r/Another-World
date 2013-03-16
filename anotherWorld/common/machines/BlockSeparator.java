@@ -5,7 +5,7 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-import anotherWorld.common.AnotherWorld;
+import anotherWorld.AnotherWorld;
 import anotherWorld.common.machines.tile.TileEntitySeparator;
 
 import net.minecraft.block.BlockContainer;
@@ -25,10 +25,10 @@ public class BlockSeparator extends BlockContainer {
                 super(id, Material.wood);
                 setHardness(2.0F);
                 setResistance(5.0F);
-                setBlockName("blockTiny");
+                setBlockName("Separator");
                 setCreativeTab(CreativeTabs.tabDecorations);
-                GameRegistry.registerBlock(this, "Block");
-                LanguageRegistry.addName(this, "Block");
+                GameRegistry.registerBlock(this, "Separator");
+                LanguageRegistry.addName(this, "Separator");
         }
 
         @Override

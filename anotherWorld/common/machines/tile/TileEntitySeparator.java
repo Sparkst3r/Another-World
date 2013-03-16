@@ -1,5 +1,7 @@
 package anotherWorld.common.machines.tile;
 
+import buildcraft.api.power.IPowerProvider;
+import buildcraft.api.power.IPowerReceptor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -11,7 +13,7 @@ import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntitySeparator extends TileEntity implements IInventory {
-
+		private int energy;
         private ItemStack[] inv;
 
         public TileEntitySeparator(){
@@ -81,26 +83,29 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
         public void readFromNBT(NBTTagCompound par1NBTTagCompound)
         {
             super.readFromNBT(par1NBTTagCompound);
-            NBTTagList var2 = par1NBTTagCompound.getTagList("Items");
+            NBTTagList items = par1NBTTagCompound.getTagList("Items");
+            NBTTagList other = par1NBTTagCompound.getTagList("Other");
             inv = new ItemStack[this.getSizeInventory()];
+            
+            
+            for (int var3 = 0; var3 < items.tagCount(); ++var3) {
+                NBTTagCompound itemsCom = (NBTTagCompound) items.tagAt(var3);
+                int var5 = itemsCom.getByte("Slot") & 255;
 
-            for (int var3 = 0; var3 < var2.tagCount(); ++var3)
-            {
-                NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
-                int var5 = var4.getByte("Slot") & 255;
-
-                if (var5 >= 0 && var5 < this.inv.length)
-                {
-                    this.inv[var5] = ItemStack.loadItemStackFromNBT(var4);
+                if (var5 >= 0 && var5 < this.inv.length) {
+                    this.inv[var5] = ItemStack.loadItemStackFromNBT(itemsCom);
                 }
             }
+            NBTTagCompound otherCom = (NBTTagCompound) items.tagAt(0);
+            energy = otherCom.getInteger("Energy");
+            
         }
 
         public void writeToNBT(NBTTagCompound par1NBTTagCompound)
         {
             super.writeToNBT(par1NBTTagCompound);
-            NBTTagList var2 = new NBTTagList();
-
+            NBTTagList items = new NBTTagList();
+            NBTTagList other = new NBTTagList();
             for (int var3 = 0; var3 < inv.length; ++var3)
             {
                 if (inv[var3] != null)
@@ -108,15 +113,19 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
                     NBTTagCompound tagCom = new NBTTagCompound();
                     tagCom.setByte("Slot", (byte)var3);
                     inv[var3].writeToNBT(tagCom);
-                    var2.appendTag(tagCom);
+                    items.appendTag(tagCom);
                 }
             }
-
-            par1NBTTagCompound.setTag("Items", var2);
+            NBTTagCompound tagCom2 = new NBTTagCompound();
+            tagCom2.setInteger("Energy", energy);
+            other.appendTag(tagCom2);
+            
+            par1NBTTagCompound.setTag("Items", items);
+            par1NBTTagCompound.setTag("Other", other);
         }
 
-                @Override
-                public String getInvName() {
-                        return "tco.tileentitytiny";
-                }
+		@Override
+		public String getInvName() {
+			return "Separator";
+		}
 }

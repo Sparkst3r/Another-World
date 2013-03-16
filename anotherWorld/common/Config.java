@@ -1,11 +1,13 @@
 package anotherWorld.common;
 
+import anotherWorld.AnotherWorld;
 import anotherWorld.common.basicItems.BasicItems;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.Property;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import static anotherWorld.common.basicBlocks.BasicBlocks.*;
 import static anotherWorld.common.basicItems.BasicItems.*;
+import static anotherWorld.common.machines.Machines.*;
 public class Config {
 
 	public static void doReadWrite(FMLPreInitializationEvent event) {
@@ -28,7 +30,7 @@ public class Config {
          
          //Blocks
          BlockEngineeringGlassID = AnotherWorld.configAW.get("Blocks", BlockEngineeringGlassName, BlockEngineeringGlassID).getInt();
-         BlockTriCSFlowID = AnotherWorld.configAW.get("Blocks", BlockTriCSName, BlockTriCSFlowID).getInt();
+         BlockTriCSFlowID = AnotherWorld.configAW.get("Blocks", "Trichlorosilane", BlockTriCSFlowID).getInt();
          
          
          AnotherWorld.configAW.save();

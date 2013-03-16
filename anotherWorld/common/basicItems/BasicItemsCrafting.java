@@ -5,6 +5,7 @@ import thermalexpansion.api.crafting.CraftingManagers;
 import ic2.api.Items;
 import anotherWorld.common.ModsExist;
 import anotherWorld.common.basicBlocks.BasicBlocks;
+import anotherWorld.common.machines.Machines;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 
 
 public class BasicItemsCrafting {
-	public static ItemStack engGlass = new ItemStack(BasicBlocks.EngineeringGlass, 1);
+	public static ItemStack engGlass = new ItemStack(Machines.EngineeringGlass, 1);
 	public static ItemStack sil = new ItemStack(BasicItems.SiliconChip, 1);
 	public static void crafting() {
 		addCraftingRedLED();
@@ -42,11 +43,10 @@ public class BasicItemsCrafting {
 	public static void addSiliconBouleRecipe() {
 		if (ModsExist.teExists) {
 			CraftingManagers.transposerManager.addFillRecipe(
-					200, new ItemStack(BasicItems.QuartzCrucible, 1), new ItemStack(BasicItems.SiliconBoule, 1), new LiquidStack(BasicBlocks.TriCSStill, 4000), false, false);
+					200, new ItemStack(BasicItems.QuartzCrucible, 1), new ItemStack(BasicItems.SiliconBoule, 1), new LiquidStack(Machines.TriCSStill, 4000), false, false);
 		}
 	
 	}
-	
 	
 	public static void addQuartzCrucibleRecipe() {
 		//Using sand until 1.5 adds quartz
@@ -56,6 +56,7 @@ public class BasicItemsCrafting {
 		});
 		
 	}
+	
 	public static void addGlueRecipe(){
 		if (ModsExist.ic2Exists) {
 			GameRegistry.addRecipe(new ItemStack(BasicItems.Glue, 1), new Object[]{
@@ -78,9 +79,6 @@ public class BasicItemsCrafting {
 			CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Block.sand, 1), Items.getItem("coalDust"), new ItemStack(BasicItems.MetGradeSilicon, 2), false);
 		}
 	}
-
-
-
 
 	public static void addCraftingRedLED() {
 		ItemStack dyeRedLED = new ItemStack(Item.dyePowder, 1, 1);

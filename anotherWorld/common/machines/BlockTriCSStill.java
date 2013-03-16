@@ -2,7 +2,7 @@ package anotherWorld.common.machines;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import anotherWorld.common.AnotherWorld;
+import anotherWorld.AnotherWorld;
 import anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.BlockStationary;
 import net.minecraft.block.material.Material;
@@ -15,7 +15,7 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 	public BlockTriCSStill(int ID) {
 		super(ID, Material.water);
 		this.setCreativeTab(AnotherWorld.TabAW);
-	    this.setBlockName(BasicBlocks.BlockTriCSStillName);
+	    this.setBlockName(Machines.BlockTriCSStillName);
 		this.blockHardness = 100F;
 		this.setLightOpacity(1);
 		this.setRequiresSelfNotify();
@@ -23,8 +23,8 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 		this.blockIndexInTexture = 100;
 		
 		
-		GameRegistry.registerBlock(this, BasicBlocks.BlockTriCSStillName);
-		LanguageRegistry.addName(this, BasicBlocks.BlockTriCSStillName);
+		GameRegistry.registerBlock(this, Machines.BlockTriCSStillName);
+		LanguageRegistry.addName(this, Machines.BlockTriCSStillName);
 	}
 	@Override
 	public int getRenderType() {
@@ -38,7 +38,7 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 
 	@Override
 	public int stillLiquidId() {
-		return BasicBlocks.TriCSStill.blockID;
+		return Machines.TriCSStill.blockID;
 	}
 
 	@Override

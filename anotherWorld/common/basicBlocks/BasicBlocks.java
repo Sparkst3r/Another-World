@@ -1,5 +1,7 @@
 package anotherWorld.common.basicBlocks;
 
+import anotherWorld.common.basicItems.ItemGlue;
+import anotherWorld.common.machines.BlockEngineeringGlass;
 import anotherWorld.common.machines.BlockTriCSFlow;
 import anotherWorld.common.machines.BlockTriCSStill;
 import net.minecraft.block.Block;
@@ -8,33 +10,19 @@ import net.minecraftforge.liquids.LiquidDictionary;
 import net.minecraftforge.liquids.LiquidStack;
 
 public class BasicBlocks {
-	//Misc
-	public static int TriCSRenderID = 150;
-	public static LiquidStack triCSLiquid;
 	
+	public static String ChromiumName = "Chromium Ore";
+	public static Block Chromium;
+	public static int ChromiumID = 3007;
 	
-	//Default IDs
-	public static Block EngineeringGlass;
-	public static String BlockEngineeringGlassName = "Engineering Glass";
-	public static int BlockEngineeringGlassID = 3000;
-	
-	public static String BlockTriCSName = "Trichlorosilane";
-	
-	public static Block TriCSFlow;
-	public static String BlockTriCSFlowName = "Trichlorosilane Flowing";
-	public static int BlockTriCSFlowID = 3001;
-	
-	public static Block TriCSStill;
-	public static String BlockTriCSStillName = "Trichlorosilane Still";
-	public static int BlockTriCSStillID = BlockTriCSFlowID + 1;
-
+	public static String SaltName = "Chromium Ore";
+	public static Block Salt;
+	public static int SaltID = 3008;
 	
 	//Add Items
 	public static void addItems() {
-		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, 0, Material.glass);
-		TriCSStill = new BlockTriCSStill(BlockTriCSStillID);
-		TriCSFlow = new BlockTriCSFlow(BlockTriCSFlowID);
-		triCSLiquid = LiquidDictionary.getOrCreateLiquid("Trichlorosilane", new LiquidStack(TriCSStill, 1));
+		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName, ChromiumID, null);
+		Salt = new BlockSaltOre(SaltID, SaltName, SaltID, null);
 
 	}
 	

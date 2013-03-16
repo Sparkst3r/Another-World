@@ -5,7 +5,7 @@ import java.util.Random;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-import anotherWorld.common.AnotherWorld;
+import anotherWorld.AnotherWorld;
 import anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
@@ -24,8 +24,8 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 		setCreativeTab(AnotherWorld.TabAW);
 		setHardness(100F);
 		setLightOpacity(3);
-		GameRegistry.registerBlock(this, BasicBlocks.BlockTriCSFlowName);
-		LanguageRegistry.addName(this, BasicBlocks.BlockTriCSFlowName);
+		GameRegistry.registerBlock(this, Machines.BlockTriCSFlowName);
+		LanguageRegistry.addName(this, Machines.BlockTriCSFlowName);
 	}
 
 	@Override
@@ -204,13 +204,13 @@ return isOptimalFlowDirection;
 }
 
 private boolean blockBlocksFlow(World world, int i, int j, int k) {
-int l = world.getBlockId(i, j, k);
-if (l == Block.doorWood.blockID || l == Block.doorSteel.blockID || l == Block.signPost.blockID || l == Block.ladder.blockID || l == Block.reed.blockID)
-return true;
-if (l == 0)
-return false;
-Material material = Block.blocksList[l].blockMaterial;
-return material.isSolid();
+	int l = world.getBlockId(i, j, k);
+	if (l == Block.doorWood.blockID || l == Block.doorSteel.blockID || l == Block.signPost.blockID || l == Block.ladder.blockID || l == Block.reed.blockID)
+		return true;
+	if (l == 0)
+		return false;
+	Material material = Block.blocksList[l].blockMaterial;
+	return material.isSolid();
 }
 
 protected int getSmallestFlowDecay(World world, int i, int j, int k, int l) {
@@ -241,7 +241,7 @@ world.scheduleBlockUpdate(i, j, k, blockID, tickRate());
 
 @Override
 public int stillLiquidId() {
-return BasicBlocks.TriCSStill.blockID;
+return Machines.TriCSStill.blockID;
 }
 
 @Override

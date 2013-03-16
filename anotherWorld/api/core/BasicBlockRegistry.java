@@ -1,29 +1,29 @@
 package anotherWorld.api.core;
 
-import anotherWorld.common.basicItems.BasicItems;
+import anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.item.ItemStack;
 
 /**
- * Provides an interface to BasicItems or Tier 1 items
+ * Provides an interface to BasicBlocks or Tier 1 blocks eg. Ores and decorative blocks.
  */
-public class BasicItemRegistry {
-	private static Class BasicItems;
+public class BasicBlockRegistry {
+	private static Class BasicBlocks;
 	/**
-	 *Don't use this class to get Blocks. Instead use BasicBlockRegistry
+	 * Don't use this class to get Items. Instead use BasicItemRegistry
 	 * 
 	 * Returns an ItemStack of the item requested example : BasicItemRegistry.get(String "RedLED")
 	 * See ItemList.txt for valid names
 	 * Make sure to copy() the ItemStack if you want to modify it.
 	 *
-	 * @param name Item name.
+	 * @param name Block name.
 	 * @return An ItemStack of the requested item or null if an error has occured.
 	 */
 	public static ItemStack get(String name) {
 		try {
-			if (BasicItems == null) 
+			if (BasicBlocks == null) 
 				
-				BasicItems = Class.forName("anotherWorld.common.basicItems.BasicItems");
-			Object stack = BasicItems.getField(name).get(null);
+				BasicBlocks = Class.forName("anotherWorld.common.basicItems.BasicItems");
+			Object stack = BasicBlocks.getField(name).get(null);
 			
 			if (stack instanceof ItemStack) {
 				return (ItemStack) stack;

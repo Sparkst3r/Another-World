@@ -2,7 +2,7 @@ package anotherWorld.common.basicItems;
 
 import java.util.List;
 
-import anotherWorld.common.AnotherWorld;
+import anotherWorld.AnotherWorld;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
