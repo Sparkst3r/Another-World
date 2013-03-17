@@ -1,15 +1,21 @@
 package mods.anotherWorld.common.basicItems;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mods.anotherWorld.AnotherWorld;
 import net.minecraft.client.renderer.texture.IconRegister;
 
 public class ItemSiliconChip extends BasicItem{
-	public ItemSiliconChip(int id) {
-		super(id, BasicItems.ItemSiliconChipName, 21);
+	private static String iconTex;
+	public ItemSiliconChip(int id, String icon) {
+		super(id, BasicItems.ItemSiliconChipName);
+		iconTex = icon;
 	}
 	
-	@Override
-	public void func_94581_a(IconRegister iconRegister)
-	{
-		 iconIndex = iconRegister.func_94245_a("anotherWorld:chip");
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void func_94581_a(IconRegister iconRegister)
+    {
+        iconIndex = iconRegister.func_94245_a(AnotherWorld.modID +":"+ iconTex);
+    }
 }

@@ -19,10 +19,15 @@ public class BasicBlocks {
 	public static Block Salt;
 	public static int SaltID = 3008;
 	
+	public static String TyteonRockName = "Tyteon Stone";
+	public static Block TyteonRock;
+	public static int TyteonRockID = 3009;
+	
 	//Add Items
 	public static void addItems() {
-		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName, null);
-		Salt = new BlockSaltOre(SaltID, SaltName, null);
+		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName);
+		Salt = new BlockSaltOre(SaltID, SaltName);
+		TyteonRock = new BlockTyteonRock(TyteonRockID, TyteonRockName);
 
 	}
 	

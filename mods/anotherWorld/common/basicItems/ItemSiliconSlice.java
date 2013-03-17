@@ -1,17 +1,21 @@
 package mods.anotherWorld.common.basicItems;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mods.anotherWorld.AnotherWorld;
 import net.minecraft.client.renderer.texture.IconRegister;
 
 public class ItemSiliconSlice extends BasicItem {
-
-	public ItemSiliconSlice(int id) {
-		super(id, BasicItems.ItemSiliconSliceName, 24);
+	private static String iconTex;
+	public ItemSiliconSlice(int id, String icon) {
+		super(id, BasicItems.ItemSiliconSliceName);
+		iconTex = icon;
 	}
 	
-	@Override
-	public void func_94581_a(IconRegister iconRegister)
-	{
-		 iconIndex = iconRegister.func_94245_a("anotherWorld:siliconSlice");
-	}
-
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void func_94581_a(IconRegister iconRegister)
+    {
+        iconIndex = iconRegister.func_94245_a(AnotherWorld.modID +":"+ iconTex);
+    }
 }

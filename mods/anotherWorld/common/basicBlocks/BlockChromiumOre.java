@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BlockChromiumOre extends Ore{
 
-	public BlockChromiumOre(int id, String name, Material mat) {
-		super(id, name,null);
+	public BlockChromiumOre(int id, String name) {
+		super(id, name);
 	}
 	
     @Override

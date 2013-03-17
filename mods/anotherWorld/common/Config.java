@@ -21,9 +21,9 @@ public class Config {
          ItemGlueID = AnotherWorld.configAW.get("Items", ItemGlueName, ItemGlueID).getInt();
          ItemBlueprintID = AnotherWorld.configAW.get("Items", ItemBlueprintName, ItemBlueprintID).getInt();
          ItemBlueprintPartID = AnotherWorld.configAW.get("Items", ItemBlueprintPartName, ItemBlueprintPartID).getInt();
-         ItemRedLEDID = AnotherWorld.configAW.get("Items", ItemRedLEDName, ItemRedLEDID).getInt();
-         ItemGreenLEDID = AnotherWorld.configAW.get("Items", ItemGreenLEDName, ItemGreenLEDID).getInt();
-         ItemBlueLEDID = AnotherWorld.configAW.get("Items", ItemBlueLEDName, ItemBlueLEDID).getInt();
+         ItemLEDRedID = AnotherWorld.configAW.get("Items", ItemLEDRedName, ItemLEDRedID).getInt();
+         ItemLEDGreenID = AnotherWorld.configAW.get("Items", ItemLEDGreenName, ItemLEDBlueID).getInt();
+         ItemLEDBlueID = AnotherWorld.configAW.get("Items", ItemLEDBlueName, ItemLEDBlueID).getInt();
          ItemSiliconSlagID = AnotherWorld.configAW.get("Items", ItemSiliconSlagName, ItemSiliconSlagID).getInt();
          ItemMetGradeSiliconID = AnotherWorld.configAW.get("Items", ItemMetGradeSiliconName, ItemMetGradeSiliconID).getInt();
          ItemSiliconChipID = AnotherWorld.configAW.get("Items", ItemSiliconChipName, ItemSiliconChipID).getInt();

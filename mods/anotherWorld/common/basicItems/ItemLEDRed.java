@@ -15,15 +15,16 @@ import net.minecraft.item.ItemStack;
 
 
 public class ItemLEDRed extends BasicItem{
-	public ItemLEDRed(int id) {
-		super(id, BasicItems.ItemRedLEDName, 16);
-		
+	private static String iconTex;
+	public ItemLEDRed(int id, String icon) {
+		super(id, BasicItems.ItemLEDRedName);
+		iconTex = icon;
 	}
 	
-	@Override
-	public void func_94581_a(IconRegister iconRegister)
-	{
-		 iconIndex = iconRegister.func_94245_a("anotherWorld:ledRed");
-	}
-	
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void func_94581_a(IconRegister iconRegister)
+    {
+        iconIndex = iconRegister.func_94245_a(AnotherWorld.modID +":"+ iconTex);
+    }
 }

@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BlockSaltOre extends Ore{
 
-	public BlockSaltOre(int id, String name, Material mat) {
-		super(id, name, null);
+	public BlockSaltOre(int id, String name) {
+		super(id, name);
 		this.setLightOpacity(1);
 	}
 	

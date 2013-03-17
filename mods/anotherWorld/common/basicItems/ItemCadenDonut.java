@@ -5,10 +5,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mods.anotherWorld.AnotherWorld;
 import net.minecraft.client.renderer.texture.IconRegister;
 
-public class ItemQuartzCrucible extends BasicItem {
+public class ItemCadenDonut extends BasicItem{
 	private static String iconTex;
-	public ItemQuartzCrucible(int id, String icon) {
-		super(id, BasicItems.ItemQuartzCrucibleName);
+	public ItemCadenDonut(int id, String icon) {
+		super(id, BasicItems.ItemCadenDonutName);
 		iconTex = icon;
 	}
 	

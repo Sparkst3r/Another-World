@@ -18,17 +18,17 @@ public class BasicItems {
 	public static String ItemBlueprintPartName = "Blueprint Part";
 	public static int ItemBlueprintPartID = 8003;
 	//Red LED
-	public static Item RedLED;
-	public static String ItemRedLEDName = "Red LED";
-	public static int ItemRedLEDID = 8004;
+	public static Item LEDRed;
+	public static String ItemLEDRedName = "Red LED";
+	public static int ItemLEDRedID = 8004;
 	//Green LED
-	public static Item GreenLED;
-	public static String ItemGreenLEDName = "Green LED";
-	public static int ItemGreenLEDID = 8005;
+	public static Item LEDGreen;
+	public static String ItemLEDGreenName = "Green LED";
+	public static int ItemLEDGreenID = 8005;
 	//Blue LED
-	public static Item BlueLED;
-	public static String ItemBlueLEDName = "Blue LED";
-	public static int ItemBlueLEDID = 8006;
+	public static Item LEDBlue;
+	public static String ItemLEDBlueName = "Blue LED";
+	public static int ItemLEDBlueID = 8006;
 	//Silicon Slag
 	public static Item SiliconSlag;
 	public static String ItemSiliconSlagName = "Silicon Slag";
@@ -57,20 +57,28 @@ public class BasicItems {
 	public static String ItemSiliconSliceName = "Silicon Wafer";
 	public static int ItemSiliconSliceID = 8012;
 	
+	//Lol CadenDonuts
+	public static Item CadenDonut;
+	public static String ItemCadenDonutName = "Caden Donut";
+	public static int ItemCadenDonutID = 8013;
+	private static int ItemGreenLEDID;
+	private static int ItemBlueLEDID;
+	
 	
 	public static void addItems() {
-		Glue = new ItemGlue(ItemGlueID);
-		BlueprintPart = new ItemBlueprintPart(ItemBlueprintPartID);
-		Blueprint = new ItemBlueprint(ItemBlueprintID);
-		SiliconChip = new ItemSiliconChip(ItemSiliconChipID);
-		RedLED = new ItemLEDRed(ItemRedLEDID);
-		GreenLED = new ItemLEDGreen(ItemGreenLEDID);
-		BlueLED = new ItemLEDBlue(ItemBlueLEDID);
-		SiliconSlag = new ItemSiliconSlag(ItemSiliconSlagID);
-		MetGradeSilicon = new ItemMetGradeSilicon(ItemMetGradeSiliconID);
-		QuartzCrucible = new ItemQuartzCrucible(ItemQuartzCrucibleID);
-		SiliconBoule = new ItemSiliconBoule(ItemSiliconBouleID);
-		SiliconSlice = new ItemSiliconSlice(ItemSiliconSliceID);
+		Glue = new ItemGlue(ItemGlueID, "glue");
+		BlueprintPart = new ItemBlueprintPart(ItemBlueprintPartID, "blueprintPart");
+		Blueprint = new ItemBlueprint(ItemBlueprintID, "blueprint");
+		SiliconChip = new ItemSiliconChip(ItemSiliconChipID, "chip");
+		LEDRed = new ItemLEDRed(ItemLEDRedID, "ledRed");
+		LEDGreen = new ItemLEDGreen(ItemGreenLEDID, "ledGreen");
+		LEDBlue = new ItemLEDBlue(ItemBlueLEDID, "ledBlue");
+		SiliconSlag = new ItemSiliconSlag(ItemSiliconSlagID, "siliconSlag");
+		MetGradeSilicon = new ItemMetGradeSilicon(ItemMetGradeSiliconID, "siliconMet");
+		QuartzCrucible = new ItemQuartzCrucible(ItemQuartzCrucibleID, "crucibleQuartz");
+		SiliconBoule = new ItemSiliconBoule(ItemSiliconBouleID, "siliconBoule");
+		SiliconSlice = new ItemSiliconSlice(ItemSiliconSliceID, "siliconSlice");
+		CadenDonut = new ItemCadenDonut(ItemCadenDonutID, "cadenDonut");
 	}
 	
 }

@@ -6,7 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class Ore extends BasicBlock {
 
-	public Ore(int id, String name, Material mat) {
+	public Ore(int id, String name) {
 		super(id, name, Material.rock);
 		this.setHardness(10F);
 		this.setStepSound(Block.soundStoneFootstep);
