@@ -15,14 +15,14 @@ public class BasicBlocks {
 	public static Block Chromium;
 	public static int ChromiumID = 3007;
 	
-	public static String SaltName = "Chromium Ore";
+	public static String SaltName = "Salt Ore";
 	public static Block Salt;
 	public static int SaltID = 3008;
 	
 	//Add Items
 	public static void addItems() {
-		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName, ChromiumID, null);
-		Salt = new BlockSaltOre(SaltID, SaltName, SaltID, null);
+		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName, null);
+		Salt = new BlockSaltOre(SaltID, SaltName, null);
 
 	}
 	

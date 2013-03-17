@@ -28,7 +28,7 @@ public class Machines {
 	public static int SeparatorID = 3005;
 	
 	public static void addItems() {
-		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, 0, Material.glass);
+		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, Material.glass);
 		Separator = new BlockSeparator(SeparatorID);
 		TriCSStill = new BlockTriCSStill(BlockTriCSStillID);
 		TriCSFlow = new BlockTriCSFlow(BlockTriCSFlowID);

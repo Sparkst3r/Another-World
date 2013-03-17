@@ -9,13 +9,11 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class BasicBlock extends Block
 {
-	public BasicBlock(int id, String name, int idInTexture, Material mat)
+	public BasicBlock(int id, String name, Material mat)
 	{
-		super(id, idInTexture, mat);
-		this.setBlockName(name);
+		super(id, mat);
+		this.setUnlocalizedName(name);
 		this.setCreativeTab(AnotherWorld.TabAW);
-		this.setTextureFile(AnotherWorld.blockTex);
-		this.blockIndexInTexture = idInTexture;
 		GameRegistry.registerBlock(this, name);
 		LanguageRegistry.addName(this, name);
 	}

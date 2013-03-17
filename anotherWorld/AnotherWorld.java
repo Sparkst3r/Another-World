@@ -53,9 +53,7 @@ public class AnotherWorld {
 	public static final String modVersion = "0.0.3";
 
 	public static final String mainDir = "/anotherWorld/";
-	public static final String texDir = mainDir + "gfx/";
-	public static final String blockTex = texDir + "blocks.png";
-	public static final String itemTex = texDir + "items.png";
+	public static final String texDir = mainDir + "textures/";
 	public static final String guiDir = texDir + "gui/";
 	public static Configuration configAW;
 	

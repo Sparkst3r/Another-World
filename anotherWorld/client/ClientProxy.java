@@ -11,11 +11,7 @@ import anotherWorld.common.machines.Machines;
 import anotherWorld.common.machines.tile.TileEntitySeparator;
 
 public class ClientProxy extends CommonProxy{
-	//Pre-load sprite sheets
 	@Override
 	public void registerRenders() {
-		MinecraftForgeClient.preloadTexture(AnotherWorld.blockTex);
-		MinecraftForgeClient.preloadTexture(AnotherWorld.itemTex);
-		MinecraftForgeClient.preloadTexture(AnotherWorld.texDir + "advanced.png");
 	}	
 }

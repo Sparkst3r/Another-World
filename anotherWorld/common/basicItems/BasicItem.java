@@ -11,10 +11,8 @@ public class BasicItem extends Item
 	public BasicItem(int id, String name, int idInTexture)
 	{
 		super(AnotherWorld.configAW.getItem(name, id).getInt(id));
-		this.setItemName(name);
+		this.setUnlocalizedName(name);
 		this.setCreativeTab(AnotherWorld.TabAW);
-		this.setTextureFile(AnotherWorld.itemTex);
-		this.setIconIndex(idInTexture);
 		GameRegistry.registerItem(this, name);
 		LanguageRegistry.addName(this, name);
 	}

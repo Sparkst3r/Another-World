@@ -25,8 +25,8 @@ public class BlockSeparator extends BlockContainer {
                 super(id, Material.wood);
                 setHardness(2.0F);
                 setResistance(5.0F);
-                setBlockName("Separator");
-                setCreativeTab(CreativeTabs.tabDecorations);
+                setUnlocalizedName("Separator");
+                setCreativeTab(AnotherWorld.TabAW);
                 GameRegistry.registerBlock(this, "Separator");
                 LanguageRegistry.addName(this, "Separator");
         }

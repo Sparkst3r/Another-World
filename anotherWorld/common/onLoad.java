@@ -1,6 +1,5 @@
 package anotherWorld.common;
 
-import thermalexpansion.api.core.ItemRegistry;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.VillagerRegistry;
@@ -31,7 +30,7 @@ public class onLoad{
 	      VillagerRegistry reg = VillagerRegistry.instance();
 	      TradeHandlerVillagerAdvanced handler = new TradeHandlerVillagerAdvanced();
 	      reg.registerVillageTradeHandler(50, handler);
-	      VillagerRegistry.instance().registerVillagerType(50, AnotherWorld.texDir + "advanced.png");
+	      VillagerRegistry.instance().registerVillagerType(50, AnotherWorld.guiDir + "advanced.png");
 		
 	}
 

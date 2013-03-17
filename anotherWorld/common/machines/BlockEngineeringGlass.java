@@ -10,9 +10,9 @@ import net.minecraft.block.material.Material;
 
 
 public class BlockEngineeringGlass extends Block{
-    public BlockEngineeringGlass(int id, int texture, Material material) {
-        super(id, texture, material);
-        this.setBlockName(Machines.BlockEngineeringGlassName);
+    public BlockEngineeringGlass(int id, Material material) {
+        super(id,material);
+        this.setUnlocalizedName(Machines.BlockEngineeringGlassName);
         this.setCreativeTab(AnotherWorld.TabAW);
         
         this.setHardness(4.0F);
@@ -22,11 +22,6 @@ public class BlockEngineeringGlass extends Block{
         LanguageRegistry.addName(this, Machines.BlockEngineeringGlassName);
         GameRegistry.registerBlock(this, Machines.BlockEngineeringGlassName);
 }
-    
-    
-	public String getTextureFile() {
-		return AnotherWorld.blockTex;
-	}
 	public boolean renderAsNormalBlock() {
 		return false;
 	}

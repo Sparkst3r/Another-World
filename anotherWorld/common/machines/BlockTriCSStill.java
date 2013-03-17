@@ -15,12 +15,10 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 	public BlockTriCSStill(int ID) {
 		super(ID, Material.water);
 		this.setCreativeTab(AnotherWorld.TabAW);
-	    this.setBlockName(Machines.BlockTriCSStillName);
+	    this.setUnlocalizedName(Machines.BlockTriCSStillName);
 		this.blockHardness = 100F;
 		this.setLightOpacity(1);
-		this.setRequiresSelfNotify();
-		this.setTextureFile(AnotherWorld.blockTex);
-		this.blockIndexInTexture = 100;
+		this.setTickRandomly(true);
 		
 		
 		GameRegistry.registerBlock(this, Machines.BlockTriCSStillName);
@@ -29,11 +27,6 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 	@Override
 	public int getRenderType() {
 		return 4;
-	}
-
-	@Override
-	public String getTextureFile() {
-		return AnotherWorld.blockTex;
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package anotherWorld.common.machines.tile;
 
-import buildcraft.api.power.IPowerProvider;
-import buildcraft.api.power.IPowerReceptor;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -127,5 +126,17 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
 		@Override
 		public String getInvName() {
 			return "Separator";
+		}
+
+		@Override
+		public boolean func_94042_c() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean func_94041_b(int i, ItemStack itemstack) {
+			// TODO Auto-generated method stub
+			return false;
 		}
 }

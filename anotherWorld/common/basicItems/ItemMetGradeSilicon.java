@@ -2,7 +2,6 @@ package anotherWorld.common.basicItems;
 
 import anotherWorld.AnotherWorld;
 import anotherWorld.common.ModsExist;
-import ic2.api.Items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.item.Item;

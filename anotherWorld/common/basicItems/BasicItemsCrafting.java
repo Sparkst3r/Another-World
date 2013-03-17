@@ -1,5 +1,8 @@
 package anotherWorld.common.basicItems;
 
+import anotherWorld.common.machines.Machines;
+import net.minecraft.item.ItemStack;
+/*
 import cpw.mods.fml.common.registry.GameRegistry;
 import thermalexpansion.api.crafting.CraftingManagers;
 import ic2.api.Items;
@@ -12,13 +15,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.liquids.LiquidStack;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-
+*/
 
 
 public class BasicItemsCrafting {
 	public static ItemStack engGlass = new ItemStack(Machines.EngineeringGlass, 1);
 	public static ItemStack sil = new ItemStack(BasicItems.SiliconChip, 1);
 	public static void crafting() {
+		/*
 		addCraftingRedLED();
 		addCraftingGreenLED();
 		addCraftingBlueLED();
@@ -108,6 +112,8 @@ public class BasicItemsCrafting {
 		'G', engGlass, 'D', dyeBlueLED, 'S', sil
 			});
 		}
+			*/
 	}
+
 }
 

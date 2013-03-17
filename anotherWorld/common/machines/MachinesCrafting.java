@@ -4,13 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.liquids.LiquidStack;
-import thermalexpansion.api.crafting.CraftingManagers;
 import anotherWorld.common.ModsExist;
 import anotherWorld.common.basicBlocks.BasicBlocks;
 import anotherWorld.common.basicItems.BasicItems;
 
 public class MachinesCrafting {
 	public static void crafting() {
+		/*
 		addCraftingEngineeringGlass();
 		addCraftingTriCS();
 	}
@@ -26,5 +26,7 @@ public class MachinesCrafting {
 		if (ModsExist.teExists) {
 			CraftingManagers.crucibleManager.addRecipe(1000, new ItemStack(BasicItems.MetGradeSilicon, 1) , new LiquidStack(Machines.TriCSStill, 500), false);
 			}
+					*/
 		}
+
 }
