@@ -63,9 +63,9 @@ public class BasicItems {
 		BlueprintPart = new ItemBlueprintPart(ItemBlueprintPartID);
 		Blueprint = new ItemBlueprint(ItemBlueprintID);
 		SiliconChip = new ItemSiliconChip(ItemSiliconChipID);
-		RedLED = new ItemRedLED(ItemRedLEDID);
-		GreenLED = new ItemGreenLED(ItemGreenLEDID);
-		BlueLED = new ItemBlueLED(ItemBlueLEDID);
+		RedLED = new ItemLEDRed(ItemRedLEDID);
+		GreenLED = new ItemLEDGreen(ItemGreenLEDID);
+		BlueLED = new ItemLEDBlue(ItemBlueLEDID);
 		SiliconSlag = new ItemSiliconSlag(ItemSiliconSlagID);
 		MetGradeSilicon = new ItemMetGradeSilicon(ItemMetGradeSiliconID);
 		QuartzCrucible = new ItemQuartzCrucible(ItemQuartzCrucibleID);

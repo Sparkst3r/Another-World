@@ -53,7 +53,7 @@ public class AnotherWorld {
 	public static final String modName = "Another World";
 	public static final String modVersion = "0.0.3";
 
-	public static final String mainDir = "/anotherWorld/";
+	public static final String mainDir = "mods/anotherWorld/";
 	public static final String texDir = mainDir + "textures/";
 	public static final String guiDir = texDir + "gui/";
 	public static Configuration configAW;
