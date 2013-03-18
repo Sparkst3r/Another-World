@@ -133,17 +133,6 @@ public class BlockRedDust extends BasicBlock
             return true;
         }
     }
-
-    /**
-     * Called when the player destroys a block with an item that can harvest it. (i, j, k) are the coordinates of the
-     * block and l is the block's subtype/damage.
-     */
-    public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)
-    {
-        super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
-        par1World.func_94571_i(par3, par4, par5);
-    }
-
     /**
      * Returns the ID of the items to drop on destruction.
      */

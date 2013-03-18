@@ -5,6 +5,7 @@ import mods.anotherWorld.client.ClientPacketHandler;
 import mods.anotherWorld.client.ClientProxy;
 import mods.anotherWorld.client.GuiHandler;
 import mods.anotherWorld.common.CommonPacketHandler;
+import mods.anotherWorld.common.CommonProxy;
 import mods.anotherWorld.common.Config;
 import mods.anotherWorld.common.CreativeTabAnotherWorld;
 import mods.anotherWorld.common.ModsExist;
@@ -38,8 +39,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 @NetworkMod(
 		clientSideRequired = true, 
 		serverSideRequired = false,
-		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"TutorialMod" }, packetHandler = ClientPacketHandler.class),
-		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"TutorialMod" }, packetHandler = CommonPacketHandler.class)
+		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = ClientPacketHandler.class),
+		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
 )
 
 public class AnotherWorld {
@@ -61,7 +62,7 @@ public class AnotherWorld {
 	
 	private GuiHandler guiHandler = new GuiHandler();
 	
-	public static ClientProxy clientProxy;
+	public static CommonProxy proxy;
 	
 	
 	//Create TabAN as a new CreativeTabAnotherWorld instance

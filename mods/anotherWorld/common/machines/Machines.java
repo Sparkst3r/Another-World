@@ -27,12 +27,18 @@ public class Machines {
 	public static String SeparatorName = "Engineering Glass";
 	public static int SeparatorID = 3005;
 	
+	public static Block SpaceChest;
+	public static String SpaceChestName = "Space Chest";
+	public static int SpaceChestID = 3006;
+	
 	public static void addItems() {
 		EngineeringGlass = new BlockEngineeringGlass(BlockEngineeringGlassID, Material.glass);
 		Separator = new BlockSeparator(SeparatorID);
 		TriCSStill = new BlockTriCSStill(BlockTriCSStillID);
 		TriCSFlow = new BlockTriCSFlow(BlockTriCSFlowID);
 		triCSLiquid = LiquidDictionary.getOrCreateLiquid("Trichlorosilane", new LiquidStack(TriCSStill, 1));
+		SpaceChest = new BlockSpaceChest(SpaceChestID, 0).setHardness(2.5F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("treetrunk").setTickRandomly(true);
+
 	}
 	
 }

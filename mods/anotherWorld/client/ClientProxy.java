@@ -7,6 +7,8 @@ import mods.anotherWorld.AnotherWorld;
 import mods.anotherWorld.common.CommonProxy;
 import mods.anotherWorld.common.machines.Machines;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
+import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
+import mods.anotherWorld.common.machines.tile.TileEntitySpaceChestRenderer;
 import net.minecraft.block.Block;
 import net.minecraftforge.client.MinecraftForgeClient;
 
