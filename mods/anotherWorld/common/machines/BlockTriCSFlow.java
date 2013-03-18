@@ -4,6 +4,8 @@ import java.util.Random;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import mods.anotherWorld.AnotherWorld;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
@@ -11,6 +13,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFluid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.liquids.ILiquid;
 
@@ -19,6 +22,7 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 	int numAdjacentSources = 0;
 	boolean isOptimalFlowDirection[] = new boolean[4];
 	int flowCost[] = new int[4];
+	private Icon[] field_94425_a;
 
 	public BlockTriCSFlow(int i) {
 		super(i, Material.water);
@@ -27,6 +31,17 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 		setLightOpacity(3);
 		GameRegistry.registerBlock(this, Machines.BlockTriCSFlowName);
 		LanguageRegistry.addName(this, Machines.BlockTriCSFlowName);
+	}
+	@Override
+    @SideOnly(Side.CLIENT)
+	public void func_94332_a(IconRegister iconRegister){
+		this.field_94425_a = new Icon[] {iconRegister.func_94245_a("anotherWorld:triCSStill"), iconRegister.func_94245_a("anotherWorld:triCSFlow")};
+}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
+		return par1 != 0 && par1 != 1 ? this.field_94425_a[1] : this.field_94425_a[0];
 	}
 
 	@Override
