@@ -13,6 +13,7 @@ import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.DimensionManager;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -61,7 +62,7 @@ public class AnotherWorld {
 	private GuiHandler guiHandler = new GuiHandler();
 	
 	public static ClientProxy clientProxy;
-
+	
 	
 	//Create TabAN as a new CreativeTabAnotherWorld instance
 	public static CreativeTabs TabAW = new CreativeTabAnotherWorld(CreativeTabs.getNextID(), "Another World");

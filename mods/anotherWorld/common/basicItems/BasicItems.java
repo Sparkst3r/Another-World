@@ -61,9 +61,16 @@ public class BasicItems {
 	public static Item CadenDonut;
 	public static String ItemCadenDonutName = "Caden Donut";
 	public static int ItemCadenDonutID = 8013;
-	private static int ItemGreenLEDID;
-	private static int ItemBlueLEDID;
 	
+	//Lol Forkk
+	public static Item Forkk;
+	public static String ItemForkkName = "Forkk13";
+	public static int ItemForkkID = 8015;
+	
+	//Salt
+	public static Item Salt;
+	public static String ItemSaltName = "Salt Pile";
+	public static int ItemSaltID = 8014;
 	
 	public static void addItems() {
 		Glue = new ItemGlue(ItemGlueID, "glue");
@@ -71,14 +78,16 @@ public class BasicItems {
 		Blueprint = new ItemBlueprint(ItemBlueprintID, "blueprint");
 		SiliconChip = new ItemSiliconChip(ItemSiliconChipID, "chip");
 		LEDRed = new ItemLEDRed(ItemLEDRedID, "ledRed");
-		LEDGreen = new ItemLEDGreen(ItemGreenLEDID, "ledGreen");
-		LEDBlue = new ItemLEDBlue(ItemBlueLEDID, "ledBlue");
+		LEDGreen = new ItemLEDGreen(ItemLEDGreenID, "ledGreen");
+		LEDBlue = new ItemLEDBlue(ItemLEDBlueID, "ledBlue");
 		SiliconSlag = new ItemSiliconSlag(ItemSiliconSlagID, "siliconSlag");
 		MetGradeSilicon = new ItemMetGradeSilicon(ItemMetGradeSiliconID, "siliconMet");
 		QuartzCrucible = new ItemQuartzCrucible(ItemQuartzCrucibleID, "crucibleQuartz");
 		SiliconBoule = new ItemSiliconBoule(ItemSiliconBouleID, "siliconBoule");
 		SiliconSlice = new ItemSiliconSlice(ItemSiliconSliceID, "siliconSlice");
 		CadenDonut = new ItemCadenDonut(ItemCadenDonutID, "cadenDonut");
+		Salt = new ItemSalt(ItemSaltID, "saltDust");
+		Forkk = new ItemForkk(ItemForkkID, "forkk");
 	}
 	
 }

@@ -91,7 +91,7 @@ public class BasicItemsCrafting {
 	public static void addMetGradeSiliconRecipe() {
 		if (ModsExist.teExists) {
 			//Using sand until 1.5 adds quartz
-			CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Block.sand, 1), Items.getItem("coalDust"), new ItemStack(BasicItems.MetGradeSilicon, 2), false);
+			CraftingManagers.smelterManager.addRecipe(40, new ItemStack(Item.field_94583_ca, 1), Items.getItem("coalDust"), new ItemStack(BasicItems.MetGradeSilicon, 2), false);
 		}
 	}
 	*/

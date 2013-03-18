@@ -23,12 +23,16 @@ public class BasicBlocks {
 	public static Block TyteonRock;
 	public static int TyteonRockID = 3009;
 	
+	public static String RedDustName = "Red Dust";
+	public static Block RedDust;
+	public static int RedDustID = 3010;
+	
 	//Add Items
 	public static void addItems() {
 		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName);
 		Salt = new BlockSaltOre(SaltID, SaltName);
 		TyteonRock = new BlockTyteonRock(TyteonRockID, TyteonRockName);
-
+		RedDust = new BlockRedDust(RedDustID, RedDustName);
 	}
 	
 }

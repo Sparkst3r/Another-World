@@ -1,11 +1,16 @@
 package mods.anotherWorld.common.machines;
 
+import static cpw.mods.fml.relauncher.Side.CLIENT;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mods.anotherWorld.AnotherWorld;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.BlockStationary;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.liquids.ILiquid;
 import net.minecraftforge.liquids.LiquidDictionary;
@@ -19,11 +24,12 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 		this.blockHardness = 100F;
 		this.setLightOpacity(1);
 		this.setTickRandomly(true);
-		
-		
+	
 		GameRegistry.registerBlock(this, Machines.BlockTriCSStillName);
 		LanguageRegistry.addName(this, Machines.BlockTriCSStillName);
 	}
+	
+	
 	@Override
 	public int getRenderType() {
 		return 4;

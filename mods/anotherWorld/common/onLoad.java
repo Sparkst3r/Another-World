@@ -5,6 +5,8 @@ import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import mods.anotherWorld.common.basicBlocks.BasicBlocksCrafting;
 import mods.anotherWorld.common.basicItems.BasicItems;
 import mods.anotherWorld.common.basicItems.BasicItemsCrafting;
+import mods.anotherWorld.common.dimension.biome.TyteonBiomeIrradiated;
+import mods.anotherWorld.common.dimension.biome.TyteonBiomes;
 import mods.anotherWorld.common.machines.Machines;
 import mods.anotherWorld.common.machines.MachinesCrafting;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
@@ -16,13 +18,13 @@ import cpw.mods.fml.common.registry.VillagerRegistry;
 
 
 public class onLoad{
-	
 	public static void onLoading() {
 
 		BasicItems.addItems();
 		BasicBlocks.addItems();
 		Machines.addItems();
 		VillagerInit();
+		TyteonBiomes.init();
 		GameRegistry.registerTileEntity(TileEntitySeparator.class, "tileEntitySeparator");
 	}
 
