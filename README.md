@@ -1,6 +1,11 @@
 Another-World
 =============
 
+Credits:
+		Code: Sparkst3r
+		Ideas: CadenDonuts
+		Textures: Sparkst3r, CadenDonuts
+
 A work in progress space age minecraft mod.
 
 Tyteon
