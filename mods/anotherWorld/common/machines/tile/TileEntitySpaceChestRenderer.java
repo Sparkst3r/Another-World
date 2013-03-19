@@ -53,33 +53,12 @@ public class TileEntitySpaceChestRenderer extends TileEntitySpecialRenderer
         {
             Block block = par1TileEntityChest.getBlockType();
             i = par1TileEntityChest.getBlockMetadata();
-
-            if (block instanceof BlockSpaceChest && i == 0)
-            {
-                try
-                {
-                    ((BlockSpaceChest)block).unifyAdjacentChests(par1TileEntityChest.getWorldObj(), par1TileEntityChest.xCoord, par1TileEntityChest.yCoord, par1TileEntityChest.zCoord);
-                }
-                catch (ClassCastException e)
-                {
-                    FMLLog.severe("Attempted to render a chest at %d,  %d, %d that was not a chest",
-                            par1TileEntityChest.xCoord, par1TileEntityChest.yCoord, par1TileEntityChest.zCoord);
-                }
-                i = par1TileEntityChest.getBlockMetadata();
-            }
-
-            par1TileEntityChest.checkForAdjacentChests();
         }
         ModelChest modelchest = this.chestModel;
         if (par1TileEntityChest.adjacentChestZNeg == null && par1TileEntityChest.adjacentChestXNeg == null)
         {
-
-
-            if (par1TileEntityChest.adjacentChestXPos == null && par1TileEntityChest.adjacentChestZPosition == null)
-            {
                     this.bindTextureByName("/mods/anotherWorld/textures/entities/spaceChest.png");
 
-            }
 
             GL11.glPushMatrix();
             GL11.glEnable(GL12.GL_RESCALE_NORMAL);
@@ -109,6 +88,7 @@ public class TileEntitySpaceChestRenderer extends TileEntitySpecialRenderer
                 short1 = -90;
             }
 
+            /*
             if (i == 2 && par1TileEntityChest.adjacentChestXPos != null)
             {
                 GL11.glTranslatef(1.0F, 0.0F, 0.0F);
@@ -118,12 +98,14 @@ public class TileEntitySpaceChestRenderer extends TileEntitySpecialRenderer
             {
                 GL11.glTranslatef(0.0F, 0.0F, -1.0F);
             }
+            */
 
             GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
             float f1 = par1TileEntityChest.prevLidAngle + (par1TileEntityChest.lidAngle - par1TileEntityChest.prevLidAngle) * par8;
             float f2;
 
+            /*
             if (par1TileEntityChest.adjacentChestZNeg != null)
             {
                 f2 = par1TileEntityChest.adjacentChestZNeg.prevLidAngle + (par1TileEntityChest.adjacentChestZNeg.lidAngle - par1TileEntityChest.adjacentChestZNeg.prevLidAngle) * par8;
@@ -143,7 +125,7 @@ public class TileEntitySpaceChestRenderer extends TileEntitySpecialRenderer
                     f1 = f2;
                 }
             }
-
+             */
             f1 = 1.0F - f1;
             f1 = 1.0F - f1 * f1 * f1;
             modelchest.chestLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);

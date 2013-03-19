@@ -272,62 +272,9 @@ public class TileEntitySpaceChest extends TileEntity implements IInventory
             }
         }
     }
-
-    /**
-     * Performs the check for adjacent chests to determine if this chest is double or not.
-     */
-    public void checkForAdjacentChests()
-    {
-        if (!this.adjacentChestChecked)
-        {
-            this.adjacentChestChecked = true;
-            this.adjacentChestZNeg = null;
-            this.adjacentChestXPos = null;
-            this.adjacentChestXNeg = null;
-            this.adjacentChestZPosition = null;
-
-            if (this.func_94044_a(this.xCoord - 1, this.yCoord, this.zCoord))
-            {
-                this.adjacentChestXNeg = (TileEntitySpaceChest)this.worldObj.getBlockTileEntity(this.xCoord - 1, this.yCoord, this.zCoord);
-            }
-
-            if (this.func_94044_a(this.xCoord + 1, this.yCoord, this.zCoord))
-            {
-                this.adjacentChestXPos = (TileEntitySpaceChest)this.worldObj.getBlockTileEntity(this.xCoord + 1, this.yCoord, this.zCoord);
-            }
-
-            if (this.func_94044_a(this.xCoord, this.yCoord, this.zCoord - 1))
-            {
-                this.adjacentChestZNeg = (TileEntitySpaceChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord - 1);
-            }
-
-            if (this.func_94044_a(this.xCoord, this.yCoord, this.zCoord + 1))
-            {
-                this.adjacentChestZPosition = (TileEntitySpaceChest)this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord + 1);
-            }
-
-            if (this.adjacentChestZNeg != null)
-            {
-                this.adjacentChestZNeg.func_90009_a(this, 0);
-            }
-
-            if (this.adjacentChestZPosition != null)
-            {
-                this.adjacentChestZPosition.func_90009_a(this, 2);
-            }
-
-            if (this.adjacentChestXPos != null)
-            {
-                this.adjacentChestXPos.func_90009_a(this, 1);
-            }
-
-            if (this.adjacentChestXNeg != null)
-            {
-                this.adjacentChestXNeg.func_90009_a(this, 3);
-            }
-        }
-    }
-
+    
+    
+    
     private boolean func_94044_a(int par1, int par2, int par3)
     {
         Block block = Block.blocksList[this.worldObj.getBlockId(par1, par2, par3)];
@@ -341,32 +288,8 @@ public class TileEntitySpaceChest extends TileEntity implements IInventory
     public void updateEntity()
     {
         super.updateEntity();
-        this.checkForAdjacentChests();
         ++this.ticksSinceSync;
         float f;
-
-        if (!this.worldObj.isRemote && this.numUsingPlayers != 0 && (this.ticksSinceSync + this.xCoord + this.yCoord + this.zCoord) % 200 == 0)
-        {
-            this.numUsingPlayers = 0;
-            f = 5.0F;
-            List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getAABBPool().getAABB((double)((float)this.xCoord - f), (double)((float)this.yCoord - f), (double)((float)this.zCoord - f), (double)((float)(this.xCoord + 1) + f), (double)((float)(this.yCoord + 1) + f), (double)((float)(this.zCoord + 1) + f)));
-            Iterator iterator = list.iterator();
-
-            while (iterator.hasNext())
-            {
-                EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-
-                if (entityplayer.openContainer instanceof ContainerChest)
-                {
-                    IInventory iinventory = ((ContainerSpaceChest)entityplayer.openContainer).getLowerChestInventory();
-
-                    if (iinventory == this || iinventory instanceof InventoryLargeChest && ((InventoryLargeChest)iinventory).isPartOfLargeChest(this))
-                    {
-                        ++this.numUsingPlayers;
-                    }
-                }
-            }
-        }
 
         this.prevLidAngle = this.lidAngle;
         f = 0.1F;
@@ -487,7 +410,6 @@ public class TileEntitySpaceChest extends TileEntity implements IInventory
     {
         super.invalidate();
         this.updateContainingBlockInfo();
-        this.checkForAdjacentChests();
     }
 
     public int func_98041_l()

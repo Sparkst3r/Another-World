@@ -2,6 +2,7 @@ package mods.anotherWorld.client;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 import mods.anotherWorld.common.machines.container.ContainerSeparator;
+import mods.anotherWorld.common.machines.container.ContainerSpaceChest;
 import mods.anotherWorld.common.machines.gui.GUISeparator;
 import mods.anotherWorld.common.machines.gui.GUISpaceChest;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
@@ -19,8 +20,9 @@ public class GuiHandler implements IGuiHandler {
 		
 		switch(id)
 		{
-		case 0: return new GUISeparator(player.inventory, (TileEntitySeparator) tile_entity);
-		case 90: return new GUISpaceChest(player.inventory, (TileEntitySpaceChest) tile_entity);
+		
+		case 0: return new ContainerSeparator(player.inventory, (TileEntitySeparator) tile_entity);
+		case 4: return new ContainerSpaceChest(player.inventory, (TileEntitySpaceChest) tile_entity);
 
 		}
 		return null;
@@ -34,7 +36,7 @@ public class GuiHandler implements IGuiHandler {
 	switch(id)
 	{
 	case 0: return new GUISeparator(player.inventory, (TileEntitySeparator) tile_entity);
-	case 90: return new GUISpaceChest(player.inventory, (TileEntitySpaceChest) tile_entity);
+	case 4: return new GUISpaceChest(player.inventory, (TileEntitySpaceChest) tile_entity);
 
 	}
 	return null;
