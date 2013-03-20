@@ -3,6 +3,7 @@ package mods.anotherWorld.common;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mods.anotherWorld.common.machines.Machines;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 
@@ -15,7 +16,7 @@ public class CreativeTabAnotherWorld extends CreativeTabs {
 	
 	@SideOnly(Side.CLIENT)
 	public int getTabIconItemIndex() {
-	    return Block.dragonEgg.blockID;
+	    return Machines.Separator.blockID;
 	}
 
 }

@@ -32,18 +32,8 @@ import cpw.mods.fml.common.registry.VillagerRegistry;
 
 public class onLoad{
 	public static void onLoading() {
-
-		
-		
-		RenderingRegistry.registerBlockHandler(80, new SpaceChestRender());
-		RenderingRegistry.registerBlockHandler(81, new SeparatorRender());
-		RenderingRegistry.registerBlockHandler(82, new SpaceCactusRender());
-		
-		ClientRegistry.registerTileEntity(TileEntitySpaceChest.class, "tileSpaceBlock",  (TileEntitySpecialRenderer) new TileEntitySpaceChestRenderer());
-		ClientRegistry.registerTileEntity(TileEntitySeparator.class, "tileSeperator",  (TileEntitySpecialRenderer) new TileEntitySeparatorRenderer());
-		ClientRegistry.registerTileEntity(TileSpaceCactus.class, "tileSpaceCactus",  (TileEntitySpecialRenderer) new TileRenderSpaceCactus());
-		
-		
+		registerRenderers();
+		registerTileEntities();
 		
 		BasicItems.addItems();
 		BasicBlocks.addItems();
@@ -51,10 +41,21 @@ public class onLoad{
 		MachineItems.addItems();
 		VillagerInit();
 		TyteonBiomes.init();
-
-		//AnotherWorld.proxy.registerTileEntitySpecialRenderer();
 	}
 
+	
+	private static void registerRenderers() {
+		RenderingRegistry.registerBlockHandler(80, new SpaceChestRender());
+		RenderingRegistry.registerBlockHandler(81, new SeparatorRender());
+		RenderingRegistry.registerBlockHandler(82, new SpaceCactusRender());
+	}
+	private static void registerTileEntities() {
+		ClientRegistry.registerTileEntity(TileEntitySpaceChest.class, "tileSpaceBlock",  (TileEntitySpecialRenderer) new TileEntitySpaceChestRenderer());
+		ClientRegistry.registerTileEntity(TileEntitySeparator.class, "tileSeperator",  (TileEntitySpecialRenderer) new TileEntitySeparatorRenderer());
+		ClientRegistry.registerTileEntity(TileSpaceCactus.class, "tileSpaceCactus",  (TileEntitySpecialRenderer) new TileRenderSpaceCactus());	
+	}
+	
+	
 	private static void VillagerInit() {
 	      VillagerRegistry reg = VillagerRegistry.instance();
 	      TradeHandlerVillagerAdvanced handler = new TradeHandlerVillagerAdvanced();
@@ -70,5 +71,6 @@ public class onLoad{
 		    //Debug Output
 			//ItemRegistry.printItemNames();
 	}
+	
 
 }

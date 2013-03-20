@@ -72,6 +72,10 @@ public class BasicItems {
 	public static String ItemSaltName = "Salt Pile";
 	public static int ItemSaltID = 8014;
 	
+	public static Item Raygun;
+	public static String ItemRaygunName = "Ronald Raygun";
+	public static int ItemRaygunID = 8014;
+	
 	public static void addItems() {
 		Glue = new ItemGlue(ItemGlueID, "glue");
 		BlueprintPart = new ItemBlueprintPart(ItemBlueprintPartID, "blueprintPart");
@@ -88,6 +92,7 @@ public class BasicItems {
 		CadenDonut = new ItemCadenDonut(ItemCadenDonutID, "cadenDonut");
 		Salt = new ItemSalt(ItemSaltID, "saltDust");
 		Forkk = new ItemForkk(ItemForkkID, "forkk");
+		//Raygun = new ItemForkk(ItemRaygunID, "raygun");
 	}
 	
 }
