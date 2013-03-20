@@ -35,7 +35,19 @@ public class ModelSpaceCactus extends ModelBase
         this.B_Top.rotationPointX = 2.0F;
         this.B_Top.rotationPointY = -16.0F;
         this.B_Top.rotationPointZ = 14.0F;
-       
+        
+        this.R_Top = (new ModelRenderer(this, 27, 39)).setTextureSize(64, 64);
+        this.R_Top.addBox(0F, 0F, 0F, 1, 8, 10);
+        this.R_Top.rotationPointX = 2.0F;
+        this.R_Top.rotationPointY = -16.0F;
+        this.R_Top.rotationPointZ = 3.0F;
+        
+        this.L_Top = (new ModelRenderer(this, 27, 39)).setTextureSize(64, 64);
+        this.L_Top.addBox(0F, 0F, 0F, 1, 8, 10);
+        this.L_Top.rotationPointX = 14.0F;
+        this.L_Top.rotationPointY = -16.0F;
+        this.L_Top.rotationPointZ = 3.0F;
+
         	
     }
 
@@ -47,7 +59,7 @@ public class ModelSpaceCactus extends ModelBase
         this.Base.render(0.0625F);
         this.F_Top.render(0.0625F);
         this.B_Top.render(0.0625F);
-        //this.L_Top.render(0.0625F);
-        //this.R_Top.render(0.0625F);
+        this.L_Top.render(0.0625F);
+        this.R_Top.render(0.0625F);
     }
 }

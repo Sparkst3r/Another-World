@@ -18,10 +18,10 @@ public class BlockPlaceholder extends Block{
 
 	public BlockPlaceholder(int par1) {
 		super(par1, Material.glass);
-		this.setUnlocalizedName("d");
+		this.setUnlocalizedName("How did you even obtain this? Haxor!");
 		this.setCreativeTab(AnotherWorld.TabAW);
-		GameRegistry.registerBlock(this, "d");
-		LanguageRegistry.addName(this, "d");
+		GameRegistry.registerBlock(this, "How did you even obtain this? Haxor!");
+		LanguageRegistry.addName(this, "How did you even obtain this? Haxor!");
         
 
 
@@ -29,7 +29,7 @@ public class BlockPlaceholder extends Block{
 	
     public void breakBlock(World world, int x, int y, int z, int par5, int par6)
     {
-    	if (world.getBlockId(x, y - 1, z) == BasicBlocks.SpaceCactusID) {
+    	if (world.getBlockId(x, y - 1, z) == BasicBlocks.SpaceCactusID ) {
     		world.setBlockAndMetadataWithNotify(x, y - 1, z, 0, 0, 2);
     		EntityItem entityItem = new EntityItem(world, x, y, z, new ItemStack(BasicBlocks.SpaceCactus, 1, 0));
 
