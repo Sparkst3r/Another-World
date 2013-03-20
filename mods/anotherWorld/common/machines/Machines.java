@@ -6,8 +6,6 @@ import net.minecraftforge.liquids.LiquidDictionary;
 import net.minecraftforge.liquids.LiquidStack;
 
 public class Machines {
-	//Misc
-	public static int TriCSRenderID = 150;
 	public static LiquidStack triCSLiquid;
 	
 	

@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.GlobalIDs;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -72,7 +73,7 @@ public class BlockSpaceChest extends BlockContainer
      */
     public int getRenderType()
     {
-        return 80;
+        return GlobalIDs.SpaceChestRenderID;
     }
 
     /**

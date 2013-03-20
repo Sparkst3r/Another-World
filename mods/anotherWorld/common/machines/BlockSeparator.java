@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.GlobalIDs;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import net.minecraft.block.BlockContainer;
@@ -74,7 +75,7 @@ public class BlockSeparator extends BlockContainer {
         
         public int getRenderType()
     	{
-    		return 81;
+    		return GlobalIDs.SeparatorRenderID;
     	}
     	
     	public int idDropped(int i, Random random, int j)

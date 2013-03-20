@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import mods.anotherWorld.common.GlobalIDs;
 import mods.anotherWorld.common.basicBlocks.BasicBlock;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import mods.anotherWorld.common.dimension.tyteonblocks.render.TileSpaceCactus;
@@ -54,7 +55,7 @@ public class BlockSpaceCactus extends ContainerBlock{
 
     public int getRenderType()
 	{
-		return 82;
+		return GlobalIDs.SpaceCactusRenderID;
 	}
 	
 	public int idDropped(int i, Random random, int j)

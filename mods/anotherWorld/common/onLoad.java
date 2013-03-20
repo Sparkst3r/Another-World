@@ -45,9 +45,9 @@ public class onLoad{
 
 	
 	private static void registerRenderers() {
-		RenderingRegistry.registerBlockHandler(80, new SpaceChestRender());
-		RenderingRegistry.registerBlockHandler(81, new SeparatorRender());
-		RenderingRegistry.registerBlockHandler(82, new SpaceCactusRender());
+		RenderingRegistry.registerBlockHandler(GlobalIDs.SpaceChestRenderID, new SpaceChestRender());
+		RenderingRegistry.registerBlockHandler(GlobalIDs.SeparatorRenderID, new SeparatorRender());
+		RenderingRegistry.registerBlockHandler(GlobalIDs.SpaceCactusRenderID, new SpaceCactusRender());
 	}
 	private static void registerTileEntities() {
 		ClientRegistry.registerTileEntity(TileEntitySpaceChest.class, "tileSpaceBlock",  (TileEntitySpecialRenderer) new TileEntitySpaceChestRenderer());

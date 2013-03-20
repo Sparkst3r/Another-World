@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import mods.anotherWorld.common.GlobalIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
@@ -30,6 +31,6 @@ public boolean shouldRender3DInInventory()
 }
 	@Override
 	public int getRenderId() {
-         return 82;
+         return GlobalIDs.SpaceCactusRenderID;
 	}
 }

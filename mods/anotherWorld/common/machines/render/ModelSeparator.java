@@ -22,21 +22,17 @@ public class ModelSeparator extends ModelBase
         this.Base.rotationPointY = 10.0F;
         this.Base.rotationPointZ = 2.0F;
         
-        
         this.Back = (new ModelRenderer(this, 0, 21)).setTextureSize(128, 128);
         this.Back.addBox(0F, 0F, 0F, 12, 8, 5);
         this.Back.rotationPointX = 2.0F;
         this.Back.rotationPointY = 2.0F;
         this.Back.rotationPointZ = 11F;
         
-        
-
- 
-            this.Tank = (new ModelRenderer(this, 0, 35)).setTextureSize(128, 128);
-            Tank.addBox(0F, 0F, 0F, 16, 10, 11);
-            this.Tank.rotationPointX = 0F;
-            this.Tank.rotationPointY = 0.0F;
-            this.Tank.rotationPointZ = 0.0F;
+        this.Tank = (new ModelRenderer(this, 0, 35)).setTextureSize(128, 128);
+        Tank.addBox(0F, 0F, 0F, 16, 10, 11);
+        this.Tank.rotationPointX = 0F;
+        this.Tank.rotationPointY = 0.0F;
+        this.Tank.rotationPointZ = 0.0F;
        
         	
     }
@@ -46,7 +42,6 @@ public class ModelSeparator extends ModelBase
      */
     public void renderAll()
     {
-        this.Back.rotateAngleX = this.Base.rotateAngleX;
         this.Base.render(0.0625F);
         this.Back.render(0.0625F);
         this.Tank.render(0.0625F);
