@@ -28,6 +28,7 @@ public class BlockRedDust extends BasicBlock
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
         this.setTickRandomly(true);
         this.func_96478_d(0);
+        this.blockResistance = 100000F;
         this.blockHardness = 0.08F;
         this.blockParticleGravity = 0.1F;
         this.setStepSound(soundSandFootstep);
