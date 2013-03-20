@@ -62,12 +62,11 @@ public class Config {
          TyteonRockID = 			AnotherWorld.configAW.get("Blocks", TyteonRockName, TyteonRockID).getInt();
          RedDustID =				AnotherWorld.configAW.get("Blocks", RedDustName, RedDustID).getInt();
          SpaceCactusID =			AnotherWorld.configAW.get("Blocks", SpaceCactusName, SpaceCactusID).getInt();
- 		 BlockEngineeringGlassID =	AnotherWorld.configAW.get("Blocks", BlockEngineeringGlassName, BlockEngineeringGlassID).getInt();
- 		 SeparatorID = 				AnotherWorld.configAW.get("Blocks", SeparatorName, SeparatorID).getInt();
+         
  		 BlockTriCSFlowID = 		AnotherWorld.configAW.get("Blocks", BlockTriCSFlowName + " Still version = this + 1", BlockTriCSFlowID).getInt();
  		 SpaceChestID =				AnotherWorld.configAW.get("Blocks", SpaceChestName, SpaceChestID).getInt();;
-         
-         
+ 		 BlockEngineeringGlassID =	AnotherWorld.configAW.get("Blocks", BlockEngineeringGlassName, BlockEngineeringGlassID).getInt();
+         SeparatorID = 				AnotherWorld.configAW.get("Blocks", SeparatorName, SeparatorID).getInt();			
          
          AnotherWorld.configAW.save();
 	}

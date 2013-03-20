@@ -22,7 +22,7 @@ public class Machines {
 	public static int BlockEngineeringGlassID = 3000;
 	
 	public static Block Separator;
-	public static String SeparatorName = "Engineering Glass";
+	public static String SeparatorName = "Separator";
 	public static int SeparatorID = 3005;
 	
 	public static Block SpaceChest;
