@@ -1,6 +1,7 @@
 package mods.anotherWorld.common.basicBlocks;
 
 import mods.anotherWorld.common.basicItems.ItemGlue;
+import mods.anotherWorld.common.dimension.tyteonblocks.BlockSpaceCactus;
 import mods.anotherWorld.common.machines.BlockEngineeringGlass;
 import mods.anotherWorld.common.machines.BlockTriCSFlow;
 import mods.anotherWorld.common.machines.BlockTriCSStill;
@@ -27,12 +28,21 @@ public class BasicBlocks {
 	public static Block RedDust;
 	public static int RedDustID = 3010;
 	
+	public static String SpaceCactusName = "Space Cactus";
+	public static Block SpaceCactus;
+	public static int SpaceCactusID = 3011;
+	
+	public static Block plho;
+	public static int plhoID = 3012;
+	
 	//Add Items
 	public static void addItems() {
 		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName);
 		Salt = new BlockSaltOre(SaltID, SaltName);
 		TyteonRock = new BlockTyteonRock(TyteonRockID, TyteonRockName);
 		RedDust = new BlockRedDust(RedDustID, RedDustName);
+		SpaceCactus = new BlockSpaceCactus(SpaceCactusID, SpaceCactusName);
+		plho = new BlockPlaceholder(plhoID);
 	}
 	
 }

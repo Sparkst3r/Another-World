@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntitySeparator extends TileEntity implements IInventory {
 		private int energy;
         private ItemStack[] inv;
+		public static boolean liquid = false;
 
         public TileEntitySeparator(){
         		super();
@@ -97,7 +98,6 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
             }
             NBTTagCompound otherCom = (NBTTagCompound) items.tagAt(0);
             energy = otherCom.getInteger("Energy");
-            
         }
 
         public void writeToNBT(NBTTagCompound par1NBTTagCompound)
@@ -118,6 +118,7 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
             NBTTagCompound tagCom2 = new NBTTagCompound();
             tagCom2.setInteger("Energy", energy);
             other.appendTag(tagCom2);
+            
             
             par1NBTTagCompound.setTag("Items", items);
             par1NBTTagCompound.setTag("Other", other);

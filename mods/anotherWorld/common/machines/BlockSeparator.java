@@ -8,15 +8,19 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 import mods.anotherWorld.AnotherWorld;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
+import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.src.ModLoader;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class BlockSeparator extends BlockContainer {
@@ -31,6 +35,63 @@ public class BlockSeparator extends BlockContainer {
                 LanguageRegistry.addName(this, "Separator");
         }
 
+        /**
+         * Called when the block is placed in the world.
+         */
+        public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entity, ItemStack itemStack)
+        {
+        	
+            int l = world.getBlockId(x, y, z - 1);
+            int i1 = world.getBlockId(x, y, z + 1);
+            int j1 = world.getBlockId(x - 1, y, z);
+            int k1 = world.getBlockId(x + 1, y, z);
+            byte b0 = 0;
+            
+            int direction = MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+
+            if (direction == 0)
+            {
+                b0 = 2;
+            }
+
+            if (direction == 1)
+            {
+                b0 = 5;
+            }
+
+            if (direction == 2)
+            {
+                b0 = 3;
+            }
+
+            if (direction == 3)
+            {
+                b0 = 4;
+            }
+                world.setBlockMetadataWithNotify(x, y, z, b0, 3);
+        }
+
+        
+        public int getRenderType()
+    	{
+    		return 81;
+    	}
+    	
+    	public int idDropped(int i, Random random, int j)
+    	{
+    		return 0;
+    	}
+    	
+    	public boolean isOpaqueCube()
+    	{
+    		return false;
+    	}
+
+        public boolean renderAsNormalBlock()
+        {
+            return false;
+        }
+        
         @Override
         public boolean onBlockActivated(World world, int x, int y, int z,
                         EntityPlayer player, int idk, float what, float these, float are) {
@@ -38,6 +99,17 @@ public class BlockSeparator extends BlockContainer {
                 if (tileEntity == null || player.isSneaking()) {
                         return false;
                 }
+                
+                if (TileEntitySeparator.liquid == false) {
+                	TileEntitySeparator.liquid = true;
+                }
+                else {
+                	TileEntitySeparator.liquid = false;
+                }
+                
+                
+                System.out.println(TileEntitySeparator.liquid);
+                
         //code to open gui explained later
         player.openGui(AnotherWorld.instance, 0, world, x, y, z);
                 return true;

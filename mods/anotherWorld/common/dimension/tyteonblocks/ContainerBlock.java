@@ -1,7 +1,8 @@
-package mods.anotherWorld.common.basicBlocks;
+package mods.anotherWorld.common.dimension.tyteonblocks;
 
 import mods.anotherWorld.AnotherWorld;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -9,9 +10,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-public class BasicBlock extends Block
+public class ContainerBlock extends BlockContainer
 {
-	public BasicBlock(int id, String name, Material mat)
+	public ContainerBlock(int id, String name, Material mat)
 	{
 		super(id, mat);
 		this.setUnlocalizedName(name);
@@ -20,4 +21,9 @@ public class BasicBlock extends Block
 		LanguageRegistry.addName(this, name);
 	}
 
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

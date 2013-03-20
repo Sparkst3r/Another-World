@@ -72,7 +72,7 @@ public class BlockSpaceChest extends BlockContainer
      */
     public int getRenderType()
     {
-        return 22;
+        return 80;
     }
 
     /**
