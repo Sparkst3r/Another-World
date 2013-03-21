@@ -14,8 +14,8 @@ public class ItemSiliconChip extends BasicItem{
 	
     @Override
     @SideOnly(Side.CLIENT)
-    public void func_94581_a(IconRegister iconRegister)
+    public void updateIcons(IconRegister par1IconRegister)
     {
-        iconIndex = iconRegister.func_94245_a(AnotherWorld.modID +":"+ iconTex);
+        this.iconIndex = par1IconRegister.registerIcon(AnotherWorld.modID +":"+ iconTex);
     }
 }

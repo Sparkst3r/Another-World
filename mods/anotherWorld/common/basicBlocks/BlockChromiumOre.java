@@ -10,8 +10,8 @@ public class BlockChromiumOre extends Ore{
 	}
 	
     @Override
-    public void func_94332_a(IconRegister ir) {
-    	this.field_94336_cN = ir.func_94245_a("anotherWorld:oreChromium");
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon("anotherWorld:oreChromium");
     }
 
 }

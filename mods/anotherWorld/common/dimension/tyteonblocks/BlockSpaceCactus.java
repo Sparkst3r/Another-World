@@ -31,7 +31,7 @@ public class BlockSpaceCactus extends ContainerBlock{
 	//Called when the block has been successfully placed
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entity, ItemStack itemStack) {
     	//Create a new placeholder block above the cactus
-    	world.setBlockAndMetadataWithNotify(x, y + 1, z, BasicBlocks.plhoID, 0, 0);
+    	world.setBlock(x, y + 1, z, BasicBlocks.plhoID, 0, 0);
     }
     
     public boolean canPlaceBlockAt(World world, int x, int y, int z)
@@ -49,7 +49,7 @@ public class BlockSpaceCactus extends ContainerBlock{
     //Called when the block is broken.
     public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int par5) {
     	//Delete the placeholder block
-    	world.setBlockAndMetadataWithNotify(x, y + 1, z, 0, 0, 0);
+    	world.setBlock(x, y + 1, z, 0, 0, 0);
     }
     
 

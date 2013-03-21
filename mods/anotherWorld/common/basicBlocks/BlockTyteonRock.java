@@ -13,8 +13,8 @@ public class BlockTyteonRock extends BasicBlock {
 	}
 	
 	  @Override
-	    public void func_94332_a(IconRegister ir) {
-	    	this.field_94336_cN = ir.func_94245_a("anotherWorld:rockTyteon");
+	    public void registerIcons(IconRegister ir) {
+	    	this.blockIcon = ir.registerIcon("anotherWorld:rockTyteon");
 	    }	
 
 }

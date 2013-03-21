@@ -30,8 +30,8 @@ public class BlockPlaceholder extends Block{
     }
     
     @Override
-    public void func_94332_a(IconRegister ir) {
-    	this.field_94336_cN = ir.func_94245_a("anotherWorld:empty");
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon("anotherWorld:empty");
     }
 	
     
@@ -41,7 +41,7 @@ public class BlockPlaceholder extends Block{
     	//If the block below is a Space Cactus
     	if (world.getBlockId(x, y - 1, z) == BasicBlocks.SpaceCactusID ) {
     		//Delete the block below
-    		world.setBlockAndMetadataWithNotify(x, y - 1, z, 0, 0, 2);
+    		world.setBlock(x, y - 1, z, 0, 0, 2);
     		//Spawn a Space Cactus item where the block was.
     		world.spawnEntityInWorld(
     				new EntityItem(world, x, y, z, 

@@ -22,8 +22,8 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 	int numAdjacentSources = 0;
 	boolean isOptimalFlowDirection[] = new boolean[4];
 	int flowCost[] = new int[4];
-	private Icon[] field_94425_a;
-
+	private Icon[] blockIcon;
+	
 	public BlockTriCSFlow(int i) {
 		super(i, Material.water);
 		setCreativeTab(AnotherWorld.TabAW);
@@ -34,14 +34,19 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 	}
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94332_a(IconRegister iconRegister){
-		this.field_94425_a = new Icon[] {iconRegister.func_94245_a("anotherWorld:triCSStill"), iconRegister.func_94245_a("anotherWorld:triCSFlow")};
+	public void registerIcons(IconRegister iconRegister){
+		this.blockIcon = new Icon[] {iconRegister.registerIcon("anotherWorld:triCSStill"), iconRegister.registerIcon("anotherWorld:triCSFlow")};
 }
-
+	
+    /*@Override
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon("anotherWorld:triCSFlow");
+    }
+*/
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return par1 != 0 && par1 != 1 ? this.field_94425_a[1] : this.field_94425_a[0];
+		return par1 != 0 && par1 != 1 ? this.blockIcon[1] : this.blockIcon[0];
 	}
 
 	@Override
@@ -51,7 +56,7 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 
 	private void updateFlow(World world, int i, int j, int k) {
 		int l = world.getBlockMetadata(i, j, k);
-		world.setBlockAndMetadataWithNotify(i, j, k, blockID + 1, l, 0);
+		world.setBlock(i, j, k, blockID + 1, l, 0);
 		world.markBlockRangeForRenderUpdate(i, j, k, i, j, k);
 		world.markBlockForUpdate(i, j, k);
 	}
@@ -83,7 +88,7 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 			if (j1 != l) {
 				l = j1;
 				if (l < 0) {
-					world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, j1);
+					world.setBlock(i, j, k, 0, 0, j1);
 				} else {
 					world.setBlockMetadataWithNotify(i, j, k, l, 0);
 					world.scheduleBlockUpdate(i, j, k, blockID, tickRate(world));
@@ -97,9 +102,9 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 		}
 		if (liquidCanDisplaceBlock(world, i, j - 1, k)) {
 			if (l >= 8) {
-				world.setBlockAndMetadataWithNotify(i, j - 1, k, blockID, l, 0);
+				world.setBlock(i, j - 1, k, blockID, l, 0);
 			} else {
-				world.setBlockAndMetadataWithNotify(i, j - 1, k, blockID, l + 8, 0);
+				world.setBlock(i, j - 1, k, blockID, l + 8, 0);
 			}
 		} else if (l >= 0 && (l == 0 || blockBlocksFlow(world, i, j - 1, k))) {
 			boolean aflag[] = getOptimalFlowDirections(world, i, j, k);
@@ -130,7 +135,7 @@ public class BlockTriCSFlow extends BlockFluid implements ILiquid {
 			if (i1 > 0) {
 				Block.blocksList[i1].dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k), 0);
 			}
-			world.setBlockAndMetadataWithNotify(i, j, k, blockID, l, 0);
+			world.setBlock(i, j, k, blockID, l, 0);
 		}
 	}
 

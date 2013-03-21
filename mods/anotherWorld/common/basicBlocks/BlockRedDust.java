@@ -41,9 +41,9 @@ public class BlockRedDust extends BasicBlock
     }
     
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister ir)
     {
-        this.field_94336_cN = par1IconRegister.func_94245_a(AnotherWorld.modID +":redDust");
+        this.blockIcon = ir.registerIcon(AnotherWorld.modID +":redDust");
     }
 
     /**
@@ -126,7 +126,7 @@ public class BlockRedDust extends BasicBlock
     {
         if (!this.canPlaceBlockAt(par1World, par2, par3, par4))
         {
-            par1World.func_94571_i(par2, par3, par4);
+            par1World.setBlockToAir(par2, par3, par4);
             return false;
         }
         else
@@ -157,7 +157,7 @@ public class BlockRedDust extends BasicBlock
     {
         if (par1World.getSavedLightValue(EnumSkyBlock.Block, par2, par3, par4) > 11)
         {
-            par1World.func_94571_i(par2, par3, par4);
+            par1World.setBlockToAir(par2, par3, par4);
         }
     }
 

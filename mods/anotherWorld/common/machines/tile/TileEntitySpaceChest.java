@@ -426,4 +426,16 @@ public class TileEntitySpaceChest extends TileEntity implements IInventory
 
         return this.field_94046_i;
     }
+
+	@Override
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -17,7 +17,7 @@ import net.minecraftforge.liquids.LiquidDictionary;
 import net.minecraftforge.liquids.LiquidStack;
 
 public class BlockTriCSStill extends BlockStationary implements ILiquid{
-	private Icon[] field_94425_a;
+	private Icon[] blockIndex;
 
 	public BlockTriCSStill(int ID) {
 		super(ID, Material.water);
@@ -32,14 +32,14 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 	}
 	@Override
     @SideOnly(Side.CLIENT)
-	public void func_94332_a(IconRegister iconRegister){
-		this.field_94425_a = new Icon[] {iconRegister.func_94245_a("anotherWorld:triCSStill"), iconRegister.func_94245_a("anotherWorld:triCSFlow")};
+	public void registerIcons(IconRegister iconRegister){
+		this.blockIndex = new Icon[] {iconRegister.registerIcon("anotherWorld:triCSStill"), iconRegister.registerIcon("anotherWorld:triCSFlow")};
 }
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2) {
-		return par1 != 0 && par1 != 1 ? this.field_94425_a[1] : this.field_94425_a[0];
+		return par1 != 0 && par1 != 1 ? this.blockIndex[1] : this.blockIndex[0];
 	}
 	
 	@Override

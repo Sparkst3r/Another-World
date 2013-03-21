@@ -285,9 +285,10 @@ public class BlockSpaceChest extends BlockContainer
         return true;
     }
 
-    @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
-    {
-        this.field_94336_cN = par1IconRegister.func_94245_a("wood");
+
+    @Override
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon("wood");
     }
+    
 }
