@@ -49,7 +49,12 @@ public class BlockPlaceholder extends Block{
     	}
      }
 	
-	
+    public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
+    	if(!(world.getBlockId(x, y - 1, z) == BasicBlocks.SpaceCactusID)) {
+    		world.setBlock(x, y, z, 0, 0, 2);
+    	}
+    }
+
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int x, int y, int z) {
