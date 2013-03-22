@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
 
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.Base.BasicBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,9 +23,11 @@ import net.minecraft.world.World;
 
 public class BlockRedDust extends BasicBlock
 {
-    protected BlockRedDust(int par1, String name)
+	private static String iconTex;
+    protected BlockRedDust(int par1, String name, String icon)
     {
         super(par1, name, Material.sand);
+        this.iconTex = icon;
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
         this.setTickRandomly(true);
         this.func_96478_d(0);
@@ -40,11 +43,10 @@ public class BlockRedDust extends BasicBlock
         par5Entity.attackEntityFrom(DamageSource.wither, 4);
     }
     
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister ir)
-    {
-        this.blockIcon = ir.registerIcon(AnotherWorld.modID +":redDust");
-    }
+    @Override
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon("anotherworld:" + iconTex);
+    }	
 
     /**
      * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been

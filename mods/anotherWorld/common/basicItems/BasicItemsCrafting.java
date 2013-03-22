@@ -30,8 +30,8 @@ public class BasicItemsCrafting {
 		//addCraftingBlueLED();
 		//addMetGradeSiliconRecipe();
 		//addBlueprintRecipe();
-		//addGlueRecipe();
 		addQuartzCrucibleRecipe();
+		//addGlueRecipe();
 		//addSiliconBouleRecipe();
 		//addSiliconChipRecipe();
 	}
@@ -73,7 +73,6 @@ public class BasicItemsCrafting {
 			"Q Q", "Q Q", " Q ", 
 			'Q', Item.field_94583_ca
 		});
-		
 	}
 
 

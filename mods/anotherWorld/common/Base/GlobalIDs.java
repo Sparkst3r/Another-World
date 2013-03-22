@@ -1,4 +1,4 @@
-package mods.anotherWorld.common;
+package mods.anotherWorld.common.Base;
 
 public class GlobalIDs {
 	public static int SpaceChestRenderID = 80; 

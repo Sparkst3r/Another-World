@@ -7,9 +7,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 
 public class BlockSaltOre extends Ore{
-
-	public BlockSaltOre(int id, String name) {
+	private static String iconTex;
+	public BlockSaltOre(int id, String name, String icon) {
 		super(id, name);
+		this.iconTex = icon;
 		this.setLightOpacity(1);
 	}
     
@@ -26,7 +27,7 @@ public class BlockSaltOre extends Ore{
 	
     @Override
     public void registerIcons(IconRegister ir) {
-    	this.blockIcon = ir.registerIcon("anotherWorld:oreSalt");
+    	this.blockIcon = ir.registerIcon("anotherworld:" + iconTex);
     }	
 
 }

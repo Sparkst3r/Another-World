@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Random;
 
 import mods.anotherWorld.AnotherWorld;
-import mods.anotherWorld.common.GlobalIDs;
+import mods.anotherWorld.common.Base.GlobalIDs;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

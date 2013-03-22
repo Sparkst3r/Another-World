@@ -1,6 +1,7 @@
 package mods.anotherWorld.common.basicItems;
 
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.Base.BasicItem;
 import net.minecraft.client.renderer.texture.IconRegister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

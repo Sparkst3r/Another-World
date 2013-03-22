@@ -1,13 +1,14 @@
-package mods.anotherWorld.common;
+package mods.anotherWorld.common.Base;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import mods.anotherWorld.AnotherWorld;
-import mods.anotherWorld.client.ClientProxy;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import mods.anotherWorld.common.basicBlocks.BasicBlocksCrafting;
 import mods.anotherWorld.common.basicItems.BasicItems;
 import mods.anotherWorld.common.basicItems.BasicItemsCrafting;
-import mods.anotherWorld.common.dimension.biome.TyteonBiomeIrradiated;
 import mods.anotherWorld.common.dimension.biome.TyteonBiomes;
 import mods.anotherWorld.common.dimension.tyteonblocks.render.SpaceCactusRender;
 import mods.anotherWorld.common.dimension.tyteonblocks.render.TileRenderSpaceCactus;
@@ -21,12 +22,11 @@ import mods.anotherWorld.common.machines.render.TileEntitySeparatorRenderer;
 import mods.anotherWorld.common.machines.render.TileEntitySpaceChestRenderer;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
+import mods.anotherWorld.common.spaceship.blocks.SpaceshipBlocks;
+import mods.anotherWorld.common.spaceship.items.SpaceshipItems;
 import mods.anotherWorld.common.village.TradeHandlerVillagerAdvanced;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
+
+
 
 
 
@@ -39,6 +39,8 @@ public class onLoad{
 		BasicBlocks.addItems();
 		Machines.addItems();
 		MachineItems.addItems();
+		SpaceshipBlocks.addItems();
+		SpaceshipItems.addItems();
 		VillagerInit();
 		TyteonBiomes.init();
 	}

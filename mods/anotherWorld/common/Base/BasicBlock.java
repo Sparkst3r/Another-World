@@ -1,4 +1,4 @@
-package mods.anotherWorld.common.basicBlocks;
+package mods.anotherWorld.common.Base;
 
 import mods.anotherWorld.AnotherWorld;
 import net.minecraft.block.Block;

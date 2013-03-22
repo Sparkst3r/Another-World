@@ -1,4 +1,4 @@
-package mods.anotherWorld.common;
+package mods.anotherWorld.common.Base;
 
 import mods.anotherWorld.AnotherWorld;
 import mods.anotherWorld.common.basicItems.BasicItems;

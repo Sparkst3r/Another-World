@@ -30,11 +30,12 @@ public class BlockTriCSStill extends BlockStationary implements ILiquid{
 		GameRegistry.registerBlock(this, Machines.BlockTriCSStillName);
 		LanguageRegistry.addName(this, Machines.BlockTriCSStillName);
 	}
+	
 	@Override
-    @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister){
 		this.blockIndex = new Icon[] {iconRegister.registerIcon("anotherWorld:triCSStill"), iconRegister.registerIcon("anotherWorld:triCSFlow")};
-}
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)

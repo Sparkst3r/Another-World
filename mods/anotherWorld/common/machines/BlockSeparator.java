@@ -7,7 +7,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 
 import mods.anotherWorld.AnotherWorld;
-import mods.anotherWorld.common.GlobalIDs;
+import mods.anotherWorld.common.Base.GlobalIDs;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import net.minecraft.block.BlockContainer;

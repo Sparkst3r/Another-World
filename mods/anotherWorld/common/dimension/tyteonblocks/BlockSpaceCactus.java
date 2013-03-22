@@ -5,29 +5,39 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import mods.anotherWorld.common.GlobalIDs;
-import mods.anotherWorld.common.basicBlocks.BasicBlock;
+import mods.anotherWorld.common.Base.BasicBlock;
+import mods.anotherWorld.common.Base.ContainerBlock;
+import mods.anotherWorld.common.Base.GlobalIDs;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import mods.anotherWorld.common.dimension.tyteonblocks.render.TileSpaceCactus;
 import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 
 public class BlockSpaceCactus extends ContainerBlock{
+	
+	private static String iconTex;
 
-	public BlockSpaceCactus(int id, String name) {
+	public BlockSpaceCactus(int id, String name, String icon) {
 		super(id, name, Material.cactus);
 		this.blockHardness = 0.5F;
         this.setStepSound(Block.soundSnowFootstep);
         this.setTickRandomly(true);
-	
+        this.iconTex = icon;
+        
 		this.setBlockBounds(0.025F, 0.025F, 0.0F, 0.975F, 1.5F, 0.975F);
 		
 	}
+    @Override
+    public void registerIcons(IconRegister ir) {
+    	this.blockIcon = ir.registerIcon(iconTex);
+    }	
+	
 	//Called when the block has been successfully placed
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entity, ItemStack itemStack) {
     	//Create a new placeholder block above the cactus

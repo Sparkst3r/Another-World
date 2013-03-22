@@ -1,6 +1,6 @@
 package mods.anotherWorld.common.machines;
 
-import mods.anotherWorld.common.ModsExist;
+import mods.anotherWorld.common.Base.ModsExist;
 import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import mods.anotherWorld.common.basicItems.BasicItems;
 import net.minecraft.block.Block;

@@ -1,10 +1,11 @@
-package mods.anotherWorld.common.basicBlocks;
+package mods.anotherWorld.common.Base;
 
 import java.util.Random;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.basicBlocks.BasicBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -14,14 +15,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockPlaceholder extends Block{
-
-	public BlockPlaceholder(int par1) {
-		super(par1, Material.glass);
-		this.setUnlocalizedName("How did you even obtain this? Haxor!");
-		this.setCreativeTab(AnotherWorld.TabAW);
-		GameRegistry.registerBlock(this, "Placeholder");
+public class BlockPlaceholder extends BasicBlock {
+	private static String iconTex;
+	
+	public BlockPlaceholder(int id, String name, String icon) {
+		super(id, name, Material.glass);
+		this.iconTex = icon;
 		LanguageRegistry.addName(this, "How did you even obtain this? Haxor!");
+	
 	}
 	
     public int quantityDropped(Random par1Random)
@@ -31,8 +32,8 @@ public class BlockPlaceholder extends Block{
     
     @Override
     public void registerIcons(IconRegister ir) {
-    	this.blockIcon = ir.registerIcon("anotherWorld:empty");
-    }
+    	this.blockIcon = ir.registerIcon("anotherWorld:" + iconTex);
+    }	
 	
     
 	//Called when this block has been broken

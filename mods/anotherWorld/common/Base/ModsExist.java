@@ -1,4 +1,4 @@
-package mods.anotherWorld.common;
+package mods.anotherWorld.common.Base;
 
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;

@@ -3,6 +3,7 @@ package mods.anotherWorld.common.basicItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.anotherWorld.AnotherWorld;
+import mods.anotherWorld.common.Base.BasicItem;
 import net.minecraft.client.renderer.texture.IconRegister;
 
 public class ItemGlue extends BasicItem{

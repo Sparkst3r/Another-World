@@ -1,5 +1,6 @@
 package mods.anotherWorld.common.basicBlocks;
 
+import mods.anotherWorld.common.Base.BlockPlaceholder;
 import mods.anotherWorld.common.basicItems.ItemGlue;
 import mods.anotherWorld.common.dimension.tyteonblocks.BlockSpaceCactus;
 import mods.anotherWorld.common.machines.BlockEngineeringGlass;
@@ -37,12 +38,12 @@ public class BasicBlocks {
 	
 	//Add Items
 	public static void addItems() {
-		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName);
-		Salt = new BlockSaltOre(SaltID, SaltName);
-		TyteonRock = new BlockTyteonRock(TyteonRockID, TyteonRockName);
-		RedDust = new BlockRedDust(RedDustID, RedDustName);
-		SpaceCactus = new BlockSpaceCactus(SpaceCactusID, SpaceCactusName);
-		plho = new BlockPlaceholder(plhoID);
+		Chromium = new BlockChromiumOre(ChromiumID, ChromiumName, "oreChromium");
+		Salt = new BlockSaltOre(SaltID, SaltName, "oreSalt");
+		TyteonRock = new BlockTyteonRock(TyteonRockID, TyteonRockName, "rockTyteon");
+		RedDust = new BlockRedDust(RedDustID, RedDustName, "redDust");
+		SpaceCactus = new BlockSpaceCactus(SpaceCactusID, SpaceCactusName, "spaceCactus");
+		plho = new BlockPlaceholder(plhoID, "Placeholder", "empty");
 	}
 	
 }
