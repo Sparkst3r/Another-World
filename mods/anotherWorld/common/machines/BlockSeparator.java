@@ -34,6 +34,7 @@ public class BlockSeparator extends BlockContainer {
                 setCreativeTab(AnotherWorld.TabAW);
                 GameRegistry.registerBlock(this, "Separator");
                 LanguageRegistry.addName(this, "Separator");
+                this.setTickRandomly(true);
         }
 
         /**

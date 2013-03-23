@@ -29,8 +29,6 @@ public class ContainerSeparator extends Container {
                 //Input slot
                 addSlotToContainer(new Slot(tileEntity, 7, 58, 35));
                 
-                bufferInput();
-                
                 //Add the player's inventory
                 bindPlayerInventory(inventoryPlayer);
         }
@@ -55,6 +53,11 @@ public class ContainerSeparator extends Container {
                 }
         }
 
+        public void detectAndSendChanges() {
+        	bufferInput();
+        }
+        
+        
         //Handle shift clicking of ItemStack
         @Override
         public ItemStack transferStackInSlot(EntityPlayer player, int slot)
@@ -101,11 +104,6 @@ public class ContainerSeparator extends Container {
         }
 
         public void bufferInput() {
-            Slot slotObject = (Slot) inventorySlots.get(0);
-        	ItemStack stackInSlot = slotObject.getStack();
-        	if (slotObject != null && slotObject.getHasStack()) {
-         		putStackInSlot(6, stackInSlot);
-        	}
 
-        }
+        	}
 }

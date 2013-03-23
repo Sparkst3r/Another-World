@@ -1,8 +1,11 @@
 package mods.anotherWorld.common.machines.tile;
 
 
+import cpw.mods.fml.common.FMLLog;
+import mods.anotherWorld.common.machines.container.ContainerSeparator;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -140,4 +143,33 @@ public class TileEntitySeparator extends TileEntity implements IInventory {
 			// TODO Auto-generated method stub
 			return false;
 		}
+	    public void updateEntity() {
+	    	for(int i = 1; i < 7; i++) {
+		    	/*
+	    		if(inv[i] != null && inv[7] == null) {
+		    		inv[7] = inv[i].copy();
+
+		    	}
+		    	*/
+		    	if(inv[i] != null && inv[7] != null && (inv[i].getItem() == inv[7].getItem())) {
+		    		//inv[7] = 2 //inv[i] = 30
+		    		
+		    		if ((inv[7].stackSize + inv[i].stackSize) <= 64) {
+			    		inv[7].stackSize += inv[i].stackSize;
+			    		inv[i] = null;
+		    		}
+		    		else {
+			    		int inputLeft = 64 - inv[7].stackSize;
+			    		inv[7].stackSize = 64;
+			    		inv[i].stackSize -= inputLeft;
+		    		}
+
+		    	}
+	    		else if (inv[i] != null&& inv[7] == null) {
+		    		inv[7] = inv[i].copy();
+		    		inv[i] = null;
+	    		}
+		    	
+	    	}
+	    }
 }
