@@ -1,5 +1,6 @@
 package mods.anotherWorld.common.Base;
 
+import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -24,6 +25,9 @@ import mods.anotherWorld.common.machines.tile.TileEntitySeparator;
 import mods.anotherWorld.common.machines.tile.TileEntitySpaceChest;
 import mods.anotherWorld.common.spaceship.blocks.SpaceshipBlocks;
 import mods.anotherWorld.common.spaceship.items.SpaceshipItems;
+import mods.anotherWorld.common.spaceship.render.JetRender;
+import mods.anotherWorld.common.spaceship.render.TileEntityJetRenderer;
+import mods.anotherWorld.common.spaceship.tile.TileEntityJet;
 import mods.anotherWorld.common.village.TradeHandlerVillagerAdvanced;
 
 
@@ -50,11 +54,13 @@ public class onLoad{
 		RenderingRegistry.registerBlockHandler(GlobalIDs.SpaceChestRenderID, new SpaceChestRender());
 		RenderingRegistry.registerBlockHandler(GlobalIDs.SeparatorRenderID, new SeparatorRender());
 		RenderingRegistry.registerBlockHandler(GlobalIDs.SpaceCactusRenderID, new SpaceCactusRender());
+		RenderingRegistry.registerBlockHandler(GlobalIDs.JetRenderID, new JetRender());
 	}
 	private static void registerTileEntities() {
 		ClientRegistry.registerTileEntity(TileEntitySpaceChest.class, "tileSpaceBlock",  (TileEntitySpecialRenderer) new TileEntitySpaceChestRenderer());
 		ClientRegistry.registerTileEntity(TileEntitySeparator.class, "tileSeperator",  (TileEntitySpecialRenderer) new TileEntitySeparatorRenderer());
 		ClientRegistry.registerTileEntity(TileSpaceCactus.class, "tileSpaceCactus",  (TileEntitySpecialRenderer) new TileRenderSpaceCactus());	
+		ClientRegistry.registerTileEntity(TileEntityJet.class, "tileJet",  (TileEntitySpecialRenderer) new TileEntityJetRenderer());
 	}
 	
 	
