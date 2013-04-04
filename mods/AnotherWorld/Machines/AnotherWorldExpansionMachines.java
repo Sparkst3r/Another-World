@@ -1,4 +1,4 @@
-package mods.AnotherWorld.World;
+package mods.AnotherWorld.Machines;
 
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Core.GlobalValues;
@@ -15,10 +15,10 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(
-		modid = GlobalValues.ModIDWorld, 
-		name = GlobalValues.ModNameWorld, 
+		modid = GlobalValues.ModIDMachines, 
+		name = GlobalValues.ModNameMachines, 
 		version = GlobalValues.ModVersion,
-		dependencies = GlobalValues.Core 
+		dependencies = GlobalValues.World
 		)
 
 
@@ -28,7 +28,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 		serverSideRequired = false)
 
 
-public class AnotherWorldExpansionWorld {
+public class AnotherWorldExpansionMachines {
 	
 	//SidedProxy annotation to specify the Client and Common proxies
 	@SidedProxy(
@@ -40,8 +40,7 @@ public class AnotherWorldExpansionWorld {
 	//Called during the pre-load phase
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event) {
-    	WorldValues.initialize();
-    	GameRegistry.registerWorldGenerator(new WorldGenerator());
+    	MachineValues.initialise();
     }
     
 	//Called during the loading phase

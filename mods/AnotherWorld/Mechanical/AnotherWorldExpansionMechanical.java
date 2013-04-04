@@ -1,9 +1,12 @@
-package mods.AnotherWorld.World;
+package mods.AnotherWorld.Mechanical;
 
+import mods.AnotherWorld.Client.ClientPacketHandler;
+import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Core.Load;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.PostInit;
@@ -12,24 +15,26 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(
-		modid = GlobalValues.ModIDWorld, 
-		name = GlobalValues.ModNameWorld, 
+		modid = GlobalValues.ModIDMechanical, 
+		name = GlobalValues.ModNameMechanical, 
 		version = GlobalValues.ModVersion,
-		dependencies = GlobalValues.Core 
+		dependencies = GlobalValues.World
 		)
 
 
 //NetworkMod annotation. Defines client/server requirement and the packet handler
 @NetworkMod(
 		clientSideRequired = true, 
-		serverSideRequired = false)
+		serverSideRequired = false
+)
 
+public class AnotherWorldExpansionMechanical {
 
-public class AnotherWorldExpansionWorld {
-	
 	//SidedProxy annotation to specify the Client and Common proxies
 	@SidedProxy(
 			clientSide="mods.AnotherWorld.Client.ClientProxy",
@@ -40,13 +45,13 @@ public class AnotherWorldExpansionWorld {
 	//Called during the pre-load phase
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event) {
-    	WorldValues.initialize();
-    	GameRegistry.registerWorldGenerator(new WorldGenerator());
+    	MechanicalValues.initialise();
     }
     
 	//Called during the loading phase
 	@Init 
 	public void load(FMLInitializationEvent event) {
+		
 	}
 	
 	//Called during the post-load phase

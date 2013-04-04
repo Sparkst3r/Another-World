@@ -11,6 +11,8 @@ public class GlobalValues {
 	public static final String ModNameWorld = "AnotherWorld World Expansion";
 	public static final String ModIDMechanical = "AnotherWorld|Mech";
 	public static final String ModNameMechanical = "AnotherWorld Mechanical Expansion";
+	public static final String ModIDMachines = "AnotherWorld|Mach";
+	public static final String ModNameMachines = "AnotherWorld Machines Expansion";
 	public static final String ModVersion = "0.1.0";
 	
 	//Dependency variables

@@ -7,9 +7,13 @@
  */
 
 package mods.AnotherWorld.Core;
+import mods.AnotherWorld.Client.ClientPacketHandler;
+import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
+import mods.AnotherWorld.Mechanical.GuiHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
@@ -17,6 +21,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 
 
 /**
@@ -40,10 +46,15 @@ import cpw.mods.fml.common.network.NetworkMod;
 //NetworkMod annotation. Defines client/server requirement and the packet handler
 @NetworkMod(
 		clientSideRequired = true, 
-		serverSideRequired = false)
-
-
+		serverSideRequired = false,
+		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = ClientPacketHandler.class),
+		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
+)
 public class AnotherWorld {
+	@Instance(GlobalValues.ModIDCore)
+	public static AnotherWorld instance;
+	
+	private GuiHandler gui = new GuiHandler();
 	
 	//SidedProxy annotation to specify the Client and Common proxies
 	@SidedProxy(
@@ -61,7 +72,9 @@ public class AnotherWorld {
 	//Called during the loading phase
 	@Init 
 	public void load(FMLInitializationEvent event) {
+		NetworkRegistry.instance().registerGuiHandler(this, gui);
 		Load.onLoad(event);
+		
 	}
 	
 	//Called during the post-load phase
