@@ -1,6 +1,6 @@
 /**
- * Released under GNU Lesser Public License v2.1.
- * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * Released under GNU Lesser Public License v3
+ * http://www.gnu.org/licenses/lgpl.html
  * Mods relying on AnotherWorld's API are allowed to be released under proprietary licenses.
  * On condition a link must be provided to the source code of AnotherWorld eg. GitHub on your download page.
  * Credit is to also be given to the author of the code.

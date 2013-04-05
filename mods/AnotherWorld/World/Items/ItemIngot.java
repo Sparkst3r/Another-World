@@ -30,7 +30,7 @@ public class ItemIngot extends Item {
     
     /** Icon Array */
     @SideOnly(Side.CLIENT)
-    private Icon[] texture;
+    private Icon[] iconBuffer;
 
     /**
      * Constructor
@@ -48,17 +48,20 @@ public class ItemIngot extends Item {
 	@SideOnly(Side.CLIENT)
     @Override
     public Icon getIconFromDamage(int damage){
-    	return texture[damage];
+    	return iconBuffer[damage];
     }
     
 	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void updateIcons(IconRegister iconReg) {
-		this.texture = new Icon[types.length];
-		for (int damage = 0; damage < types.length; damage++) {
-			this.texture[damage] = iconReg.registerIcon(GlobalValues.ModIDCore + ":" + types[damage]);
-		}
+	public void updateIcons(IconRegister ir) {
+		iconBuffer = new Icon[types.length];
+		
+		String id = GlobalValues.ModIDCore + ":";
+		iconBuffer[0] = ir.registerIcon(id + types[0]);
+		iconBuffer[1] = ir.registerIcon(id + types[1]);
+		iconBuffer[2] = ir.registerIcon(id + types[2]);	
+		iconBuffer[3] = ir.registerIcon(id + types[3]);
 	}
     
 	/** Adds the meta items to the tab */

@@ -34,10 +34,10 @@ public class BlockStorage extends Block {
 		iconBuffer = new Icon[4];
     	
 		String id = GlobalValues.ModIDCore + ":"; 
-		iconBuffer[0] = ir.registerIcon(id + "blockCopper");
-		iconBuffer[1] = ir.registerIcon(id + "blockTin");
-		iconBuffer[2] = ir.registerIcon(id + "blockSilver");
-		iconBuffer[3] = ir.registerIcon(id + "blockLead");
+		iconBuffer[0] = ir.registerIcon(id + ItemBlockStorage.types[0]);
+		iconBuffer[1] = ir.registerIcon(id + ItemBlockStorage.types[1]);
+		iconBuffer[2] = ir.registerIcon(id + ItemBlockStorage.types[2]);
+		iconBuffer[3] = ir.registerIcon(id + ItemBlockStorage.types[3]);
 	}
     
 	

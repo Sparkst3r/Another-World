@@ -2,7 +2,6 @@ package mods.AnotherWorld.Mechanical.Container;
 
 
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
-import mods.AnotherWorld.Util.ContainerUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

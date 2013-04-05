@@ -22,18 +22,18 @@ public class MechanicsTableValidation {
 		/*
 		 * Valid for configuration 1
 		 */
-		if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-			world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-			world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+		if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+			world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+			world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 			return 0;
 			}
 
 		/*
 		 * Valid for configuration 2
 		 */
-		if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID && 
-			world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID &&
-			world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID) {	
+		if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID && 
+			world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID &&
+			world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID) {	
 			return 1;
 			}
 
@@ -41,18 +41,18 @@ public class MechanicsTableValidation {
 		/*
 		 * Valid for configuration 3
 		 */
-		if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-			world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-			world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+		if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+			world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+			world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 			return 2;
 			}	
 		
 		/*
 		 * Valid for configuration 4
 		 */
-		if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-			world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-			world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+		if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+			world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+			world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 			return 3;
 			}	
 		
@@ -72,31 +72,31 @@ public class MechanicsTableValidation {
 	public static void changeBlocks(World world, int xPosition, int yPosition, int zPosition, int startBlock) {
 		switch(startBlock) {
 			case 0: 
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 3, 2);	
-				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 2, 2);	
-				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechTableParts.blockID, 1, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition - 1, MechanicalValues.BlockMechTableParts.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 3, 2);	
+				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 2, 2);	
+				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechTablePartsField.blockID, 1, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition - 1, MechanicalValues.BlockMechTablePartsField.blockID, 0, 2);
 				break;
 			
 			case 1:
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 2, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition - 1, MechanicalValues.BlockMechTableParts.blockID, 1, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 3, 2);
-				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechTableParts.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 2, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition - 1, MechanicalValues.BlockMechTablePartsField.blockID, 1, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 3, 2);
+				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechTablePartsField.blockID, 0, 2);
 				break;
 				
 			case 2:   
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 1, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 0, 2);
-				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechTableParts.blockID, 3, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition + 1, MechanicalValues.BlockMechTableParts.blockID, 2, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 1, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechTablePartsField.blockID, 3, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition + 1, MechanicalValues.BlockMechTablePartsField.blockID, 2, 2);
 				break;
 			
 			case 3:   
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 0, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechTableParts.blockID, 1, 2);
-				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechTableParts.blockID, 2, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition + 1, MechanicalValues.BlockMechTableParts.blockID, 3, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 0, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechTablePartsField.blockID, 1, 2);
+				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechTablePartsField.blockID, 2, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition + 1, MechanicalValues.BlockMechTablePartsField.blockID, 3, 2);
 				break;
 		}
 	}
@@ -113,31 +113,31 @@ public class MechanicsTableValidation {
 	public static void changeBlocksToSingle(World world, int xPosition, int yPosition, int zPosition, int startBlock) {
 		switch(startBlock) {
 			case 0: 
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);	
-				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);	
-				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);	
+				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);	
+				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
 				break;
 			
 			case 1:
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition - 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
 				break;
 				
 			case 2:   
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition - 1, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition - 1, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
 				break;
 			
 			case 3:   
-				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
-				world.setBlock(xPosition + 1, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlock.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
+				world.setBlock(xPosition + 1, yPosition, zPosition + 1, MechanicalValues.BlockMechanicBlockField.blockID, 0, 2);
 				break;
 		}
 	}
@@ -159,36 +159,36 @@ public class MechanicsTableValidation {
 				/*
 				 * Valid for configuration 1
 				 */
-				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-					world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+					world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 					return true;
 					}
 			case 1:
 				/*
 				 * Valid for configuration 2
 				 */
-				if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID && 
-					world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID &&
-					world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlock.blockID) {	
+				if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID && 
+					world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID &&
+					world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechanicBlockField.blockID) {	
 					return true;
 					}
 			case 2:
 				/*
 				 * Valid for configuration 3
 				 */
-				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-					world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+					world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 					return true;
 					}
 			case 3:
 				/*
 				 * Valid for configuration 4
 				 */
-				if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlock.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID &&
-					world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlock.blockID) {
+				if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechanicBlockField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID &&
+					world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechanicBlockField.blockID) {
 					return true;
 					}
 		}
@@ -202,36 +202,36 @@ public class MechanicsTableValidation {
 				/*
 				 * Valid for configuration 1
 				 */
-				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechTableParts.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechTableParts.blockID &&
-					world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechTableParts.blockID) {
+				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechTablePartsField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechTablePartsField.blockID &&
+					world.getBlockId(xPosition - 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechTablePartsField.blockID) {
 					return true;
 					}
 			case 1:
 				/*
 				 * Valid for configuration 2
 				 */
-				if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechTableParts.blockID && 
-					world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechTableParts.blockID &&
-					world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechTableParts.blockID) {	
+				if (world.getBlockId(xPosition, yPosition, zPosition - 1) == MechanicalValues.BlockMechTablePartsField.blockID && 
+					world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechTablePartsField.blockID &&
+					world.getBlockId(xPosition + 1, yPosition, zPosition - 1) == MechanicalValues.BlockMechTablePartsField.blockID) {	
 					return true;
 					}
 			case 2:
 				/*
 				 * Valid for configuration 3
 				 */
-				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechTableParts.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechTableParts.blockID &&
-					world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechTableParts.blockID) {
+				if (world.getBlockId(xPosition - 1, yPosition, zPosition) == MechanicalValues.BlockMechTablePartsField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechTablePartsField.blockID &&
+					world.getBlockId(xPosition - 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechTablePartsField.blockID) {
 					return true;
 					}
 			case 3:
 				/*
 				 * Valid for configuration 4
 				 */
-				if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechTableParts.blockID && 
-					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechTableParts.blockID &&
-					world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechTableParts.blockID) {
+				if (world.getBlockId(xPosition + 1, yPosition, zPosition) == MechanicalValues.BlockMechTablePartsField.blockID && 
+					world.getBlockId(xPosition, yPosition, zPosition + 1) == MechanicalValues.BlockMechTablePartsField.blockID &&
+					world.getBlockId(xPosition + 1, yPosition, zPosition + 1) == MechanicalValues.BlockMechTablePartsField.blockID) {
 					return true;
 					}
 		}

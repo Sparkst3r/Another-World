@@ -37,7 +37,7 @@ public class BlockMechanicsTableParts extends Block{
 	 * @param id
 	 */
 	public BlockMechanicsTableParts(int id) {
-		super(id, Material.iron);
+		super(id, GlobalValues.immovable);
 		this.setHardness(0.5F);
 		GameRegistry.registerBlock(this, ItemBlockMechanicsTableParts.class, "MechanicsTable");
 	}
@@ -52,7 +52,6 @@ public class BlockMechanicsTableParts extends Block{
 		}
 		else if (world.getBlockMetadata(x, y, z) == 2) {
 			player.openGui(AnotherWorld.instance, 2, world, x, y, z);
-			player.experienceLevel += 900000;
 		}
 		else if (world.getBlockMetadata(x, y, z) == 3) {
 			player.openGui(AnotherWorld.instance, 3, world, x, y, z);

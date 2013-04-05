@@ -1,6 +1,9 @@
 package mods.AnotherWorld.Core;
 
 import mods.AnotherWorld.Client.AnotherWorldTab;
+import mods.AnotherWorld.Util.MaterialImmovable;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class GlobalValues {
@@ -29,7 +32,10 @@ public class GlobalValues {
 	
 	//Creative Tab
 	public static CreativeTabs AnotherTab = new AnotherWorldTab(CreativeTabs.getNextID(), "AnotherWorld");
-
+	
+	//Material set to immovable
+	public static Material immovable = new MaterialImmovable(MapColor.woodColor);
+	
 	public static boolean initialize() {
 		return true;
 	}
