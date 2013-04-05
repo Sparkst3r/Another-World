@@ -1,0 +1,20 @@
+package mods.AnotherWorld.Common;
+
+import net.minecraft.world.World;
+
+
+
+
+public class CommonProxy {
+	
+	
+	/**
+	 * Common Particle spawner for plasma
+	 * Please see the ClientProxy for use
+	 * 
+	 */
+	public void spawnPlasma(World world, double x, double y, double z, double xVel, double yVel, double zVel, float[] colour) {
+    
+	}
+
+}
