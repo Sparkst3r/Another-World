@@ -9,6 +9,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Mechanical.MechanicalValues;
+import mods.AnotherWorld.Mechanical.Util.ItemToolSwitcherHelper;
+import mods.AnotherWorld.Mechanical.Util.ItemToolUsedHelper;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,32 +52,14 @@ public class ItemTool extends Item {
 		GameRegistry.registerItem(this, "tinkeringTools");
 	}
 	
-	/** Called on creation */
+	/** Called on creation 
+	 *  Assigns a "type" to the itemstack so the modes can be switched correctly
+	 */
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if( stack.stackTagCompound == null) {
 			stack.setTagCompound(new NBTTagCompound());
 		}
 		
-		if(stack.getItemDamage() == 0) {
-			stack.stackTagCompound.setShort("type", (short) 0);
-		}
-		if(stack.getItemDamage() == 1) {
-			stack.stackTagCompound.setShort("type", (short) 1);
-		}
-		if(stack.getItemDamage() == 2) {
-			stack.stackTagCompound.setShort("type", (short) 2);
-		}
-		if(stack.getItemDamage() == 3) {
-			stack.stackTagCompound.setShort("type", (short) 3);
-		}
-		if(stack.getItemDamage() == 4) {
-			stack.stackTagCompound.setShort("type", (short) 4);
-		}
-		
-		
-		
-		//Used to permanently store the meta of the item that was crafted on the item.
-		//So I can use the meta to switch between types but know what the item was originally
 		for(int i = 0; i < 5; i++) {
 			if(stack.getItemDamage() == i) {
 				stack.stackTagCompound.setShort("type", (short) i);
@@ -84,7 +68,9 @@ public class ItemTool extends Item {
 
 	}
 	
-	/** Callback for item use(Right click) */
+	/** Callback for item use(Right click)
+	 * Switches between tools
+	 */
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		
 		if (!player.isSneaking()) {
@@ -94,29 +80,40 @@ public class ItemTool extends Item {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.stackTagCompound.setShort("type", (short) 4);
 			}
-
-			/** Checks what the item was at craft time, prevents duping and obtaining free upgrades */
-			if(stack.stackTagCompound.getShort("type") == 0) {
-				return ToolChanger.type0(stack, player);
-			}
-			if(stack.stackTagCompound.getShort("type") == 1) {
-				return ToolChanger.type1(stack, player);
-			}
-			else if(stack.stackTagCompound.getShort("type") == 2) {
-				return ToolChanger.type2(stack, player);
-			}
-			else if(stack.stackTagCompound.getShort("type") == 3) {
-				return ToolChanger.type3(stack, player);
-			}
-			else if(stack.stackTagCompound.getShort("type") == 4) {
-				return ToolChanger.type4(stack, player);
-			}
-			else {return stack;}
+			return ItemToolSwitcherHelper.getTypeFromNBT(stack, player);
 		}
-
 		return stack;
 	}
 	
+	/** Called when the item is used on a block **/
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
+		if(stack.getItemDamage() == 1) {
+				ItemToolUsedHelper.activationToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
+		}
+		return false;
+		
+	}
+	
+	/** Provides access to add custom lines to the item description **/
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)  {
+		switch(stack.getItemDamage()) {
+			case 0:
+				list.add("Right click in your hand to start using");
+				break;
+			case 1:
+				list.add("Used to activate certain blocks");
+				break;
+			case 2:
+				list.add("Rotates valid blocks when clicked");
+				break;
+			case 3:
+				list.add("Right click on things to get information for it");
+				break;
+			case 4:
+				list.add("Can change settings of blocks");
+				break;
+		}
+	}
 	
 	/** Returns the texture based on the damage value */
 	@SideOnly(Side.CLIENT)

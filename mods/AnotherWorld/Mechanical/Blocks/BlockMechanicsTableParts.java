@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Core.GlobalValues;
+import mods.AnotherWorld.Mechanical.AnotherWorldExpansionMechanical;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Mechanical.Util.MechanicsTableValidation;
 import net.minecraft.block.Block;
@@ -45,17 +46,19 @@ public class BlockMechanicsTableParts extends Block{
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par1, float par2, float par3, float par5) {
 		if(world.getBlockMetadata(x, y, z) == 0) {
-			player.openGui(AnotherWorld.instance, 0, world, x, y, z);
+			player.openGui(AnotherWorldExpansionMechanical.instance, 0, world, x, y, z);
 		}
 		else if (world.getBlockMetadata(x, y, z) == 1) {
-			player.openGui(AnotherWorld.instance, 1, world, x, y, z);
+			player.openGui(AnotherWorldExpansionMechanical.instance, 1, world, x, y, z);
 		}
+		
 		else if (world.getBlockMetadata(x, y, z) == 2) {
-			player.openGui(AnotherWorld.instance, 2, world, x, y, z);
+			player.openGui(AnotherWorldExpansionMechanical.instance, 2, world, x, y, z);
 		}
 		else if (world.getBlockMetadata(x, y, z) == 3) {
-			player.openGui(AnotherWorld.instance, 3, world, x, y, z);
+			player.openGui(AnotherWorldExpansionMechanical.instance, 3, world, x, y, z);
 		}
+		
 		return false;
     	
     }
@@ -117,17 +120,17 @@ public class BlockMechanicsTableParts extends Block{
 		int meta = world.getBlockMetadata(x, y, z);
 		
 		//Tries to invalidate based on meta(StartBlock)
-		if(meta == 0 && !MechanicsTableValidation.validateTableForBlockCompleted(world, x, y, z, 3)) {
-			MechanicsTableValidation.changeBlocksToSingle(world, x, y, z, 3);
+		if(meta == 0 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 0)) {
+			MechanicsTableValidation.breakTable(world, x, y, z, 0);
 		}
-		else if(meta == 1 && !MechanicsTableValidation.validateTableForBlockCompleted(world, x, y, z, 2)) {
-			MechanicsTableValidation.changeBlocksToSingle(world, x, y, z, 2);
+		else if(meta == 1 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 1)) {
+			MechanicsTableValidation.breakTable(world, x, y, z, 1);
 		}
-		else if(meta == 2 && !MechanicsTableValidation.validateTableForBlockCompleted(world, x, y, z, 1)) {
-			MechanicsTableValidation.changeBlocksToSingle(world, x, y, z, 1);
+		else if(meta == 2 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 2)) {
+			MechanicsTableValidation.breakTable(world, x, y, z, 2);
 		}
-		else if(meta == 3 && !MechanicsTableValidation.validateTableForBlockCompleted(world, x, y, z, 0)) {
-			MechanicsTableValidation.changeBlocksToSingle(world, x, y, z, 0);
+		else if(meta == 3 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 3)) {
+			MechanicsTableValidation.breakTable(world, x, y, z, 3);
 		}
 		
 	}

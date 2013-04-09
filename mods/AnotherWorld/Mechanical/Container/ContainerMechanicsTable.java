@@ -16,18 +16,31 @@ public class ContainerMechanicsTable extends Container {
         public ContainerMechanicsTable (InventoryPlayer inventoryPlayer, TileMechanicsTable te){
                 tileEntity = te;
                 
+                int atSlot = 0;
+                //Add input buffer slots.
+                for (int xPos = 0; xPos < 2; xPos++) {
+                	for (int yPos= 0; yPos < 3; yPos++) {
+                		atSlot += 1;
+                        addSlotToContainer(new Slot(tileEntity, atSlot, 12 + (18 * xPos), 17 + (18 * yPos)));
+                	}
+ 
+                }
+                
+                
         		//The player's backpack inventory
         		for(int row = 0; row < 3; row++) {
         			for(int column = 0; column < 9; column++) {
-        				addSlotToContainer(new Slot(inventoryPlayer, column + row * 9 + 9, 6 + column * 18, 7 + row * 18));
+        				addSlotToContainer(new Slot(inventoryPlayer, column + row * 9 + 9, 8 + column * 18, 84 + (row * 18)));
         				}
         			}
-        		
+        		/*
         		//The player's hotbar inventory
         		for(int column = 0; column < 9; column++) {
-        			addSlotToContainer(new Slot(inventoryPlayer, column, 6 + column * 18, 7 + 58));
+        			addSlotToContainer(new Slot(inventoryPlayer, column, 6 + column * 18, 20 + 58));
         			}
+        			*/
         }
+        
 
         //Can the player open this container?
         @Override

@@ -13,7 +13,7 @@ import net.minecraft.util.Icon;
  *
  */
 public class ItemBlockMechanicsTableParts extends ItemBlock{
-
+	String[] types = {"blockTableTL","blockTableTR","blockTableBL","blockTableBR"};
 	/**
 	 * Constructor
 	 * @param id
@@ -24,14 +24,14 @@ public class ItemBlockMechanicsTableParts extends ItemBlock{
 		this.setHasSubtypes(true);
 	}
 		
-	
+	/** Returns the metadata  of the block*/
+	@Override
 	public int getMetadata(int meta) {
 		return meta;
 	}
-	
-	public String getItemNameIS(ItemStack is) {
-		String[] types = {"blockTable1","blockTable2","blockTable3","blockTable4"};
+	/** Returns the unlocalised name based on the itemstack passed */
+	@Override
+	public String getUnlocalizedName(ItemStack is) {
 		return types[is.getItemDamage()];
 	}
-
 }

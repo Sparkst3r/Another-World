@@ -3,6 +3,7 @@ package mods.AnotherWorld.Mechanical;
 import mods.AnotherWorld.Client.ClientPacketHandler;
 import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
+import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Core.Load;
 import cpw.mods.fml.common.Mod;
@@ -30,11 +31,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 //NetworkMod annotation. Defines client/server requirement and the packet handler
 @NetworkMod(
 		clientSideRequired = true, 
-		serverSideRequired = false
+		serverSideRequired = false,
+		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = ClientPacketHandler.class),
+		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
 )
 
 public class AnotherWorldExpansionMechanical {
-
+	@Instance(GlobalValues.ModIDMechanical)
+	public static AnotherWorldExpansionMechanical instance;
 	//SidedProxy annotation to specify the Client and Common proxies
 	@SidedProxy(
 			clientSide="mods.AnotherWorld.Client.ClientProxy",
@@ -51,7 +55,7 @@ public class AnotherWorldExpansionMechanical {
 	//Called during the loading phase
 	@Init 
 	public void load(FMLInitializationEvent event) {
-		
+		NetworkRegistry.instance().registerGuiHandler(this, GlobalValues.GUIMechanical);
 	}
 	
 	//Called during the post-load phase

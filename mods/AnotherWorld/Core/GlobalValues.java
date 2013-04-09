@@ -1,6 +1,7 @@
 package mods.AnotherWorld.Core;
 
 import mods.AnotherWorld.Client.AnotherWorldTab;
+import mods.AnotherWorld.Mechanical.GuiHandlerMechanical;
 import mods.AnotherWorld.Util.MaterialImmovable;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -24,7 +25,7 @@ public class GlobalValues {
 	
 	
 	//Texture path
-	public static final String mainDir = "mods/anotherWorld/textures/";
+	public static final String mainDir = "/mods/AnotherWorld/textures/";
 	public static final String guiDir = mainDir + "guis/";
 	public static final String entityDir = mainDir + "entities/";
 	public static final String blockDir = mainDir + "blocks/";
@@ -35,6 +36,9 @@ public class GlobalValues {
 	
 	//Material set to immovable
 	public static Material immovable = new MaterialImmovable(MapColor.woodColor);
+	
+	//GuiHandlers
+	public static GuiHandlerMechanical GUIMechanical = new GuiHandlerMechanical();
 	
 	public static boolean initialize() {
 		return true;

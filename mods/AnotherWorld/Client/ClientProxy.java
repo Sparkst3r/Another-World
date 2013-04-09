@@ -3,9 +3,20 @@ package mods.AnotherWorld.Client;
 import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.world.World;
+import net.minecraftforge.client.MinecraftForgeClient;
 import mods.AnotherWorld.Common.CommonProxy;
+import mods.AnotherWorld.Mechanical.MechanicalValues;
+import mods.AnotherWorld.Mechanical.Render.ToolRenderer;
 
 public class ClientProxy extends CommonProxy{
+	
+	@Override
+	public void registerRenders() {
+		MinecraftForgeClient.registerItemRenderer(MechanicalValues.ItemToolField.itemID, new ToolRenderer());
+	}
+	
+	
+	
 	
 	/**
 	 * Client Particle spawner for plasma
@@ -24,4 +35,8 @@ public class ClientProxy extends CommonProxy{
     	//FMLClientHandler.instance().getClient().effectRenderer.addEffect((EntityFX)fx);
 
     }
+	
+	
+	
+	
 }

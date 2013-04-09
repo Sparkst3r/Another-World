@@ -7,6 +7,10 @@ import net.minecraft.world.World;
 
 public class CommonProxy {
 	
+	public void registerRenders() {
+		
+	}
+	
 	
 	/**
 	 * Common Particle spawner for plasma

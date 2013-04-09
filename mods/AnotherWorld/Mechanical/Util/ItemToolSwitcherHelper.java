@@ -1,11 +1,45 @@
-package mods.AnotherWorld.Mechanical.Items;
+package mods.AnotherWorld.Mechanical.Util;
 
 import mods.AnotherWorld.Mechanical.MechanicalValues;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class ToolChanger {
+/**
+ * Used to switch tools from a list of tools
+ * @author Sparkst3r
+ *
+ */
+public class ItemToolSwitcherHelper {
+	
+	public static ItemStack getTypeFromNBT(ItemStack stack, EntityPlayer player) {
+		
+		/** Checks what the item was at craft time, prevents duping and obtaining free upgrades */
+		if(stack.stackTagCompound.getShort("type") == 0) {
+			return type0(stack, player);
+		}
+		if(stack.stackTagCompound.getShort("type") == 1) {
+			return type1(stack, player);
+		}
+		else if(stack.stackTagCompound.getShort("type") == 2) {
+			return type2(stack, player);
+		}
+		else if(stack.stackTagCompound.getShort("type") == 3) {
+			return type3(stack, player);
+		}
+		else if(stack.stackTagCompound.getShort("type") == 4) {
+			return type4(stack, player);
+		}
+		
+		
+		
+		return stack;
+	}
+	
+	
+	
+	
+	
 	
 	public static ItemStack type0(ItemStack stack, EntityPlayer player) {
 		int meta = stack.getItemDamage();
