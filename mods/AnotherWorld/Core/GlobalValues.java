@@ -2,7 +2,7 @@ package mods.AnotherWorld.Core;
 
 import mods.AnotherWorld.Client.AnotherWorldTab;
 import mods.AnotherWorld.Mechanical.GuiHandlerMechanical;
-import mods.AnotherWorld.Util.MaterialImmovable;
+import mods.AnotherWorld.Util.Basic.MaterialImmovable;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

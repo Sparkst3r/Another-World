@@ -10,21 +10,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ContainerMechanicsTable extends Container {
-		private static int slots = 43;
+		private static int slots = 17;
         private TileMechanicsTable tileEntity;
 
         public ContainerMechanicsTable (InventoryPlayer inventoryPlayer, TileMechanicsTable te){
                 tileEntity = te;
                 
-                int atSlot = 0;
-                //Add input buffer slots.
-                for (int xPos = 0; xPos < 2; xPos++) {
-                	for (int yPos= 0; yPos < 3; yPos++) {
-                		atSlot += 1;
-                        addSlotToContainer(new Slot(tileEntity, atSlot, 12 + (18 * xPos), 17 + (18 * yPos)));
+                int slot = 0;
+                for (int row = 0; row < 4; row ++) {
+                	for(int column = 0; column < 4; column++) {
+                		addSlotToContainer(new Slot(te, slot, 13 + column * 18, 6 + (row * 18)));
+                		slot++;
                 	}
- 
                 }
+                
+                addSlotToContainer(new Slot(te, 16, 124, 35));
                 
                 
         		//The player's backpack inventory
@@ -33,12 +33,12 @@ public class ContainerMechanicsTable extends Container {
         				addSlotToContainer(new Slot(inventoryPlayer, column + row * 9 + 9, 8 + column * 18, 84 + (row * 18)));
         				}
         			}
-        		/*
+        		
         		//The player's hotbar inventory
         		for(int column = 0; column < 9; column++) {
-        			addSlotToContainer(new Slot(inventoryPlayer, column, 6 + column * 18, 20 + 58));
+        			addSlotToContainer(new Slot(inventoryPlayer, column, 8 + column * 18, 142));
         			}
-        			*/
+        			
         }
         
 

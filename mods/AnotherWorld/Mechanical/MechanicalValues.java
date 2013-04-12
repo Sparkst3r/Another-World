@@ -5,11 +5,17 @@ import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Mechanical.Blocks.*;
 import mods.AnotherWorld.Mechanical.Items.ItemBaseParts;
 import mods.AnotherWorld.Mechanical.Items.ItemTool;
+import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Util.RegistryUtils;
 import mods.AnotherWorld.World.Items.ItemIngot;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
+/**
+ * Values accociated with the mechanical expansion
+ * @author Sparkst3r
+ *
+ */
 public class MechanicalValues {
 	
 	
@@ -28,19 +34,35 @@ public class MechanicalValues {
 		
 		ItemToolField = new ItemTool(5001);
 		ItemBasePartsField = new ItemBaseParts(5002);
+		
+		registerTileEntities();
 		addInfoForMeta();
 		ItemCrafting.initialise();
+		
+		//Registers the customs renderers
 		AnotherWorld.proxy.registerRenders();
 	}
 	
+	/**
+	 * Adds extra information for meta data items. Eg. Names
+	 */
 	public static void addInfoForMeta() {
 		//Tool
-		for (int meta = 0; meta < 5; meta++) {
-			RegistryUtils.addName(ItemToolField, meta, ItemTool.names[meta]);
+		for (int meta = 0; meta < ItemTool.types.length; meta++) {	
+			RegistryUtils.addName(ItemToolField, meta, ItemTool.names[0]);
 		}
-		for (int meta = 0; meta < 1; meta++) {
+		
+		for (int meta = 0; meta < ItemBaseParts.types.length; meta++) {
 			RegistryUtils.addName(ItemBasePartsField, meta, ItemBaseParts.names[meta]);
 		}
+		
+		for (int meta = 0; meta < ItemBlockBaseParts.types.length; meta++) {
+			RegistryUtils.addName(BlockBasePartsField, meta, ItemBlockBaseParts.names[meta]);
+		}
+	}
+	
+	public static void registerTileEntities() {
+		GameRegistry.registerTileEntity(TileMechanicsTable.class, "tileMechTable");
 	}
 
 }

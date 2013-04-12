@@ -1,4 +1,4 @@
-package mods.AnotherWorld.Util;
+package mods.AnotherWorld.Util.Basic;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;

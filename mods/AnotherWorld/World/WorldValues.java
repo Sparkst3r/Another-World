@@ -41,7 +41,7 @@ public class WorldValues {
 	 */
 	public static void addInfoForMeta() {
 		//Ingot
-		for (int meta = 0; meta < 4; meta++) {
+		for (int meta = 0; meta < ItemIngot.types.length; meta++) {
 			RegistryUtils.addName(ItemIngotField, meta, ItemIngot.names[meta]);
 			RegistryUtils.registerOre(ItemIngotField, meta, ItemIngot.types[meta]);
 		}

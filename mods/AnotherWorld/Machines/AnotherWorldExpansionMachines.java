@@ -2,7 +2,6 @@ package mods.AnotherWorld.Machines;
 
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Core.GlobalValues;
-import mods.AnotherWorld.Core.Load;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.Mod.Init;

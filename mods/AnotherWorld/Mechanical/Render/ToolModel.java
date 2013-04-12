@@ -7,10 +7,15 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Tinkering Tool's model
+ * @author Sparkst3r
+ *
+ */
 public class ToolModel extends ModelBase {
-	/** Main Box */
+	
+	
 	public ModelRenderer base;
-	/** Shaft box*/
 	public ModelRenderer shaft;
 	public ModelRenderer tipRight;
 	public ModelRenderer tipLeft;
@@ -22,6 +27,7 @@ public class ToolModel extends ModelBase {
 	public ModelRenderer handTop;
 	public ModelRenderer handBottom;
 	public ModelRenderer display;
+	
 	
 	/** Model Constructor */
 	public ToolModel() {
@@ -90,7 +96,7 @@ public class ToolModel extends ModelBase {
         this.handBottom = (new ModelRenderer(this, 15, 11)).setTextureSize(64, 32);
         this.handBottom.addBox(0F, 0F, 0F, 4, 1, 5);
         this.handBottom.rotationPointX = 0.0F;
-        this.handBottom.rotationPointY = -3.0F;
+        this.handBottom.rotationPointY = -1.0F;
         this.handBottom.rotationPointZ = -6.0F;
         this.handBottom.mirror = true;
         
@@ -128,19 +134,25 @@ public class ToolModel extends ModelBase {
     	
      	switch(stack.getItemDamage()) {
      		case 0: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Base", 1, 1, 0x000000);
+     			Minecraft.getMinecraft().fontRenderer.drawString("Activate", 1, 1, 0x000000);
      			break;
      		case 1: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Activation", 1, 1, 0xFF0000);
+     			Minecraft.getMinecraft().fontRenderer.drawString("Dismantle", 1, 1, 0xFF0000);
      			break;
      		case 2: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Rotation", 1, 1, 0x00FF00);
+     			Minecraft.getMinecraft().fontRenderer.drawString("Rotate", 1, 1, 0x00FF00);
      			break;
      		case 3: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Helpful", 1, 1, 0x0000FF);
+     			Minecraft.getMinecraft().fontRenderer.drawString("Help", 1, 1, 0x0000FF);
      			break;
      		case 4: 
      			Minecraft.getMinecraft().fontRenderer.drawString("Settings", 1, 1, 0xFF00FF);
+     			break;
+     		case 5: 
+     			Minecraft.getMinecraft().fontRenderer.drawString("Move", 1, 1, 0x00FFFF);
+     			break;
+     		default: 
+     			Minecraft.getMinecraft().fontRenderer.drawString("Unknown", 1, 1, 0x000000);
      			break;
      	}
      	

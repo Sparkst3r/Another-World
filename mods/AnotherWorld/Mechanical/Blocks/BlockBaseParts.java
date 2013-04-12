@@ -43,6 +43,9 @@ public class BlockBaseParts extends Block{
 		this.setHardness(0.5F);
 		GameRegistry.registerBlock(this, ItemBlockBaseParts.class, "MechanicalBaseBlocks");
 	}
+
+	
+	
 	
 	/** Registers the block's textures with the IconRegister */
 	@SideOnly(Side.CLIENT)

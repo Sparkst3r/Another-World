@@ -5,7 +5,6 @@ import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Core.GlobalValues;
-import mods.AnotherWorld.Core.Load;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;

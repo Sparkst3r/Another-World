@@ -11,12 +11,17 @@ import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Mechanical.AnotherWorldExpansionMechanical;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Mechanical.Util.MechanicsTableValidation;
+import mods.AnotherWorld.Util.BlockCoord;
+import mods.AnotherWorld.Util.EntityUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -32,8 +37,12 @@ public class BlockMechanicsTableParts extends Block{
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private Icon[][] iconBuffer;
-
-	/**
+    
+	/** Provides random values */ 
+	private final Random random = new Random();
+	
+    
+    /**
 	 * Constructor
 	 * @param id
 	 */
@@ -43,27 +52,28 @@ public class BlockMechanicsTableParts extends Block{
 		GameRegistry.registerBlock(this, ItemBlockMechanicsTableParts.class, "MechanicsTable");
 	}
 	
+	/** Called when the block is broken. Drops the contents of the TileEntity when a block is broken */
+	public void breakBlock(World world, int x, int y, int z, int block, int meta) {
+		if(meta == 0) {
+			TileMechanicsTable tile = (TileMechanicsTable) world.getBlockTileEntity(x, y, z);
+			if (tile != null) {
+				for (int slot = 0; slot < tile.getSizeInventory(); slot++) {
+					ItemStack stack = tile.getStackInSlot(slot);
+					EntityUtils.dropItemInWorld(world, x, y, z, stack);
+	            }
+	        }
+			tile.invalidate();
+		}
+	}
+	
+	
+	/** Called on right click of the block Opens GUI relative to the meta data of the block*/
 	@Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par1, float par2, float par3, float par5) {
-		if(world.getBlockMetadata(x, y, z) == 0) {
-			player.openGui(AnotherWorldExpansionMechanical.instance, 0, world, x, y, z);
-		}
-		else if (world.getBlockMetadata(x, y, z) == 1) {
-			player.openGui(AnotherWorldExpansionMechanical.instance, 1, world, x, y, z);
-		}
-		
-		else if (world.getBlockMetadata(x, y, z) == 2) {
-			player.openGui(AnotherWorldExpansionMechanical.instance, 2, world, x, y, z);
-		}
-		else if (world.getBlockMetadata(x, y, z) == 3) {
-			player.openGui(AnotherWorldExpansionMechanical.instance, 3, world, x, y, z);
-		}
-		
+		player.openGui(AnotherWorldExpansionMechanical.instance, world.getBlockMetadata(x, y, z), world, x, y, z);
 		return false;
     	
     }
-	
-	
 	
 	/** Registers the block's textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
@@ -116,23 +126,9 @@ public class BlockMechanicsTableParts extends Block{
 	/** Called when a neighbouring block is changed */
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, int blockId) {
-		//Gets the meta of the block
-		int meta = world.getBlockMetadata(x, y, z);
-		
-		//Tries to invalidate based on meta(StartBlock)
-		if(meta == 0 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 0)) {
-			MechanicsTableValidation.breakTable(world, x, y, z, 0);
-		}
-		else if(meta == 1 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 1)) {
-			MechanicsTableValidation.breakTable(world, x, y, z, 1);
-		}
-		else if(meta == 2 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 2)) {
-			MechanicsTableValidation.breakTable(world, x, y, z, 2);
-		}
-		else if(meta == 3 && !MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, 3)) {
-			MechanicsTableValidation.breakTable(world, x, y, z, 3);
-		}
-		
+		if(!MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, world.getBlockMetadata(x, y, z))) {
+			MechanicsTableValidation.breakTable(world, x, y, z, world.getBlockMetadata(x, y, z));
+		}		
 	}
 
 	/** Is the meta block allowed to have a tile entity? */

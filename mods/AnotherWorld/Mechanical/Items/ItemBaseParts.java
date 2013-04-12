@@ -16,17 +16,17 @@ import net.minecraft.util.Icon;
 
 
 /**
- * Meta-data item for the base items
+ * Meta-data item for the base parts.
  * 
  * @author Sparkst3r
  *
  */
 public class ItemBaseParts extends Item {
 	/** Texture file names + code name */
-    public static String[] types = new String[] {"gearTin"};     
+    public static String[] types = new String[] {"gearTin", "gearCopper", "tinkerHead", "tinkerRod", "tinkerGrip"};
     
     /** Human-Readable names */
-    public static String[] names = new String[] {"Tin Gear"};
+    public static String[] names = new String[] {"Tin Gear", "Copper Gear", "Tinkering Head Assembly", "Tinkering Rod Assembly", "Tinkering Grip Assembly"};
     
     /** Icon Array */
     @SideOnly(Side.CLIENT)
@@ -56,18 +56,16 @@ public class ItemBaseParts extends Item {
 	@Override
 	public void updateIcons(IconRegister ir) {
 		iconBuffer = new Icon[types.length];
-		
 		String id = GlobalValues.ModIDCore + ":";
-		iconBuffer[0] = ir.registerIcon(id + types[0]);
-		//iconBuffer[1] = ir.registerIcon(id + types[1]);
-		//iconBuffer[2] = ir.registerIcon(id + types[2]);	
-		//iconBuffer[3] = ir.registerIcon(id + types[3]);
+		for (int icon = 0; icon < types.length; icon++) {
+			iconBuffer[icon] = ir.registerIcon(id + types[icon]);
+		}
 	}
     
 	/** Adds the meta items to the tab */
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int meta = 0; meta < 1; meta++) {
+		for (int meta = 0; meta < types.length; meta++) {
 			list.add(new ItemStack(id, 1, meta));
 		}
 	} 

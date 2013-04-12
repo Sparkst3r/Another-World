@@ -7,7 +7,6 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.IWorldGenerator;
-import forestry.core.worldgen.WorldGenMinableMeta;
 
 /**
  * World Generation. Generates Copper, Tin, Silver and Lead

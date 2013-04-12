@@ -19,8 +19,8 @@ public class GuiMechanicsTable extends GuiContainer {
 
         @Override
         protected void drawGuiContainerForegroundLayer(int param1, int param2) {
-                fontRenderer.drawString("Mechanics Table", 8, 6, 4210752);
-                fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+                fontRenderer.drawString("Mechanics Table", 88, 1, 0xFFFFFF, true);
+                fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 95, 69, 0xFFFFFF, true);
         }
 
         @Override

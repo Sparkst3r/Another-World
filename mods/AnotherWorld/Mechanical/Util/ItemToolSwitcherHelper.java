@@ -1,6 +1,9 @@
 package mods.AnotherWorld.Mechanical.Util;
 
 import mods.AnotherWorld.Mechanical.MechanicalValues;
+import mods.AnotherWorld.Mechanical.Items.ItemTool;
+import mods.AnotherWorld.Mechanical.Items.ItemTool.ItemToolEnum;
+import mods.AnotherWorld.Util.ItemStackUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,179 +14,211 @@ import net.minecraft.nbt.NBTTagCompound;
  *
  */
 public class ItemToolSwitcherHelper {
+
 	
+	/**
+	 * Checks what the tool was at craft time, prevents duping and obtaining free upgrades
+	 * 
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
 	public static ItemStack getTypeFromNBT(ItemStack stack, EntityPlayer player) {
-		
-		/** Checks what the item was at craft time, prevents duping and obtaining free upgrades */
-		if(stack.stackTagCompound.getShort("type") == 0) {
-			return type0(stack, player);
+		if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			return switchForTypeActivate(stack, player);
 		}
-		if(stack.stackTagCompound.getShort("type") == 1) {
-			return type1(stack, player);
+		if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
+			return switchForTypeDismantle(stack, player);
 		}
-		else if(stack.stackTagCompound.getShort("type") == 2) {
-			return type2(stack, player);
+		else if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
+			return switchForTypeRotate(stack, player);
 		}
-		else if(stack.stackTagCompound.getShort("type") == 3) {
-			return type3(stack, player);
+		else if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.HELP.ordinal()) {
+			return switchForTypeHelp(stack, player);
 		}
-		else if(stack.stackTagCompound.getShort("type") == 4) {
-			return type4(stack, player);
+		else if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.SETTINGS.ordinal()) {
+			return switchForTypeSettings(stack, player);
 		}
-		
-		
-		
+		else if(stack.stackTagCompound.getShort("type") == ItemTool.ItemToolEnum.MOVE.ordinal()) {
+			return switchForTypeMove(stack, player);
+		}
+		return stack;
+	}
+
+	/**
+	 * Will iterate through valid tools for type activate
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeActivate(ItemStack stack, EntityPlayer player) {
 		return stack;
 	}
 	
-	
-	
-	
-	
-	
-	public static ItemStack type0(ItemStack stack, EntityPlayer player) {
+	/**
+	 * Will iterate through valid tools for type dismantle
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeDismantle(ItemStack stack, EntityPlayer player) {
 		int meta = stack.getItemDamage();
-		if(meta == 0) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 0);
-			return newStack;
+		if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			return s;
 		}
+		if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			return s;
+		}
+		
 		return stack;
 	}
-	public static ItemStack type1(ItemStack stack, EntityPlayer player) {
-		//Does nothing.
-		return stack;
-	}
-	
-	public static ItemStack type2(ItemStack stack, EntityPlayer player) {
+	/**
+	 * Will iterate through valid tools for type rotate
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeRotate(ItemStack stack, EntityPlayer player) {
 		int meta = stack.getItemDamage();
-		if(meta == 0) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 2);
-			return newStack;
+		if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.ROTATE.ordinal());
+			return s;
 		}
-		else if(meta == 1) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 2);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 2);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.ROTATE.ordinal());
+			return s;
 		}
-		else if(meta == 2) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 2);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.ROTATE.ordinal());
+			return s;
 		}
 		return stack;
 	}
-	
-	
-	public static ItemStack type3(ItemStack stack, EntityPlayer player) {
+	/**
+	 * Will iterate through valid tools for type help
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeHelp(ItemStack stack, EntityPlayer player) {
 		int meta = stack.getItemDamage();
-		if(meta == 0) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 3);
-			return newStack;
+		
+		
+		if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.HELP.ordinal());
+			return s;
 		}
-		else if(meta == 1) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 2);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 3);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.HELP.ordinal());
+			return s;
 		}
-		else if(meta == 2) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 3);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 3);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.HELP.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.HELP.ordinal());
+			return s;
 		}
-		else if(meta == 3) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 3);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.HELP.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.HELP.ordinal());
+			return s;
 		}
 		return stack;
 	}
 	
-	
-	public static ItemStack type4(ItemStack stack, EntityPlayer player) {
+	/**
+	 * Will iterate through valid tools for type settings
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeSettings(ItemStack stack, EntityPlayer player) {
 		int meta = stack.getItemDamage();
-		if(meta == 0) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 4);
-			return newStack;
+		
+		
+		if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			return s;
 		}
-		else if(meta == 1) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 2);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 4);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			return s;
 		}
-		else if(meta == 2) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 3);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 4);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.HELP.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			return s;
 		}
-		else if(meta == 3) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 4);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 4);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.HELP.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			return s;
 		}
-		else if(meta == 4) {
-			
-			ItemStack newStack = new ItemStack(MechanicalValues.ItemToolField, 1, 1);
-			if( newStack.stackTagCompound == null) {
-				newStack.setTagCompound(new NBTTagCompound());
-			}
-			newStack.stackTagCompound.setShort("type", (short) 4);
-			return newStack;
+		else if(meta == ItemTool.ItemToolEnum.SETTINGS.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			return s;
 		}
 		return stack;
 	}
 	
-	
-	
+	/**
+	 * Will iterate through valid tools for type move
+	 * @param stack
+	 * @param player
+	 * @return
+	 */
+	public static ItemStack switchForTypeMove(ItemStack stack, EntityPlayer player) {
+		int meta = stack.getItemDamage();
+		
+		
+		if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			return s;
+		}
+		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			return s;
+		}
+		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.HELP.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			return s;
+		}
+		else if(meta == ItemTool.ItemToolEnum.HELP.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			return s;
+		}
+		else if(meta == ItemTool.ItemToolEnum.SETTINGS.ordinal()) {
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.MOVE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			return s;
+		}
+		else if(meta == ItemTool.ItemToolEnum.MOVE.ordinal()) {
+			
+			if(stack.stackTagCompound.getBoolean("hasBlock") && stack.stackTagCompound.hasKey("block") && !player.worldObj.isRemote) {
+				ItemStack dropstack = new ItemStack(stack.stackTagCompound.getInteger("block"), 1, stack.stackTagCompound.getInteger("metadata"));
+				player.dropPlayerItem(dropstack);
+				stack.stackTagCompound.setBoolean("hasBlock", false);
+			}
+			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
+			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			
+			return s;
+		}
+		return stack;
+	}
 }

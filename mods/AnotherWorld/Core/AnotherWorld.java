@@ -66,20 +66,19 @@ public class AnotherWorld {
 	//Called during the pre-load phase
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event) {
-    	Load.onPreLoad(event);
     }
     
 	//Called during the loading phase
 	@Init 
 	public void load(FMLInitializationEvent event) {
-		Load.onLoad(event);
+		//Any fields in that class that require instantiating won't be. This loads the class and instantiates everything. 
+		GlobalValues.initialize();
 		
 	}
 	
 	//Called during the post-load phase
 	@PostInit 
 	public void PostLoad(FMLPostInitializationEvent event) {
-	    Load.onPostLoad(event);
 	}
 	
 }
