@@ -1,6 +1,7 @@
 package mods.AnotherWorld.Mechanical.Container;
 
 
+import cpw.mods.fml.common.FMLLog;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Util.SlotCrafting;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +26,8 @@ public class ContainerMechanicsTable extends Container {
         public ContainerMechanicsTable (InventoryPlayer inventoryPlayer, TileMechanicsTable te){
             worldObj = te.worldObj;
         	
+            
+            
         	tileEntity = te;
         	
                 
@@ -36,7 +39,6 @@ public class ContainerMechanicsTable extends Container {
                 	}
                 }
                 
-                //addSlotToContainer(new Slot(te, 16, 124, 35));
                 addSlotToContainer(new SlotCrafting(inventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
 
                 
@@ -60,20 +62,27 @@ public class ContainerMechanicsTable extends Container {
                 this.onCraftMatrixChanged(this.craftMatrix);
         }
 
-        public void onCraftMatrixChanged(IInventory par1IInventory) {
+        public void onCraftMatrixChanged(IInventory inv) {
             for(int x = 0; x < 16; x++) {
-            	tileEntity.setInventorySlotContents(x, craftMatrix.getStackInSlot(x));
-            }     
+            	if(inv.getStackInSlot(x) != null) {
+            		System.out.println(inv.getStackInSlot(x).getItemName());
+                   	tileEntity.setInventorySlotContents(x, inv.getStackInSlot(x));
+            	}
+ 
+            }
+            
         	this.craftResult.setInventorySlotContents(0, MechTableCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
         }
 
         /** Called when the GUI is closed by the player*/
         public void onCraftGuiClosed(EntityPlayer par1EntityPlayer) {
-                 super.onCraftGuiClosed(par1EntityPlayer);
+        	super.onCraftGuiClosed(par1EntityPlayer);
+            for(int x = 0; x < 16; x++) {
 
-                 for(int x = 0; x < 16; x++) {
-                	 tileEntity.setInventorySlotContents(x, craftMatrix.getStackInSlot(x));
-                 }
+           	 tileEntity.setInventorySlotContents(x, craftMatrix.getStackInSlot(x));
+            }   
+            
+
         }
         
 

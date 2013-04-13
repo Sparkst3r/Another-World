@@ -87,42 +87,49 @@ public class TileMechanicsTable extends TileEntity implements IInventory {
 		return world.getBlockTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
 	}
     
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList items = par1NBTTagCompound.getTagList("Items");
-		NBTTagList other = par1NBTTagCompound.getTagList("Other");
-        inv = new ItemStack[this.getSizeInventory()];
-        
-        
-        for (int var3 = 0; var3 < items.tagCount(); ++var3) {
-            NBTTagCompound itemsCom = (NBTTagCompound) items.tagAt(var3);
-            int var5 = itemsCom.getByte("Slot") & 255;
+    /**
+     * Reads a tile entity from NBT.
+     */
+    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+    {
+        super.readFromNBT(par1NBTTagCompound);
+        NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+        this.inv = new ItemStack[this.getSizeInventory()];
 
-            if (var5 >= 0 && var5 < this.inv.length) {
-                this.inv[var5] = ItemStack.loadItemStackFromNBT(itemsCom);
+
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.tagAt(i);
+            int j = nbttagcompound1.getByte("Slot") & 255;
+
+            if (j >= 0 && j < this.inv.length) {
+                this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+                System.out.println("Read: " + ItemStack.loadItemStackFromNBT(nbttagcompound1).getDisplayName());
             }
         }
-        NBTTagCompound otherCom = (NBTTagCompound) items.tagAt(0);
     }
 
-    
+    /**
+     * Writes a tile entity to NBT.
+     */
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
-        NBTTagList items = new NBTTagList();
-        for (int var3 = 0; var3 < inv.length; ++var3)
+        NBTTagList nbttaglist = new NBTTagList();
+
+        for (int i = 0; i < this.inv.length; ++i)
         {
-            if (inv[var3] != null)
+            if (this.inv[i] != null)
             {
-                NBTTagCompound tagCom = new NBTTagCompound();
-                tagCom.setByte("Slot", (byte)var3);
-                inv[var3].writeToNBT(tagCom);
-                items.appendTag(tagCom);
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+                nbttagcompound1.setByte("Slot", (byte)i);
+                this.inv[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
+    			System.out.println("Write: " + inv[i].getDisplayName());
             }
         }
-        
-        
-        par1NBTTagCompound.setTag("Items", items);
+
+        par1NBTTagCompound.setTag("Items", nbttaglist);
     }
 
 	@Override
@@ -151,6 +158,12 @@ public class TileMechanicsTable extends TileEntity implements IInventory {
 	
 	@Override
 	public void updateEntity() {
+		//for (int i = 0; i < inv.length; i++) {
+		//	
+		//	if(inv[i] != null){
+		//		System.out.println(inv[i].getDisplayName());
+		//	}
+		//}
 	}
 
 }

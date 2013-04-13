@@ -22,6 +22,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 
 
 /**
@@ -43,12 +44,10 @@ public class BlockBaseParts extends Block implements IDismantleable{
 		super(id, GlobalValues.immovable);
 		this.setCreativeTab(GlobalValues.AnotherTab);
 		this.setHardness(0.5F);
+		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
 		GameRegistry.registerBlock(this, ItemBlockBaseParts.class, "MechanicalBaseBlocks");
 	}
 
-	
-	
-	
 	/** Registers the block's textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -59,29 +58,42 @@ public class BlockBaseParts extends Block implements IDismantleable{
 		
 		iconBuffer[0] = ir.registerIcon(id + ItemBlockBaseParts.types[0]);
 		iconBuffer[1] = ir.registerIcon(id + ItemBlockBaseParts.types[1]);
+		
 	}
     
     /** Returns the texture for the meta and side */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
-		//If the meta is less than 1, stops ArrayIndexOutOfBoundsExceptions
 		return (meta < 2)? iconBuffer[meta] : iconBuffer[0];
 	}
    
 	/** Allows for metadata specific hardness values */
+	@Override
 	public float getBlockHardness(World world, int x, int y, int z) {
 		switch(world.getBlockMetadata(x, y, z)) {
 			case 0:
-				this.setHardness(3.0F);
+				return 3.0F;
 			case 1:
-				this.setHardness(5.0F);
+				return 4.0F;
+			default:
+				return this.blockHardness;
 		}
-		return this.blockHardness;
     }
-
-
-
+	
+	@Override
+	public int damageDropped(int meta) {
+		switch(meta) {
+			case 0:
+				return 0;
+			case 1:
+				return 0;
+			default:
+				return meta;
+		}
+	}
+	
+	
 	/** Can this block be dismantled */
 	@Override
 	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z) {
@@ -94,7 +106,7 @@ public class BlockBaseParts extends Block implements IDismantleable{
 		return false;
 	}
 
-	/** Dismantled */
+	/** On dismantled */
 	@Override
 	public ItemStack dismantle(EntityPlayer player, World world, int x, int y, int z) {
 		switch(world.getBlockMetadata(x, y, z)) {
