@@ -15,23 +15,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class ContainerMechanicsTable extends Container {
-		private static int slots = 17;
-        private TileMechanicsTable tileEntity;
-        public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
-        public IInventory craftResult = new InventoryCraftResult();
-        private World worldObj;
-        private int posX;
-        private int posY;
-        private int posZ;
+	private static int slots = 17;
+	private TileMechanicsTable tileEntity;
+	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
+	public IInventory craftResult = new InventoryCraftResult();
+	private World worldObj;
 
 
         public ContainerMechanicsTable (InventoryPlayer inventoryPlayer, TileMechanicsTable te){
             worldObj = te.worldObj;
-            posX = te.xCoord;
-            posY = te.yCoord;
-            posZ = te.zCoord;
         	
         	tileEntity = te;
+        	
                 
                 int slot = 0;
                 for (int row = 0; row < 4; row ++) {
@@ -57,30 +52,27 @@ public class ContainerMechanicsTable extends Container {
         			addSlotToContainer(new Slot(inventoryPlayer, column, 8 + column * 18, 142));
         			}
         		
+        		for (int x = 0; x < 16; x++) {
+        			craftMatrix.setInventorySlotContents(x, tileEntity.getStackInSlot(x));
+        		}
+        		
+        		
                 this.onCraftMatrixChanged(this.craftMatrix);
         }
 
-        public void onCraftMatrixChanged(IInventory par1IInventory)
-        {
-                 this.craftResult.setInventorySlotContents(0, MechTableCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+        public void onCraftMatrixChanged(IInventory par1IInventory) {
+            for(int x = 0; x < 16; x++) {
+            	tileEntity.setInventorySlotContents(x, craftMatrix.getStackInSlot(x));
+            }     
+        	this.craftResult.setInventorySlotContents(0, MechTableCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
         }
 
-        
-        public void onCraftGuiClosed(EntityPlayer par1EntityPlayer)
-        {
+        /** Called when the GUI is closed by the player*/
+        public void onCraftGuiClosed(EntityPlayer par1EntityPlayer) {
                  super.onCraftGuiClosed(par1EntityPlayer);
 
-                 if (!this.worldObj.isRemote)
-                 {
-                         for (int var2 = 0; var2 < 16; ++var2)
-                         {
-                                 ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
-
-                                 if (var3 != null)
-                                 {
-                                         par1EntityPlayer.dropPlayerItem(var3);
-                                 }
-                         }
+                 for(int x = 0; x < 16; x++) {
+                	 tileEntity.setInventorySlotContents(x, craftMatrix.getStackInSlot(x));
                  }
         }
         

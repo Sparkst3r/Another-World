@@ -9,6 +9,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Mechanical.AnotherWorldExpansionMechanical;
+import mods.AnotherWorld.Mechanical.Container.ContainerMechanicsTable;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Mechanical.Util.MechanicsTableValidation;
 import mods.AnotherWorld.Util.BlockCoord;
