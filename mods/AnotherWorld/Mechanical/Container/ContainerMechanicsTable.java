@@ -2,30 +2,48 @@ package mods.AnotherWorld.Mechanical.Container;
 
 
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
+import mods.AnotherWorld.Util.SlotCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ContainerMechanicsTable extends Container {
 		private static int slots = 17;
         private TileMechanicsTable tileEntity;
+        public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
+        public IInventory craftResult = new InventoryCraftResult();
+        private World worldObj;
+        private int posX;
+        private int posY;
+        private int posZ;
+
 
         public ContainerMechanicsTable (InventoryPlayer inventoryPlayer, TileMechanicsTable te){
-                tileEntity = te;
+            worldObj = te.worldObj;
+            posX = te.xCoord;
+            posY = te.yCoord;
+            posZ = te.zCoord;
+        	
+        	tileEntity = te;
                 
                 int slot = 0;
                 for (int row = 0; row < 4; row ++) {
                 	for(int column = 0; column < 4; column++) {
-                		addSlotToContainer(new Slot(te, slot, 13 + column * 18, 6 + (row * 18)));
+                		addSlotToContainer(new Slot(craftMatrix, slot, 13 + column * 18, 6 + (row * 18)));
                 		slot++;
                 	}
                 }
                 
-                addSlotToContainer(new Slot(te, 16, 124, 35));
-                
+                //addSlotToContainer(new Slot(te, 16, 124, 35));
+                addSlotToContainer(new SlotCrafting(inventoryPlayer.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+
                 
         		//The player's backpack inventory
         		for(int row = 0; row < 3; row++) {
@@ -38,7 +56,32 @@ public class ContainerMechanicsTable extends Container {
         		for(int column = 0; column < 9; column++) {
         			addSlotToContainer(new Slot(inventoryPlayer, column, 8 + column * 18, 142));
         			}
-        			
+        		
+                this.onCraftMatrixChanged(this.craftMatrix);
+        }
+
+        public void onCraftMatrixChanged(IInventory par1IInventory)
+        {
+                 this.craftResult.setInventorySlotContents(0, MechTableCraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+        }
+
+        
+        public void onCraftGuiClosed(EntityPlayer par1EntityPlayer)
+        {
+                 super.onCraftGuiClosed(par1EntityPlayer);
+
+                 if (!this.worldObj.isRemote)
+                 {
+                         for (int var2 = 0; var2 < 16; ++var2)
+                         {
+                                 ItemStack var3 = this.craftMatrix.getStackInSlotOnClosing(var2);
+
+                                 if (var3 != null)
+                                 {
+                                         par1EntityPlayer.dropPlayerItem(var3);
+                                 }
+                         }
+                 }
         }
         
 

@@ -51,12 +51,14 @@ import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
 )
 public class AnotherWorld {
+	
+	/** Mod instance*/
 	@Instance(GlobalValues.ModIDCore)
 	public static AnotherWorld instance;
 	
 
 	
-	//SidedProxy annotation to specify the Client and Common proxies
+	/** Sided proxy */
 	@SidedProxy(
 			clientSide="mods.AnotherWorld.Client.ClientProxy",
 			serverSide="mods.AnotherWorld.Common.CommonProxy")

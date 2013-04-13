@@ -62,7 +62,14 @@ public class BlockMechanicsTableParts extends Block{
 					EntityUtils.dropItemInWorld(world, x, y, z, stack);
 	            }
 	        }
-			tile.invalidate();
+			
+			try {
+				tile.invalidate();
+			}
+			catch (NullPointerException e) {
+				FMLLog.warning("A block is unable to invalidate a TileEntity");
+			}
+
 		}
 	}
 	

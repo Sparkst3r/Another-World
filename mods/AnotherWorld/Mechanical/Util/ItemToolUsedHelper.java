@@ -8,6 +8,8 @@ import mods.AnotherWorld.Mechanical.MechanicalValues;
 import mods.AnotherWorld.Util.EntityUtils;
 import mods.AnotherWorld.Util.WorldUtils;
 import mods.AnotherWorld.World.WorldValues;
+import mods.AnotherWorld.api.tool.IDismantleable;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -101,6 +103,22 @@ public class ItemToolUsedHelper {
 		return true;
 	}
 	
+	
+	public void dismantleToolUsed(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
+		int blockId = world.getBlockId(x, y, z);
+		
+		if (blockId > 0 && Block.blocksList[blockId] instanceof IDismantleable) {
+			if (((IDismantleable)Block.blocksList[blockId]).canDismantle(player, world, x, y, z)) {
+				ItemStack blockStack = ((IDismantleable)Block.blocksList[blockId]).dismantle(player, world, x, y, z);
+				if(!world.isRemote) {
+					world.setBlock(x, y, z, 0, 0, 2);
+					EntityUtils.dropItemInWorld(world, x, y, z, blockStack);
+				}
+			}	
+		}
+	}
+	
+	
 	public boolean moveToolUsed(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
 		/*if (world.blockHasTileEntity(x, y, z)) {
 			TileEntity testE = world.getBlockTileEntity(x, y, z);
@@ -162,4 +180,6 @@ public class ItemToolUsedHelper {
 		
 		return true;
 	}
+
+
 }

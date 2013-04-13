@@ -13,6 +13,7 @@ import mods.AnotherWorld.Core.GlobalValues;
 import mods.AnotherWorld.Mechanical.MechanicalValues;
 import mods.AnotherWorld.Mechanical.Util.ItemToolSwitcherHelper;
 import mods.AnotherWorld.Mechanical.Util.ItemToolUsedHelper;
+import mods.AnotherWorld.api.tool.IItemTool;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,7 +31,7 @@ import net.minecraft.world.World;
  * @author Sparkst3r
  *
  */
-public class ItemTool extends Item {
+public class ItemTool extends Item implements IItemTool{
 
 	public enum ItemToolEnum {
 	    ACTIVATE, DISMANTLE, ROTATE, HELP, SETTINGS, MOVE;
@@ -125,9 +126,16 @@ public class ItemTool extends Item {
 		if(stack.getItemDamage() == 0) {
 			ItemToolUsedHelper.instance.activationToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
 		}
+		if(stack.getItemDamage() == 1) {
+			ItemToolUsedHelper.instance.dismantleToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
+		}
 		else if(stack.getItemDamage() == 5) {
 			ItemToolUsedHelper.instance.moveToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
 		}
+		
+		
+		
+		
 		return true;
 	}
 	

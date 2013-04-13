@@ -3,6 +3,7 @@ package mods.AnotherWorld.Mechanical;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Mechanical.Blocks.*;
+import mods.AnotherWorld.Mechanical.Container.MechTableCraftingManager;
 import mods.AnotherWorld.Mechanical.Items.ItemBaseParts;
 import mods.AnotherWorld.Mechanical.Items.ItemTool;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
@@ -10,6 +11,7 @@ import mods.AnotherWorld.Util.RegistryUtils;
 import mods.AnotherWorld.World.Items.ItemIngot;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 /**
  * Values accociated with the mechanical expansion
@@ -38,9 +40,11 @@ public class MechanicalValues {
 		registerTileEntities();
 		addInfoForMeta();
 		ItemCrafting.initialise();
-		
+		MechTableCrafting.initialise();
 		//Registers the customs renderers
-		AnotherWorld.proxy.registerRenders();
+		AnotherWorld.proxy.registerRenders();	
+
+	
 	}
 	
 	/**
