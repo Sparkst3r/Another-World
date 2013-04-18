@@ -46,8 +46,8 @@ protected void onCrafting(ItemStack par1ItemStack, int par2)
 
 protected void onCrafting(ItemStack par1ItemStack)
 {
-         //par1ItemStack.onCrafting(this.thePlayer.worldObj, this.thePlayer, this.amountCrafted);
-         //this.amountCrafted = 0;
+         par1ItemStack.onCrafting(this.thePlayer.worldObj, this.thePlayer, this.amountCrafted);
+         this.amountCrafted = 0;
 }
 
 public void onPickupFromSlot(EntityPlayer par1EntityPlayer, ItemStack par2ItemStack)

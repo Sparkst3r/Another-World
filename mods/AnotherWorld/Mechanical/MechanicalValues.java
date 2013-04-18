@@ -3,18 +3,20 @@ package mods.AnotherWorld.Mechanical;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mods.AnotherWorld.Core.AnotherWorld;
 import mods.AnotherWorld.Mechanical.Blocks.*;
-import mods.AnotherWorld.Mechanical.Container.MechTableCraftingManager;
+import mods.AnotherWorld.Mechanical.Crafting.MechTableCraftingManager;
+import mods.AnotherWorld.Mechanical.Crafting.WorldCraftingManager;
 import mods.AnotherWorld.Mechanical.Items.ItemBaseParts;
 import mods.AnotherWorld.Mechanical.Items.ItemTool;
 import mods.AnotherWorld.Mechanical.TileEntity.TileMechanicsTable;
 import mods.AnotherWorld.Util.RegistryUtils;
 import mods.AnotherWorld.World.Items.ItemIngot;
+import mods.AnotherWorld.api.crafting.CraftingManagers;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
- * Values accociated with the mechanical expansion
+ * Values associated with the mechanical expansion
  * @author Sparkst3r
  *
  */
@@ -30,6 +32,10 @@ public class MechanicalValues {
 
 	
 	public static void initialise() {
+		/** Initialise the crafting manager and bind it to the API functions */
+		CraftingManagers.mechanicsTable = new MechTableCraftingManager();
+		CraftingManagers.world = new WorldCraftingManager();
+		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
 
@@ -40,7 +46,10 @@ public class MechanicalValues {
 		registerTileEntities();
 		addInfoForMeta();
 		ItemCrafting.initialise();
-		MechTableCrafting.initialise();
+		
+		
+		
+		SpecialCrafting.initialise();
 		//Registers the customs renderers
 		AnotherWorld.proxy.registerRenders();	
 

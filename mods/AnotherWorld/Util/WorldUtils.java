@@ -1,6 +1,10 @@
 package mods.AnotherWorld.Util;
 
+import java.util.List;
+
 import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 /**
@@ -102,6 +106,22 @@ public class WorldUtils {
 		}
 		
 		return false;
+	}
+	
+	/**
+	 * Cleaner looking way to get entities in an AABB
+	 * 
+	 * @param world World
+	 * @param minX MinX
+	 * @param minY MinY
+	 * @param minZ MinZ
+	 * @param maxX MaxX
+	 * @param maxY MaxY
+	 * @param maxZ MaxZ
+	 * @return
+	 */
+	public static List getItemsInAABB(World world, double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+		return world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ));
 	}
 	
 }

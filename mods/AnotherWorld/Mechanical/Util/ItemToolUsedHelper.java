@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.common.FMLLog;
 
 import mods.AnotherWorld.Mechanical.MechanicalValues;
+import mods.AnotherWorld.Mechanical.Crafting.WorldCraftingManager;
 import mods.AnotherWorld.Util.EntityUtils;
 import mods.AnotherWorld.Util.WorldUtils;
 import mods.AnotherWorld.World.WorldValues;
@@ -37,7 +38,14 @@ public class ItemToolUsedHelper {
 				MechanicsTableValidation.placeTable(world, x, y, z, MechanicsTableValidation.validateBlocks(world, x, y, z));
 			}
 			
-			/** Attempts to create a mechanics block */
+			ItemStack newBlock = WorldCraftingManager.getOutput(world, x, y, z);
+			
+			if (newBlock != null) {
+				WorldUtils.setBlockAt(world, x, y, z, Block.blocksList[newBlock.itemID], newBlock.getItemDamage(), false);
+			}
+			
+			/*
+			/** Attempts to create a mechanics block *
 			if(WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 0)) {
 				boolean gotGear = false;
 				boolean gotCopper = false;
@@ -99,7 +107,10 @@ public class ItemToolUsedHelper {
 				}
 
 			}
+			*/
+			
 		}
+	
 		return true;
 	}
 	

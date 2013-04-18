@@ -23,4 +23,8 @@ public class ItemStackUtils {
 		return newStack;
 	}
 	
+	public static boolean areStacksOfSameType(ItemStack stack1, ItemStack stack2) {
+		return stack1.itemID == stack2.itemID ? stack1.getItemDamage() == stack2.getItemDamage() : false;			
+	}
+	
 }

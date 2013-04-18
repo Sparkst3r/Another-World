@@ -7,7 +7,6 @@
  */
 
 package mods.AnotherWorld.Core;
-import mods.AnotherWorld.Client.ClientPacketHandler;
 import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Mechanical.GuiHandlerMechanical;
@@ -47,8 +46,8 @@ import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 @NetworkMod(
 		clientSideRequired = true, 
 		serverSideRequired = false,
-		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = ClientPacketHandler.class),
-		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
+		channels = "AnotherWorld",
+		packetHandler = CommonPacketHandler.class
 )
 public class AnotherWorld {
 	

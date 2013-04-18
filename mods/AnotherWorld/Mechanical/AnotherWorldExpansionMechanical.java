@@ -1,6 +1,6 @@
 package mods.AnotherWorld.Mechanical;
 
-import mods.AnotherWorld.Client.ClientPacketHandler;
+
 import mods.AnotherWorld.Common.CommonPacketHandler;
 import mods.AnotherWorld.Common.CommonProxy;
 import mods.AnotherWorld.Core.AnotherWorld;
@@ -27,12 +27,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 		)
 
 
-//NetworkMod annotation. Defines client/server requirement and the packet handler
+/** NetworkMod annotation. Defines client/server requirement and the packet handler */
 @NetworkMod(
 		clientSideRequired = true, 
 		serverSideRequired = false,
-		clientPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = ClientPacketHandler.class),
-		serverPacketHandlerSpec = @SidedPacketHandler(channels = {"AnotherWorld" }, packetHandler = CommonPacketHandler.class)
+		channels = "AnotherWorld",
+		packetHandler = CommonPacketHandler.class
 )
 
 public class AnotherWorldExpansionMechanical {

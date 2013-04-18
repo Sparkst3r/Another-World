@@ -38,7 +38,7 @@ public class ItemTool extends Item implements IItemTool{
 	}
 	
 	/** Texture file names + code name */
-	public static String[] types = new String[] {"tinkerActivate", "tinkerDismantle", "tinkerRotate", "tinkerHelp", "tinkerSetting", "tinkerMove"};     
+	public static String[] types = new String[] {"tinkerActivate", "tinkerDismantle", "tinkerRotate", "tinkerHelp", "tinkerSetting", "tinkerMove"};
 	
 	/** Human-Readable names */
 	public static String[] names = new String[] {"Tinkering Tools", "null", "null", "null", "null"};
@@ -65,7 +65,7 @@ public class ItemTool extends Item implements IItemTool{
 		"HINT: Drop 4 copper ingots and a tin gear", "", "", "", "", ""
 	};
 	public static String[] info4 = new String[] {
-		"on a stone block and right click it.", "", "", "", "", ""
+		"on a smooth stone block and right click it.", "", "", "", "", ""
 	};
     
 	/**Icon array for the textures */

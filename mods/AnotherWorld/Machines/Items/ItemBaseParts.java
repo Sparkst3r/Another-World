@@ -16,18 +16,21 @@ import net.minecraft.util.Icon;
 
 
 /**
- * Meta-data item for the basic machine parts
+ * Meta-data item for the base parts.
  * 
  * @author Sparkst3r
  *
  */
 public class ItemBaseParts extends Item {
-	//Texture file names
-    public static String[] texturenames = new String[] {"partWire", "partTinGear", "partCopperGear"};     
+	/** Texture file names + code name */
+    public static String[] types = new String[] {"dustQuartz"};
     
-    //Icon Array for the textures
+    /** Human-Readable names */
+    public static String[] names = new String[] {"Crushed Quartz"};
+    
+    /** Icon Array */
     @SideOnly(Side.CLIENT)
-    private Icon[] texture;
+    private Icon[] iconBuffer;
 
     /**
      * Constructor
@@ -38,30 +41,39 @@ public class ItemBaseParts extends Item {
         this.setCreativeTab(GlobalValues.AnotherTab);
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
-		GameRegistry.registerItem(this, "parts");
+		GameRegistry.registerItem(this, "ingots");
 	}
 	
-	//Returns the texture based on the damage value
+	/** Returns the texture based on the damage value */
 	@SideOnly(Side.CLIENT)
     @Override
     public Icon getIconFromDamage(int damage){
-    	return texture[damage];
+    	return iconBuffer[damage];
     }
     
-	//Update the textures
+	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void updateIcons(IconRegister iconReg) {
-		this.texture = new Icon[texturenames.length];
-		for (int damage = 0; damage < texturenames.length; damage++) {
-			this.texture[damage] = iconReg.registerIcon(GlobalValues.ModIDCore + ":" + texturenames[damage]);
+	public void updateIcons(IconRegister ir) {
+		iconBuffer = new Icon[types.length];
+		String id = GlobalValues.ModIDCore + ":";
+		for (int icon = 0; icon < types.length; icon++) {
+			iconBuffer[icon] = ir.registerIcon(id + types[icon]);
 		}
 	}
     
+	/** Adds the meta items to the tab */
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int meta = 0; meta < 4; meta++) {
+		for (int meta = 0; meta < types.length; meta++) {
 			list.add(new ItemStack(id, 1, meta));
 		}
+	} 
+	
+	/** Returns the unlocalised name of the block*/
+	@Override
+	public String getUnlocalizedName(ItemStack is) {
+		return types[is.getItemDamage()];
 	}
+
 }

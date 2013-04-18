@@ -23,7 +23,7 @@ import net.minecraft.util.Icon;
  */
 public class ItemBaseParts extends Item {
 	/** Texture file names + code name */
-    public static String[] types = new String[] {"gearTin", "gearCopper", "tinkerHead", "tinkerRod", "tinkerGrip"};
+    public static String[] types = new String[] {"gearTin", "gearCopper", "tinkerHead", "tinkerRod", "tinkerGrip"};//, "tinkerChipDismantle", "tinkerChipRotate", "tinkerChipHelp", "tinkerChipSetting", "tinkerChipMove"};
     
     /** Human-Readable names */
     public static String[] names = new String[] {"Tin Gear", "Copper Gear", "Tinkering Head Assembly", "Tinkering Rod Assembly", "Tinkering Grip Assembly"};

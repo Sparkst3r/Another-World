@@ -14,8 +14,30 @@ import cpw.mods.fml.common.network.Player;
 
 
 public class CommonPacketHandler implements IPacketHandler {
-	@Override
-	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		DataInputStream data = new DataInputStream(new ByteArrayInputStream(packet.data));
-	}
+    @Override
+    public void onPacketData(INetworkManager manager,
+                    Packet250CustomPayload packet, Player player) {
+           
+            if (packet.channel.equals("AnotherWorld")) {
+                    handleRandom(packet);
+            }
+    }
+   
+    private void handleRandom(Packet250CustomPayload packet) {
+            DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
+           
+            int randomInt1;
+            int randomInt2;
+           
+            try {
+                    randomInt1 = inputStream.readInt();
+                    randomInt2 = inputStream.readInt();
+            } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+            }
+           
+            System.out.println(randomInt1 + " " + randomInt2);
+    }
+
 }

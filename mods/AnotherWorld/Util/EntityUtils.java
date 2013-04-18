@@ -1,11 +1,13 @@
 package mods.AnotherWorld.Util;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 /**
@@ -35,7 +37,15 @@ public class EntityUtils {
 		return false;
 	}
 	
-
+	/**
+	 * Drops an EntityItem from an item stack with a random velocity
+	 * 
+	 * @param world The world to drop in
+	 * @param x X value to drop at
+	 * @param y Y value to drop at
+	 * @param z Z value to drop at
+	 * @param stack Stack to drop
+	 */
 	public static void dropItemInWorld(World world, int x, int y, int z, ItemStack stack) {
 		if (stack != null) {
 			Random random = new Random();
@@ -58,4 +68,42 @@ public class EntityUtils {
                 world.spawnEntityInWorld(entityitem);
         }
 	}
+	
+	/**
+	 * Returns the ItemStack from an EntityItem
+	 * @param item The EntityItem
+	 * @return The ItemStack of the EntityItem
+	 */
+	public static ItemStack getStackFromEntity(EntityItem item) {
+		return item.getEntityItem();
+	}
+	
+	/**
+	 * Gets all EntityItems in a radius
+	 * 
+	 * @param world The world
+	 * @param x The centre x coordinate
+	 * @param y The centre y coordinate
+	 * @param z The centre z coordinate
+	 * @param xRadius The radius to check in the x axis
+	 * @param yRadius The radius to check in the y axis
+	 * @param zRadius The radius to check in the z axis
+	 * @return An ItemStack array of the items found
+	 */
+	public static ItemStack[] getItemsInRadius(World world, int x, int y, int z, int xRadius, int yRadius, int zRadius) {
+		List<EntityItem> itemList = WorldUtils.getItemsInAABB(world, x - xRadius, y - yRadius, z - zRadius, x + xRadius, y + yRadius, z + zRadius);
+		ItemStack[] itemStackArray;
+		itemStackArray = new ItemStack[itemList.size()];
+		
+		for (int item = 0; item <itemList.size(); item++) {
+			EntityItem tempItem = itemList.get(item);
+			itemStackArray[item] = EntityUtils.getStackFromEntity(tempItem);
+		}
+		
+		return itemStackArray;
+	}
+	
+	
+	
+	
 }
