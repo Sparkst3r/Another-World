@@ -2,9 +2,14 @@ package mods.AnotherWorld.Mechanical.Render;
 
 import org.lwjgl.opengl.GL11;
 
+import mods.AnotherWorld.Core.GlobalValues;
+import mods.AnotherWorld.Mechanical.MechanicalValues;
+import mods.AnotherWorld.Util.RenderingUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -126,11 +131,19 @@ public class ToolModel extends ModelBase {
     	display.render(scale);
     	
     	GL11.glPushMatrix();
+    	GL11.glScalef(0.008F, 0.008F, 0.008F);
+    	RenderingUtils.drawIconAt(0, 0, MechanicalValues.ItemBasePartsField.getIconFromDamage(0));
+    	GL11.glPopMatrix();
+    	
+    	GL11.glPushMatrix();
 
     	GL11.glTranslatef(0.4F, 0.69F, 0.14F);
     	GL11.glScalef(0.008F, 0.008F, 0.008F);
     	GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
      	GL11.glRotatef(-32, 1.0F, 0.0F, 0.0F);
+    	
+     	RenderHelper.disableStandardItemLighting();
+    	
     	
      	switch(stack.getItemDamage()) {
      		case 0: 
@@ -160,7 +173,13 @@ public class ToolModel extends ModelBase {
      	GL11.glTranslatef(5.0F, 8.0F, -1.0F);
     	Minecraft.getMinecraft().fontRenderer.drawString("Mode", 1, 1, 0xFFFF00);
     	
-    	GL11.glPopMatrix();
-    }
 
+    	
+    	
+    	
+    	GL11.glPopMatrix();
+    	
+       	RenderHelper.enableStandardItemLighting();
+    }
+	
 }
