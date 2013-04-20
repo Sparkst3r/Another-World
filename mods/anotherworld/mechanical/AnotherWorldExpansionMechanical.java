@@ -47,12 +47,13 @@ public class AnotherWorldExpansionMechanical {
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event) {
     	MechanicalValues.initialise();
+    	NetworkRegistry.instance().registerGuiHandler(this, GlobalValues.GUIMechanical);
     }
     
 	//Called during the loading phase
 	@Init 
 	public void load(FMLInitializationEvent event) {
-		NetworkRegistry.instance().registerGuiHandler(this, GlobalValues.GUIMechanical);
+		
 	}
 	
 	//Called during the post-load phase

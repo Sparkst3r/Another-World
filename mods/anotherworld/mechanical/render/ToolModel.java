@@ -1,19 +1,11 @@
 package mods.anotherworld.mechanical.render;
 
-<<<<<<< HEAD:mods/anotherworld/mechanical/render/ToolModel.java
 import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.util.RenderingUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.RenderHelper;
-=======
-import org.lwjgl.opengl.GL11;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
->>>>>>> parent of 42e8217... Fixed worldcrafting, a feature with bugs too:mods/AnotherWorld/Mechanical/Render/ToolModel.java
 import net.minecraft.item.ItemStack;
 
 import org.lwjgl.opengl.GL11;
@@ -124,7 +116,6 @@ public class ToolModel extends ModelBase {
 	public void renderAll(float scale, ItemStack stack) {
 		
 		base.render(scale);
-<<<<<<< HEAD:mods/anotherworld/mechanical/render/ToolModel.java
 		shaft.render(scale);
 		tipRight.render(scale);
 		tipLeft.render(scale);
@@ -203,56 +194,6 @@ public class ToolModel extends ModelBase {
 	    	GL11.glPopMatrix();
     	
        	RenderHelper.enableStandardItemLighting();
-=======
-    	shaft.render(scale);
-    	tipRight.render(scale);
-    	tipLeft.render(scale);
-    	tipTop.render(scale);
-    	tipBottom.render(scale);
-    	plate.render(scale);
-    	handRight.render(scale);
-    	handLeft.render(scale);
-    	handTop.render(scale);
-    	handBottom.render(scale);
-    	display.render(scale);
-    	
-    	GL11.glPushMatrix();
-
-    	GL11.glTranslatef(0.4F, 0.69F, 0.14F);
-    	GL11.glScalef(0.008F, 0.008F, 0.008F);
-    	GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
-     	GL11.glRotatef(-32, 1.0F, 0.0F, 0.0F);
-    	
-     	switch(stack.getItemDamage()) {
-     		case 0: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Activate", 1, 1, 0x000000);
-     			break;
-     		case 1: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Dismantle", 1, 1, 0xFF0000);
-     			break;
-     		case 2: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Rotate", 1, 1, 0x00FF00);
-     			break;
-     		case 3: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Help", 1, 1, 0x0000FF);
-     			break;
-     		case 4: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Settings", 1, 1, 0xFF00FF);
-     			break;
-     		case 5: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Move", 1, 1, 0x00FFFF);
-     			break;
-     		default: 
-     			Minecraft.getMinecraft().fontRenderer.drawString("Unknown", 1, 1, 0x000000);
-     			break;
-     	}
-     	
-    	
-     	GL11.glTranslatef(5.0F, 8.0F, -1.0F);
-    	Minecraft.getMinecraft().fontRenderer.drawString("Mode", 1, 1, 0xFFFF00);
-    	
-    	GL11.glPopMatrix();
->>>>>>> parent of 42e8217... Fixed worldcrafting, a feature with bugs too:mods/AnotherWorld/Mechanical/Render/ToolModel.java
     }
-
+	
 }

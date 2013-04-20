@@ -2,6 +2,7 @@ package mods.anotherworld.world;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
@@ -38,11 +39,11 @@ public class WorldGenerator implements IWorldGenerator {
 	 * 
 	 */
 	public void generateCopper(Random random, int chunkX16, int chunkZ16, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		for(int block = 0; block < 10; block++) {
+		for(int block = 0; block < 11; block++) {
 			int xCoord = chunkX16 + random.nextInt(16);
 			int yCoord = random.nextInt(40);
 			int zCoord = chunkZ16 + random.nextInt(16);
-			new WorldGenMinable(WorldValues.BlockOreField.blockID, 0 , 6).generate(world, random, xCoord, yCoord, zCoord);
+			new WorldGenMinable(WorldValues.BlockOreField.blockID, 0 , 6, Block.stone.blockID).generate(world, random, xCoord, yCoord, zCoord);
 		}
 	}
 	
@@ -55,7 +56,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int xCoord = chunkX16 + random.nextInt(16);
 			int yCoord = random.nextInt(30);
 			int zCoord = chunkZ16 + random.nextInt(16);
-			new WorldGenMinable(WorldValues.BlockOreField.blockID, 1, 5).generate(world, random, xCoord, yCoord, zCoord);
+			new WorldGenMinable(WorldValues.BlockOreField.blockID, 1, 5, Block.stone.blockID).generate(world, random, xCoord, yCoord, zCoord);
 		}
 	}
 	/**
@@ -63,15 +64,15 @@ public class WorldGenerator implements IWorldGenerator {
 	 * 
 	 */
 	public void generateSilverAndLead(Random random, int chunkX16, int chunkZ16, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		for(int block = 0; block < 8; block++) {
+		for(int block = 0; block < 7; block++) {
 			int xCoord = chunkX16 + random.nextInt(16);
 			int yCoord = random.nextInt(20);
 			int zCoord = chunkZ16 + random.nextInt(16);
 			int xCoordSilver = xCoord + (random.nextInt(2) - random.nextInt(4));
 			int yCoordSilver = yCoord + (random.nextInt(2) - random.nextInt(4));
 			int zCoordSilver = zCoord + (random.nextInt(2) - random.nextInt(4));
-			new WorldGenMinable(WorldValues.BlockOreField.blockID, 3, 5).generate(world, random, xCoord, yCoord, zCoord);
-			new WorldGenMinable(WorldValues.BlockOreField.blockID, 2, 3).generate(world, random, xCoordSilver, yCoordSilver, zCoordSilver);
+			new WorldGenMinable(WorldValues.BlockOreField.blockID, 3, 5, Block.stone.blockID).generate(world, random, xCoord, yCoord, zCoord);
+			new WorldGenMinable(WorldValues.BlockOreField.blockID, 2, 3, Block.stone.blockID).generate(world, random, xCoordSilver, yCoordSilver, zCoordSilver);
 		}
 	}
 	

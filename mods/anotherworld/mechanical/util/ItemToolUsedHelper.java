@@ -28,75 +28,9 @@ public class ItemToolUsedHelper {
 			}
 			
 			ItemStack newBlock = WorldCraftingManager.getOutput(world, x, y, z);
-			
 			if (newBlock != null) {
 				WorldUtils.setBlockAt(world, x, y, z, Block.blocksList[newBlock.itemID], newBlock.getItemDamage(), false);
 			}
-			
-			/*
-			/** Attempts to create a mechanics block *
-			if(WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 0)) {
-				boolean gotGear = false;
-				boolean gotCopper = false;
-				boolean copperRequiresKill = false;
-				boolean gearRequiresKill = false;
-				boolean copperRequiresDec = false;
-				boolean gearRequiresDec = false;
-
-				EntityItem copperItem = null;
-				EntityItem gearItem = null;
-				
-				List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox((double) (x - 2), (double) (y), (double) (z - 2), (double) (x + 2), (double) (y + 2), (double) (z + 2)));
-				
-				for (EntityItem item : items) {
-					if (!gotGear) {
-						if (EntityUtils.isEntityItem(item, MechanicalValues.ItemBasePartsField, 0)) {
-							if(item.getEntityItem().stackSize == 1) {
-								gotGear = true;
-								gearItem = item;
-								gearRequiresKill = true;
-							}
-							else if (item.getEntityItem().stackSize > 1){
-								gotGear = true;
-								gearItem = item;
-								gearRequiresDec = true;
-							}
-
-						}
-					}
-					
-					if (!gotCopper) {
-						if (EntityUtils.isEntityItem(item, WorldValues.ItemIngotField, 0)) {
-							int stackSize = item.getEntityItem().stackSize;
-							if (stackSize > 4){
-								gotCopper = true;
-								copperItem = item;
-								copperRequiresDec = true;
-								FMLLog.warning("Got copper");
-							}
-							else if(stackSize == 4) {
-								gotCopper = true;
-								copperItem = item;
-								copperRequiresKill = true;
-								FMLLog.warning("Got copper");
-							}
-
-
-						}
-					}
-					
-					if (gotCopper && gotGear) {
-						if(gearRequiresKill) gearItem.setDead();
-						if(copperRequiresKill) copperItem.setDead();
-						if(gearRequiresDec) gearItem.getEntityItem().stackSize -= 1;
-						if(copperRequiresDec) copperItem.getEntityItem().stackSize -= 4;
-						
-						WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-					}
-				}
-
-			}
-			*/
 			
 		}
 	

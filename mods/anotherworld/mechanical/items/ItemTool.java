@@ -59,7 +59,7 @@ public class ItemTool extends Item implements IItemTool{
 	};
 	
 	public static String[] info3 = new String[] {
-		"HINT: Drop 4 copper ingots and a tin gear", "", "", "", "", ""
+		"HINT: Drop 4 copper ingots and 2 tin gears", "", "", "", "", ""
 	};
 	public static String[] info4 = new String[] {
 		"on a smooth stone block and right click it.", "", "", "", "", ""
