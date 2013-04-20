@@ -1,4 +1,4 @@
-package mods.anotherworld.mechanical.util;
+package mods.anotherworld.mechanical.tool;
 
 import mods.anotherworld.mechanical.MechanicalValues;
 import mods.anotherworld.mechanical.items.ItemTool;
@@ -69,6 +69,7 @@ public class ItemToolSwitcherHelper {
 		if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
 			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ACTIVATE.ordinal());
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.DISMANTLE.ordinal());
+			s.stackTagCompound.setString("identifier", "dismantle");
 			return s;
 		}
 		
@@ -90,6 +91,7 @@ public class ItemToolSwitcherHelper {
 		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
 			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.ROTATE.ordinal());
+			s.stackTagCompound.setString("identifier", "dismantle");
 			return s;
 		}
 		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
@@ -117,6 +119,7 @@ public class ItemToolSwitcherHelper {
 		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
 			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.HELP.ordinal());
+			s.stackTagCompound.setString("identifier", "dismantle");
 			return s;
 		}
 		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
@@ -147,9 +150,10 @@ public class ItemToolSwitcherHelper {
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
 			return s;
 		}
-		else if(meta == ItemTool.ItemToolEnum.ACTIVATE.ordinal()) {
+		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
 			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.SETTINGS.ordinal());
+			s.stackTagCompound.setString("identifier", "dismantle");
 			return s;
 		}
 		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {
@@ -188,6 +192,7 @@ public class ItemToolSwitcherHelper {
 		else if(meta == ItemTool.ItemToolEnum.DISMANTLE.ordinal()) {
 			ItemStack s = ItemStackUtils.makeStackWithCompound(MechanicalValues.ItemToolField, ItemTool.ItemToolEnum.ROTATE.ordinal());
 			s.stackTagCompound.setShort("type", (short) ItemTool.ItemToolEnum.MOVE.ordinal());
+			s.stackTagCompound.setString("identifier", "dismantle");
 			return s;
 		}
 		else if(meta == ItemTool.ItemToolEnum.ROTATE.ordinal()) {

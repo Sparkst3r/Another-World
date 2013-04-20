@@ -31,11 +31,7 @@ public class BlockMechanicsTableParts extends Block{
 	@SideOnly(Side.CLIENT)
 	private Icon[][] iconBuffer;
     
-	/** Provides random values */ 
-	private final Random random = new Random();
-	
-    
-    /**
+	/**
 	 * Constructor
 	 * @param id
 	 */
@@ -118,7 +114,7 @@ public class BlockMechanicsTableParts extends Block{
     /** Returns the texture for the meta and side */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		//If the meta is less than 4, stops ArrayIndexOutOfBoundsExceptions
 		return (meta < 4)? iconBuffer[meta][side] : iconBuffer[0][0];
 	}
@@ -132,17 +128,20 @@ public class BlockMechanicsTableParts extends Block{
 	}
 
 	/** Is the meta block allowed to have a tile entity? */
+	@Override
 	public boolean hasTileEntity(int meta) {
 		//Only meta block 0 has a tile entity
 		return meta == 0? true : false;
 	}
     
 	/** Will create a tile entity if hasTileEntity(meta) resolves as true for the metadata passed*/
+	@Override
 	public TileEntity createTileEntity(World world, int meta){
 		return new TileMechanicsTable();
 	}
 	
 	/** How many items are dropped when broken */
+	@Override
 	public int quantityDropped(Random par1Random) {
 		return 0;
 	}

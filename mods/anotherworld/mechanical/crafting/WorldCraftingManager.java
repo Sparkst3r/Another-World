@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class WorldCraftingManager implements IWorldCraftingManager{
-	private static List recipes = new ArrayList();
+	private static List<WorldBlockRecipe> recipes = new ArrayList<WorldBlockRecipe>();
 	
 	
 	@Override

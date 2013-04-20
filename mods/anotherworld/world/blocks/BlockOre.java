@@ -43,7 +43,7 @@ public class BlockOre extends Block {
     /** Returns the texture for the meta and side */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		//If the meta is less than 4, stops ArrayIndexOutOfBoundsExceptions
 		return (meta < 4)? iconBuffer[meta] : iconBuffer[0];
 	}

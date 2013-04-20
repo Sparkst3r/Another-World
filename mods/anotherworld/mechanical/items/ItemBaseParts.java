@@ -53,7 +53,7 @@ public class ItemBaseParts extends Item {
 	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void updateIcons(IconRegister ir) {
+	public void registerIcons(IconRegister ir) {
 		iconBuffer = new Icon[types.length];
 		String id = GlobalValues.ModIDCore + ":";
 		for (int icon = 0; icon < types.length; icon++) {
@@ -62,6 +62,7 @@ public class ItemBaseParts extends Item {
 	}
     
 	/** Adds the meta items to the tab */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int meta = 0; meta < types.length; meta++) {

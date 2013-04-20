@@ -1,6 +1,6 @@
 package mods.anotherworld.mechanical;
 
-import mods.anotherworld.api.crafting.CraftingManagers;
+import mods.anotherworld.api.Managers;
 import mods.anotherworld.core.AnotherWorld;
 import mods.anotherworld.mechanical.blocks.BlockBaseParts;
 import mods.anotherworld.mechanical.blocks.BlockMechanicsTableParts;
@@ -10,6 +10,8 @@ import mods.anotherworld.mechanical.crafting.WorldCraftingManager;
 import mods.anotherworld.mechanical.items.ItemBaseParts;
 import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
+import mods.anotherworld.mechanical.tool.ToolActionDismantle;
+import mods.anotherworld.mechanical.tool.ToolActionManager;
 import mods.anotherworld.util.RegistryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -33,8 +35,9 @@ public class MechanicalValues {
 	
 	public static void initialise() {
 		/** Initialise the crafting manager and bind it to the API functions */
-		CraftingManagers.mechanicsTable = new MechTableCraftingManager();
-		CraftingManagers.world = new WorldCraftingManager();
+		Managers.mechanicsTableCrafting = new MechTableCraftingManager();
+		Managers.worldCrafting = new WorldCraftingManager();
+		Managers.toolActionManager = new ToolActionManager();
 		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
@@ -48,6 +51,7 @@ public class MechanicalValues {
 		ItemCrafting.initialise();
 		BlockCrafting.initialise();
 		
+		Managers.toolActionManager.addAction(new ToolActionDismantle());
 		
 		SpecialCrafting.initialise();
 		//Registers the customs renderers

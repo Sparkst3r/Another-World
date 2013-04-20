@@ -120,7 +120,8 @@ public class WorldUtils {
 	 * @param maxZ MaxZ
 	 * @return
 	 */
-	public static List getItemsInAABB(World world, double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+	@SuppressWarnings("unchecked")
+	public static List<EntityItem> getItemsInAABB(World world, double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
 		return world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ));
 	}
 	

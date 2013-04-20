@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class MechTableCraftingManager implements IMechanicsTableManager{
 	
-	private static List recipes = new ArrayList();
+	private static List<MechanicsShapedRecipe> recipes = new ArrayList<MechanicsShapedRecipe>();
 	
 	
 	/**
@@ -45,9 +45,9 @@ public class MechTableCraftingManager implements IMechanicsTableManager{
 			}
 		}
 
-		HashMap map;
+		HashMap<Character, ItemStack> map;
 
-		for (map = new HashMap(); recipePos < recipe.length; recipePos += 2) {
+		for (map = new HashMap<Character, ItemStack>(); recipePos < recipe.length; recipePos += 2) {
 			Character recipeChar = (Character)recipe[recipePos];
 			ItemStack stack = null;
 
@@ -77,7 +77,7 @@ public class MechTableCraftingManager implements IMechanicsTableManager{
          }
 
          MechanicsShapedRecipe shapedRecipe = new MechanicsShapedRecipe(width, height, inputStacks, outputStack);
-         this.recipes.add(shapedRecipe);
+         MechTableCraftingManager.recipes.add(shapedRecipe);
          return true;
 }
 	/**
@@ -177,8 +177,8 @@ public void addShapelessRecipe(ItemStack par1ItemStack, Object ... par2ArrayOfOb
 	
 	
 	/** Returns the list of recipes */
-	public List getRecipeList() {
-		return this.recipes;
+	public List<MechanicsShapedRecipe> getRecipeList() {
+		return MechTableCraftingManager.recipes;
 	}
 	
 	

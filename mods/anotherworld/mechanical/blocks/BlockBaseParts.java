@@ -53,7 +53,7 @@ public class BlockBaseParts extends Block implements IDismantleable{
     /** Returns the texture for the meta and side */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getBlockTextureFromSideAndMetadata(int side, int meta) {
+	public Icon getIcon(int side, int meta) {
 		return (meta < 2)? iconBuffer[meta] : iconBuffer[0];
 	}
    

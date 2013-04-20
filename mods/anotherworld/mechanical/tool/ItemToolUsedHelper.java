@@ -1,11 +1,10 @@
-package mods.anotherworld.mechanical.util;
+package mods.anotherworld.mechanical.tool;
 
-import mods.anotherworld.api.tool.IDismantleable;
+
+
 import mods.anotherworld.mechanical.MechanicalValues;
-import mods.anotherworld.mechanical.crafting.WorldCraftingManager;
-import mods.anotherworld.util.EntityUtils;
+import mods.anotherworld.mechanical.util.MechanicsTableValidation;
 import mods.anotherworld.util.WorldUtils;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -27,10 +26,11 @@ public class ItemToolUsedHelper {
 				MechanicsTableValidation.placeTable(world, x, y, z, MechanicsTableValidation.validateBlocks(world, x, y, z));
 			}
 			
-			ItemStack newBlock = WorldCraftingManager.getOutput(world, x, y, z);
-			if (newBlock != null) {
-				WorldUtils.setBlockAt(world, x, y, z, Block.blocksList[newBlock.itemID], newBlock.getItemDamage(), false);
-			}
+			//ItemStack newBlock = WorldCraftingManager.getOutput(world, x, y, z);
+			//if (newBlock != null) {
+			//	WorldUtils.setBlockAt(world, x, y, z, Block.blocksList[newBlock.itemID], newBlock.getItemDamage(), false);
+			//}
+
 			
 		}
 	
@@ -39,6 +39,9 @@ public class ItemToolUsedHelper {
 	
 	
 	public void dismantleToolUsed(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
+		
+		
+		/*
 		int blockId = world.getBlockId(x, y, z);
 		
 		if (blockId > 0 && Block.blocksList[blockId] instanceof IDismantleable) {
@@ -50,6 +53,7 @@ public class ItemToolUsedHelper {
 				}
 			}	
 		}
+	*/
 	}
 	
 	

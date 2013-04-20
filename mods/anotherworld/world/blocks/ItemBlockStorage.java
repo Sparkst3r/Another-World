@@ -25,6 +25,7 @@ public class ItemBlockStorage extends ItemBlock{
 		
 		return types[is.getItemDamage()];
 	}
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int meta = 0; meta < 4; meta++) {

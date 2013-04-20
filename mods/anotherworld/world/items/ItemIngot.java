@@ -28,11 +28,11 @@ public class ItemIngot extends Item {
     public static String[] names = new String[] {"Copper Ingot", "Tin Ingot", "Silver Ingot", "Lead Ingot"};
     
     /** Icon Array */
-    @SideOnly(Side.CLIENT)
-    private Icon[] iconBuffer;
+	@SideOnly(Side.CLIENT)
+	private Icon[] iconBuffer;
 
-    /**
-     * Constructor
+	/**
+	 * Constructor
      * @param id Item ID
      */
 	public ItemIngot(int id) {
@@ -53,7 +53,7 @@ public class ItemIngot extends Item {
 	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void updateIcons(IconRegister ir) {
+	public void registerIcons(IconRegister ir) {
 		iconBuffer = new Icon[types.length];
 		String id = GlobalValues.ModIDCore + ":";
 		for (int icon = 0; icon < types.length; icon++) {
@@ -62,6 +62,7 @@ public class ItemIngot extends Item {
 	}
     
 	/** Adds the meta items to the tab */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int meta = 0; meta < types.length; meta++) {

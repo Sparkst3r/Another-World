@@ -3,9 +3,10 @@ package mods.anotherworld.mechanical.items;
 import java.util.List;
 
 import mods.anotherworld.api.tool.IItemTool;
+import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.core.GlobalValues;
-import mods.anotherworld.mechanical.util.ItemToolSwitcherHelper;
-import mods.anotherworld.mechanical.util.ItemToolUsedHelper;
+import mods.anotherworld.mechanical.tool.ItemToolUsedHelper;
+import mods.anotherworld.mechanical.tool.ToolActionManager;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -40,6 +41,10 @@ public class ItemTool extends Item implements IItemTool{
 	/** Human-Readable names */
 	public static String[] names = new String[] {"Tinkering Tools", "null", "null", "null", "null"};
 
+
+	
+	
+	
 	/** Information */
 	public static String[] info1 = new String[] {
 		"Right click certain blocks to activate",
@@ -94,6 +99,7 @@ public class ItemTool extends Item implements IItemTool{
 		for(int i = 0; i < 6; i++) {
 			if(stack.getItemDamage() == i) {
 				stack.stackTagCompound.setShort("type", (short) i);
+				
 			}
 		}
 
@@ -105,16 +111,25 @@ public class ItemTool extends Item implements IItemTool{
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		
-		if (!player.isSneaking()) {
+		
+		
+		
+		/*if (!player.isSneaking()) {
 			
-			/** Creates a new stackTagCompound for creative spawned items. */
+			/** Creates a new stackTagCompound for creative spawned items. *
 			if( stack.stackTagCompound == null) {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.stackTagCompound.setShort("type", (short) 5);
 			}
-			return ItemToolSwitcherHelper.getTypeFromNBT(stack, player);
+			
+			ItemStack s = ItemToolSwitcherHelper.getTypeFromNBT(stack, player);
+			s.stackTagCompound.setString("identifier", "dismantle");
+			
+			return s;
 		}
+		*/
 		return stack;
+		
 	}
 	
 	/** Called when the item is used on a block **/
@@ -123,20 +138,36 @@ public class ItemTool extends Item implements IItemTool{
 		if(stack.getItemDamage() == 0) {
 			ItemToolUsedHelper.instance.activationToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
 		}
-		if(stack.getItemDamage() == 1) {
-			ItemToolUsedHelper.instance.dismantleToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
-		}
+		//if(stack.getItemDamage() == 1) {
+		//	ItemToolUsedHelper.instance.dismantleToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
+		//}
 		else if(stack.getItemDamage() == 5) {
 			ItemToolUsedHelper.instance.moveToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
 		}
 		
-		
-		
+		List<IToolAction> list = ToolActionManager.getActions(stack);
+		System.out.println(list.size());
+		if (list != null) {
+			for(int action = 0; action < list.size(); action++){
+				
+				if (list.get(action).canTriggerAction(stack, player, world, x, y, z, side, locX, locY, locZ)) {
+					list.get(action).triggerAction(player, world, x, y, z, side, locX, locY, locZ);
+				}
+				
+				
+				
+				
+				
+			}
+		}
+
+
 		
 		return true;
 	}
 	
 	/** Provides access to add custom lines to the item description **/
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)  {
@@ -151,6 +182,7 @@ public class ItemTool extends Item implements IItemTool{
         else {list.add("Hold SHIFT for more info");}
 	}
 	
+	
 	/** Returns the texture based on the damage value */
 	@SideOnly(Side.CLIENT)
     @Override
@@ -161,7 +193,7 @@ public class ItemTool extends Item implements IItemTool{
 	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void updateIcons(IconRegister ir) {
+	public void registerIcons(IconRegister ir) {
 		iconBuffer = new Icon[types.length + 7];
 		
 		String id = GlobalValues.ModIDCore + ":";
@@ -178,6 +210,7 @@ public class ItemTool extends Item implements IItemTool{
 	}
 	
 	/** Adds the meta items to the tab */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
 		list.add(new ItemStack(id, 1, 0));
