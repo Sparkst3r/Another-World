@@ -38,7 +38,7 @@ public class MechanicalValues {
 		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
-		
+
 		
 		ItemToolField = new ItemTool(5001);
 		ItemBasePartsField = new ItemBaseParts(5002);
@@ -46,7 +46,7 @@ public class MechanicalValues {
 		registerTileEntities();
 		addInfoForMeta();
 		ItemCrafting.initialise();
-		BlockCrafting.initialise();
+		
 		
 		
 		SpecialCrafting.initialise();
