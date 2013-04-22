@@ -1,6 +1,5 @@
 package mods.anotherworld.mechanical;
 
-import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.world.WorldValues;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -26,7 +25,7 @@ public class ItemCrafting {
 		GameRegistry.addRecipe(new ItemStack(MechanicalValues.ItemBasePartsField, 1, 4),
 				"CGC", "LWL", "C C", 'G', new ItemStack(MechanicalValues.ItemBasePartsField, 1, 1), 'C', new ItemStack(WorldValues.ItemIngotField, 1, 0), 'L', new ItemStack(WorldValues.ItemIngotField, 1, 3), 'W', new ItemStack(Block.cloth, 1, 13));
 		
-		GameRegistry.addRecipe(new ItemStack(MechanicalValues.ItemToolField, 1 , ItemTool.ItemToolEnum.ACTIVATE.ordinal()),
+		GameRegistry.addRecipe(new ItemStack(MechanicalValues.ItemToolField, 1 , 0),
 				"H  ", " R ", "  G", 'H', new ItemStack(MechanicalValues.ItemBasePartsField, 1, 2), 'R', new ItemStack(MechanicalValues.ItemBasePartsField, 1, 3), 'G', new ItemStack(MechanicalValues.ItemBasePartsField, 1, 4));
 	}
 }

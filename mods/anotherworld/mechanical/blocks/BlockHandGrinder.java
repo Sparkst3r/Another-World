@@ -20,8 +20,7 @@ public class BlockHandGrinder extends Block {
 	/** Is the meta block allowed to have a tile entity? */
 	@Override
 	public boolean hasTileEntity(int meta) {
-		//Only meta block 0 has a tile entity
-		return meta == 0? true : false;
+		return true;
 	}
     
 	/** Will create a tile entity if hasTileEntity(meta) resolves as true for the metadata passed*/

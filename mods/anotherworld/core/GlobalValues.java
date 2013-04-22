@@ -9,7 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 
 public class GlobalValues {
 	//Mod Info
-	public static final String ModIDCore = "anotherWorld";
+	public static final String ModIDCore = "anotherworld";
 	public static final String ModNameCore = "AnotherWorld";
 	public static final String ModIDWorld = "AnotherWorld|World";
 	public static final String ModNameWorld = "AnotherWorld World Expansion";

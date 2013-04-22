@@ -5,6 +5,7 @@ import java.util.List;
 
 import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.api.tool.IToolActionManager;
+import mods.anotherworld.api.tool.IToolMode;
 import net.minecraft.item.ItemStack;
 
 public class ToolActionManager implements IToolActionManager {
@@ -17,16 +18,15 @@ public class ToolActionManager implements IToolActionManager {
 	}
 	
 	public static List<IToolAction> getActions(ItemStack stack) {
+		List<IToolAction> validActions = new ArrayList<IToolAction>();
 		
-		
-		
-		for(int x = 0; x < actions.size(); x++) {
-			if(true){//stack.getTagCompound().hasKey("identifier") && actions.iterator().next().toolClass().equals("tool." + stack.getTagCompound().getString("identifier"))){
-		//		list.add(actions.get(x));
+		IToolMode mode = ToolModeManager.getModes().get(stack.getItemDamage());
+		for (int action = 0; action < actions.size(); action++) {
+			if (mode.identifier().equals(actions.get(action).toolClass())) {
+				validActions.add(actions.get(action));
 			}
 		}
-		
-		return actions;
+		return validActions;
 	}
 	
 	

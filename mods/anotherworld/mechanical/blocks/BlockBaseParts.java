@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Sparkst3r
  *
  */
-public class BlockBaseParts extends Block implements IDismantleable{
+public class BlockBaseParts extends Block implements IDismantleable {
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconBuffer;

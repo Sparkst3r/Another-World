@@ -10,8 +10,16 @@ import mods.anotherworld.mechanical.crafting.WorldCraftingManager;
 import mods.anotherworld.mechanical.items.ItemBaseParts;
 import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
-import mods.anotherworld.mechanical.tool.ToolActionDismantle;
+import mods.anotherworld.mechanical.tool.ToolActionAWDismantle;
+import mods.anotherworld.mechanical.tool.ToolActionAssemble;
+import mods.anotherworld.mechanical.tool.ToolActionAssembleMechTable;
 import mods.anotherworld.mechanical.tool.ToolActionManager;
+import mods.anotherworld.mechanical.tool.ToolModeActivate;
+import mods.anotherworld.mechanical.tool.ToolModeDismantle;
+import mods.anotherworld.mechanical.tool.ToolModeHelp;
+import mods.anotherworld.mechanical.tool.ToolModeManager;
+import mods.anotherworld.mechanical.tool.ToolModeRotate;
+import mods.anotherworld.mechanical.tool.ToolModeSetting;
 import mods.anotherworld.util.RegistryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -38,6 +46,7 @@ public class MechanicalValues {
 		Managers.mechanicsTableCrafting = new MechTableCraftingManager();
 		Managers.worldCrafting = new WorldCraftingManager();
 		Managers.toolActionManager = new ToolActionManager();
+		Managers.toolModeManager = new ToolModeManager();
 		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
@@ -47,12 +56,22 @@ public class MechanicalValues {
 		ItemBasePartsField = new ItemBaseParts(5002);
 		
 		registerTileEntities();
-		addInfoForMeta();
+
 		ItemCrafting.initialise();
 		BlockCrafting.initialise();
 		
-		Managers.toolActionManager.addAction(new ToolActionDismantle());
+		/* Register the Tool modes and actions*/
+		Managers.toolModeManager.addMode(new ToolModeActivate());
+		Managers.toolModeManager.addMode(new ToolModeDismantle());
+		Managers.toolModeManager.addMode(new ToolModeRotate());
+		Managers.toolModeManager.addMode(new ToolModeHelp());
+		Managers.toolModeManager.addMode(new ToolModeSetting());
+		Managers.toolActionManager.addAction(new ToolActionAWDismantle());
+		Managers.toolActionManager.addAction(new ToolActionAssemble());
+		Managers.toolActionManager.addAction(new ToolActionAssembleMechTable());
 		
+		
+		addInfoForMeta();
 		SpecialCrafting.initialise();
 		//Registers the customs renderers
 		AnotherWorld.proxy.registerRenders();	
@@ -64,9 +83,8 @@ public class MechanicalValues {
 	 * Adds extra information for meta data items. Eg. Names
 	 */
 	public static void addInfoForMeta() {
-		//Tool
-		for (int meta = 0; meta < ItemTool.types.length; meta++) {	
-			RegistryUtils.addName(ItemToolField, meta, ItemTool.names[0]);
+		for (int meta = 0; meta < ToolModeManager.getModes().size(); meta++) {
+			RegistryUtils.addName(ItemToolField, meta, "Tinkering Tool");
 		}
 		
 		for (int meta = 0; meta < ItemBaseParts.types.length; meta++) {

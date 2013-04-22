@@ -5,8 +5,8 @@ import java.util.List;
 import mods.anotherworld.api.tool.IItemTool;
 import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.core.GlobalValues;
-import mods.anotherworld.mechanical.tool.ItemToolUsedHelper;
 import mods.anotherworld.mechanical.tool.ToolActionManager;
+import mods.anotherworld.mechanical.tool.ToolModeManager;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,45 +30,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 public class ItemTool extends Item implements IItemTool{
-
-	public enum ItemToolEnum {
-	    ACTIVATE, DISMANTLE, ROTATE, HELP, SETTINGS, MOVE;
-	}
-	
-	/** Texture file names + code name */
-	public static String[] types = new String[] {"tinkerActivate", "tinkerDismantle", "tinkerRotate", "tinkerHelp", "tinkerSetting", "tinkerMove"};
-	
-	/** Human-Readable names */
-	public static String[] names = new String[] {"Tinkering Tools", "null", "null", "null", "null"};
-
-
-	
-	
-	
-	/** Information */
-	public static String[] info1 = new String[] {
-		"Right click certain blocks to activate",
-		"Right click a machine or mechanical",
-		"Right click a rotatable block to turn it",
-		"Right click any block to get information",
-		"Right click a machine or mechanical device",
-		"Right click a valid block to pick it up"
-	};
-	public static String[] info2 = new String[] {
-		"their features",
-		"device to safely dismantle them",
-		"",
-		"about that block",
-		"device to alter it's settings",
-		"and place it again"
-	};
-	
-	public static String[] info3 = new String[] {
-		"HINT: Drop 4 copper ingots and 2 tin gears", "", "", "", "", ""
-	};
-	public static String[] info4 = new String[] {
-		"on a smooth stone block and right click it.", "", "", "", "", ""
-	};
     
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
@@ -89,18 +50,13 @@ public class ItemTool extends Item implements IItemTool{
 	
 	/** 
 	 * Called on creation 
-	 * Assigns a "type" to the itemstack so the modes can be switched correctly
+	 * Assigns a "type" to the ItemStack so the modes can be switched correctly
 	 */
 	@Override
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if( stack.stackTagCompound == null) {
+		if (!world.isRemote) {
 			stack.setTagCompound(new NBTTagCompound());
-		}
-		for(int i = 0; i < 6; i++) {
-			if(stack.getItemDamage() == i) {
-				stack.stackTagCompound.setShort("type", (short) i);
-				
-			}
+			stack.stackTagCompound.setString("type", ToolModeManager.getModes().get(stack.getItemDamage()).identifier().substring(12));
 		}
 
 	}
@@ -110,60 +66,46 @@ public class ItemTool extends Item implements IItemTool{
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		
-		
-		
-		
-		/*if (!player.isSneaking()) {
-			
-			/** Creates a new stackTagCompound for creative spawned items. *
-			if( stack.stackTagCompound == null) {
+		if (!world.isRemote && Keyboard.isKeyDown(Keyboard.KEY_R)) {
+			if(stack.getTagCompound() == null) {
 				stack.setTagCompound(new NBTTagCompound());
-				stack.stackTagCompound.setShort("type", (short) 5);
+				stack.getTagCompound().setString("type", ToolModeManager.getModes().get(ToolModeManager.getModes().size() - 1).identifier().substring(12));
 			}
 			
-			ItemStack s = ItemToolSwitcherHelper.getTypeFromNBT(stack, player);
-			s.stackTagCompound.setString("identifier", "dismantle");
+			ItemStack newStack = new ItemStack(stack.itemID, 1, 0);
+			newStack.setTagCompound(new NBTTagCompound());
+			newStack.getTagCompound().setString("type", stack.getTagCompound().getString("type"));
 			
-			return s;
+
+
+			if (stack.getTagCompound().getString("type").equals(ToolModeManager.getModes().get(stack.getItemDamage()).identifier().substring(12))) {
+				newStack.setItemDamage(0);
+			}
+			
+			else {
+				newStack.setItemDamage(stack.getItemDamage() + 1);
+				newStack.getTagCompound().setString("type", stack.getTagCompound().getString("type"));
+			}
+			return newStack;
 		}
-		*/
 		return stack;
-		
 	}
 	
 	/** Called when the item is used on a block **/
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
-		if(stack.getItemDamage() == 0) {
-			ItemToolUsedHelper.instance.activationToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
-		}
-		//if(stack.getItemDamage() == 1) {
-		//	ItemToolUsedHelper.instance.dismantleToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
-		//}
-		else if(stack.getItemDamage() == 5) {
-			ItemToolUsedHelper.instance.moveToolUsed(stack, player, world, x, y, z, side, locX, locY, locZ);
-		}
-		
-		List<IToolAction> list = ToolActionManager.getActions(stack);
-		System.out.println(list.size());
-		if (list != null) {
-			for(int action = 0; action < list.size(); action++){
-				
-				if (list.get(action).canTriggerAction(stack, player, world, x, y, z, side, locX, locY, locZ)) {
-					list.get(action).triggerAction(player, world, x, y, z, side, locX, locY, locZ);
+		if(!world.isRemote && player.isSneaking()) {
+			List<IToolAction> list = ToolActionManager.getActions(stack);
+			if (list != null) {
+				for(int action = 0; action < list.size(); action++){
+					if (list.get(action).canTriggerAction(stack, player, world, x, y, z, side, locX, locY, locZ)) {
+						list.get(action).triggerAction(player, world, x, y, z, side, locX, locY, locZ);
+						return true;
+					}
 				}
-				
-				
-				
-				
-				
 			}
 		}
-
-
-		
-		return true;
+		return false;
 	}
 	
 	/** Provides access to add custom lines to the item description **/
@@ -171,15 +113,16 @@ public class ItemTool extends Item implements IItemTool{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)  {
-		int meta = stack.getItemDamage();
-		
-        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
-        	list.add(info1[meta]);
-        	list.add(info2[meta]);
-        	list.add(info3[meta]);
-        	list.add(info4[meta]);
-        }
-        else {list.add("Hold SHIFT for more info");}
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)) {
+			for (int line = 0; line < ToolModeManager.getModes().get(stack.getItemDamage()).infoLine().length; line++) {
+				if(ToolModeManager.getModes().get(stack.getItemDamage()).infoLine()[line] != null) {
+					list.add(ToolModeManager.getModes().get(stack.getItemDamage()).infoLine()[line]);
+				}
+			}
+		}
+		else {
+			list.add("Press SHIFT for more info");
+		}
 	}
 	
 	
@@ -194,33 +137,24 @@ public class ItemTool extends Item implements IItemTool{
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister ir) {
-		iconBuffer = new Icon[types.length + 7];
-		
+		iconBuffer = new Icon[(ToolModeManager.getModes().size() * 2) + 1];		
 		String id = GlobalValues.ModIDCore + ":";
-		for (int icon = 0; icon < types.length; icon++) {
-			iconBuffer[icon] = ir.registerIcon(id + types[icon]);
+		for (int icon = 0; icon < ToolModeManager.getModes().size(); icon++) {
+			iconBuffer[icon] = ir.registerIcon(id + ToolModeManager.getModes().get(icon).texture());
+			iconBuffer[ToolModeManager.getModes().size() + icon] = ir.registerIcon(id + ToolModeManager.getModes().get(icon).icon());
 		}
-		
-		iconBuffer[types.length + 1] = ir.registerIcon(id + "iconTinkerActivate");
-		iconBuffer[types.length + 2] = ir.registerIcon(id + "iconTinkerDismantle");
-		iconBuffer[types.length + 3] = ir.registerIcon(id + "iconTinkerRotate");
-		iconBuffer[types.length + 4] = ir.registerIcon(id + "iconTinkerHelp");
-		iconBuffer[types.length + 5] = ir.registerIcon(id + "iconTinkerSetting");
-		iconBuffer[types.length + 6] = ir.registerIcon(id + "iconTinkerMove");
 	}
 	
 	/** Adds the meta items to the tab */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		list.add(new ItemStack(id, 1, 0));
+			list.add(new ItemStack(id, 1, 0));
 	} 
 	
 	/** Returns the unlocalised name of the block*/
 	@Override
 	public String getUnlocalizedName(ItemStack is) {
-		return types[is.getItemDamage()];
+		return 	ToolModeManager.getModes().get(is.getItemDamage()).identifier().substring(5);
 	}
-
-	
 }

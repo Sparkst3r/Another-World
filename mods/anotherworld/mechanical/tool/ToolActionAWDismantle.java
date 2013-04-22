@@ -8,7 +8,7 @@ import mods.anotherworld.api.tool.IDismantleable;
 import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.util.EntityUtils;
 
-public class ToolActionDismantle implements IToolAction{
+public class ToolActionAWDismantle implements IToolAction{
 
 	@Override
 	public String identifier() {
@@ -17,7 +17,7 @@ public class ToolActionDismantle implements IToolAction{
 
 	@Override
 	public String toolClass() {
-		return "tool.dismantle";
+		return "mode.tinker.dismantle";
 	}
 
 	@Override

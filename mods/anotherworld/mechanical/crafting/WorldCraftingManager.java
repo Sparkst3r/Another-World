@@ -57,14 +57,9 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 								recipeItemCount++;
 								itemInArray[item][recipeItem] = true;
 							}
-							
-							
 							if (allTrue(hasItems)) {
 								for (int I = 0; I < nearbyItems.length; I++) {
-									System.out.println(nearbyItems.length);
 									for(int RI = 0; RI < currentRecipe.getItems().length; RI++) {
-										System.out.println(itemInArray[I][RI]);
-										
 										if(itemInArray[I][RI]) {
 											nearbyItems[I].stackSize -= currentRecipe.getItems()[RI].stackSize;
 										}

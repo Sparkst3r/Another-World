@@ -1,6 +1,7 @@
 package mods.anotherworld.mechanical.render;
 
 import mods.anotherworld.mechanical.items.ItemTool;
+import mods.anotherworld.mechanical.tool.ToolModeManager;
 import mods.anotherworld.util.RenderingUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
@@ -128,72 +129,37 @@ public class ToolModel extends ModelBase {
 		handBottom.render(scale);
 		display.render(scale);
     	
-    	/* */
+    	/* Draw the mode icon. */
 		GL11.glPushMatrix();
-			GL11.glTranslatef(0.3F, 0.61F, 0.00F);
-			GL11.glScalef(0.008F, 0.008F, 0.008F);
-			GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
-			GL11.glRotatef(-30, 1.0F, 0.0F, 0.0F);
-			switch(stack.getItemDamage()) {
-				case 0: 
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 1]);
-					break;
-				case 1: 
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 2]);
-				break;
-				case 2: 
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 3]);
-					break;
-				case 3: 
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 4]);
-					break;
-				case 4:
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 5]);
-					break;
-				case 5: 
-					RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[ItemTool.types.length + 6]);
-			}
-			GL11.glPopMatrix();
-    	
-			GL11.glPushMatrix();
-				GL11.glTranslatef(0.4F, 0.69F, 0.14F);
-				GL11.glScalef(0.008F, 0.008F, 0.008F);
-				GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
-				GL11.glRotatef(-32, 1.0F, 0.0F, 0.0F);
-    		
-				RenderHelper.disableStandardItemLighting();
-    	
-    	
-				switch(stack.getItemDamage()) {
-					case 0: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Activate", 1, 1, 0x000000);
-						break;
-					case 1: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Dismantle", 1, 1, 0xFF0000);
-						break;
-					case 2: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Rotate", 1, 1, 0x00FF00);
-						break;
-					case 3: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Help", 1, 1, 0x0000FF);
-						break;
-					case 4: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Settings", 1, 1, 0xFF00FF);
-						break;
-					case 5: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Move", 1, 1, 0x00FFFF);
-	     			break;
-					default: 
-						Minecraft.getMinecraft().fontRenderer.drawString("Unknown", 1, 1, 0x000000);
-						break;
-	     	}
-     	
-	    	
-	     	GL11.glTranslatef(5.0F, 8.0F, -1.0F);
-	    	Minecraft.getMinecraft().fontRenderer.drawString("Mode", 1, 1, 0xFFFF00);
-	    	GL11.glPopMatrix();
-    	
-       	RenderHelper.enableStandardItemLighting();
+			calibrateForIcon();	
+			RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[stack.getItemDamage() + ToolModeManager.getModes().size()]);
+		GL11.glPopMatrix();
+		
+		/* Draw the mode text. */
+		GL11.glPushMatrix();
+			calibrateForText();
+			RenderHelper.disableStandardItemLighting();
+			Minecraft.getMinecraft().fontRenderer.drawString(ToolModeManager.getModes().get(stack.getItemDamage()).name(), 1, 1, ToolModeManager.getModes().get(stack.getItemDamage()).nameColour());
+			GL11.glTranslatef(5.0F, 8.0F, -1.0F);
+			Minecraft.getMinecraft().fontRenderer.drawString("Mode", 1, 1, 0xFFFF00);
+			RenderHelper.enableStandardItemLighting();
+		GL11.glPopMatrix();
     }
+	
+	public void calibrateForIcon() {
+		GL11.glTranslatef(0.3F, 0.61F, 0.00F);
+		GL11.glScalef(0.008F, 0.008F, 0.008F);
+		GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(-32, 1.0F, 0.0F, 0.0F);
+	}
+	
+	public void calibrateForText() {
+		GL11.glTranslatef(0.4F, 0.69F, 0.14F);
+		GL11.glScalef(0.008F, 0.008F, 0.008F);
+		GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(-32, 1.0F, 0.0F, 0.0F);
+	}
+	
+
 	
 }

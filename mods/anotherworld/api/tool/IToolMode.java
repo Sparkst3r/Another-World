@@ -8,10 +8,11 @@ public interface IToolMode {
 	
 	public abstract String icon();
 	
+	public abstract int nameColour();
+	
 	public abstract String name();
 	
-	public abstract String infoLine1();
-	public abstract String infoLine2();
-	public abstract String infoLine3();
-	public abstract String infoLine4();
+	public abstract String[] infoLine();
+	
+
 }
