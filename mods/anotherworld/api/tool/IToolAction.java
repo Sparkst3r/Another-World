@@ -13,7 +13,8 @@ import net.minecraft.world.World;
 public abstract interface IToolAction {
 	
 	/**
-	 *The name of the action. Provide as: "action.~ActionIdentifier~"
+	 * The identifier of the action. Provide as: "action.tinker.~ModeIdentifier~.~ActionIdentifier~"
+	 * TODO Requires merge toolClass() into this
 	 */
 	public abstract String identifier();
 	

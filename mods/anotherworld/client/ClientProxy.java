@@ -1,20 +1,29 @@
 package mods.anotherworld.client;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import mods.anotherworld.common.CommonProxy;
 import mods.anotherworld.mechanical.MechanicalValues;
 import mods.anotherworld.mechanical.render.ToolRenderer;
+import mods.anotherworld.world.entity.EntityBee;
+import mods.anotherworld.world.render.ModelBee;
+import mods.anotherworld.world.render.RenderBee;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy{
 	
 	@Override
-	public void registerRenders() {
+	public void registerRendersForMechanical() {
 		MinecraftForgeClient.registerItemRenderer(MechanicalValues.ItemToolField.itemID, new ToolRenderer());
+	
 	}
 	
-	
-	
+	@Override
+	public void registerRendersForWorld() {
+		RenderingRegistry.registerEntityRenderingHandler(EntityBee.class, new RenderBee(new ModelBee()));
+	}
+
+
 	
 	/**
 	 * Client Particle spawner for plasma

@@ -1,5 +1,6 @@
 package mods.anotherworld.world;
 
+import mods.anotherworld.core.AnotherWorld;
 import mods.anotherworld.util.RegistryUtils;
 import mods.anotherworld.world.blocks.BlockOre;
 import mods.anotherworld.world.blocks.BlockStorage;
@@ -23,15 +24,23 @@ public class WorldValues {
 	public static Item ItemIngotField;
 	
 	
-	public static boolean initialize() {
+	public static boolean initialise() {
 		ItemIngotField = new ItemIngot(5000);
 		BlockOreField = new BlockOre(700);
 		BlockStorageField = new BlockStorage(701);
 		
 		addInfoForMeta();
 		
+
+		
+		
+		
 		ItemCrafting.initialise();
 		BlockCrafting.initialise();
+		
+		
+		
+		AnotherWorld.proxy.registerRendersForWorld();	
 		
 		return true;
 	}

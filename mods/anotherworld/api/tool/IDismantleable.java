@@ -29,7 +29,7 @@ public abstract interface IDismantleable {
 	 * @param x
 	 * @param y
 	 * @param z
-	 * @return The itemstack of the block dismantled
+	 * @return The ItemStack of the block dismantled
 	 */
 	public abstract ItemStack dismantle(EntityPlayer player, World world, int x, int y, int z);
 

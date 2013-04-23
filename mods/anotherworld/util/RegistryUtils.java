@@ -33,6 +33,7 @@ public class RegistryUtils {
 		ItemStack stack = new ItemStack(item, 1, meta);
 		LanguageRegistry.addName(stack, name);
 	}
+	
 	/**
 	 * Adds a name for item without meta
 	 * @param item The item
@@ -42,6 +43,7 @@ public class RegistryUtils {
 		ItemStack stack = new ItemStack(block, 1);
 		LanguageRegistry.addName(stack, name);
 	}
+	
 	/**
 	 * Adds a name for item with meta
 	 * @param item The item
@@ -63,6 +65,7 @@ public class RegistryUtils {
 	public static void registerOre(Item item, String name) {
 		OreDictionary.registerOre(name, new ItemStack(item, 1));
 	}
+	
 	/**
 	 * Registers an item with the ore dictionary, with meta
 	 * @param item
@@ -72,6 +75,7 @@ public class RegistryUtils {
 	public static void registerOre(Item item, int meta, String name) {
 		OreDictionary.registerOre(name, new ItemStack(item, 1, meta));
 	}
+	
 	/**
 	 * Registers a block with the ore dictionary, without meta
 	 * @param block
@@ -80,6 +84,7 @@ public class RegistryUtils {
 	public static void registerOre(Block block, String name) {
 		OreDictionary.registerOre(name, new ItemStack(block, 1));
 	}
+	
 	/**
 	 * Registers an block with the ore dictionary, with meta
 	 * @param item

@@ -3,6 +3,9 @@ package mods.anotherworld.util;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityEggInfo;
+import net.minecraft.entity.EntityList;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -15,7 +18,7 @@ import net.minecraft.world.World;
  *
  */
 public class EntityUtils {
-
+	static int startEntityId = 300;
 
 	/**
 	 * 
@@ -102,7 +105,18 @@ public class EntityUtils {
 		return itemStackArray;
 	}
 	
+	public static int getUniqueEntityId() {
+		do {
+			startEntityId++;
+		}
+		while (EntityList.getStringFromID(startEntityId) != null);
+			return startEntityId;
+	}
 	
-	
-	
+	@SuppressWarnings("unchecked")
+	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor) {
+		int id = getUniqueEntityId();
+		EntityList.IDtoClassMapping.put(id, entity);
+		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
+	}
 }

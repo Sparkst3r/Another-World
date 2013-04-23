@@ -2,6 +2,8 @@ package mods.anotherworld.mechanical.items;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import mods.anotherworld.api.tool.IItemTool;
 import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.core.GlobalValues;
@@ -16,7 +18,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 
-import org.lwjgl.input.Keyboard;
+
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -66,7 +68,7 @@ public class ItemTool extends Item implements IItemTool{
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (!world.isRemote && Keyboard.isKeyDown(Keyboard.KEY_R)) {
+		if(/*player.isSneaking() && */!world.isRemote) {
 			if(stack.getTagCompound() == null) {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.getTagCompound().setString("type", ToolModeManager.getModes().get(ToolModeManager.getModes().size() - 1).identifier().substring(12));
@@ -105,7 +107,7 @@ public class ItemTool extends Item implements IItemTool{
 				}
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	/** Provides access to add custom lines to the item description **/

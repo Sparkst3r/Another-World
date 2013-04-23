@@ -6,16 +6,25 @@ import mods.anotherworld.api.tool.IToolActionManager;
 import mods.anotherworld.api.tool.IToolModeManager;
 
 public class Managers {
-	/** Mechanics Table Crafting manager*/
+	
+	/**
+	 * Mechanics Table Crafting manager
+	 */
 	public static IMechanicsTableManager mechanicsTableCrafting;
 	
-	/** In-World Crafting manager*/
+	/**
+	 * In-World Crafting manager
+	 */
 	public static IWorldCraftingManager worldCrafting;
 	
 	/**
 	 * Tinkering tool action manager
 	 */
 	public static IToolActionManager toolActionManager;
+	
+	/**
+	 * Tinkering tool mode manager
+	 */
 	public static IToolModeManager toolModeManager;
 	
 }
