@@ -2,6 +2,7 @@ package mods.anotherworld.mechanical.render;
 
 import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.mechanical.tool.ToolModeManager;
+import mods.anotherworld.util.ModelBox;
 import mods.anotherworld.util.RenderingUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
@@ -17,9 +18,10 @@ import org.lwjgl.opengl.GL11;
  *
  */
 public class ToolModel extends ModelBase {
+	int textureWidth = 64;
+	int textureHeight = 32;
 	
-	
-	public ModelRenderer base;
+	public ModelBox base;
 	public ModelRenderer shaft;
 	public ModelRenderer tipRight;
 	public ModelRenderer tipLeft;
@@ -35,83 +37,33 @@ public class ToolModel extends ModelBase {
 	
 	/** Model Constructor */
 	public ToolModel() {
-		this.base = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 32);
-		this.base.addBox(0F, 0F, 0F, 4, 4, 4);
-		this.base.rotationPointX = 0.0F;
-		this.base.rotationPointY = 0.0F;
-		this.base.rotationPointZ = 0.0F;
-		this.base.mirror = true;
+		base = new ModelBox(this, 0, 0, textureWidth, textureHeight, 0, 0, 0, 4, 4, 4);
+		
+		shaft = new ModelBox(this, 17, 0, textureWidth, textureHeight, 1, 1, 4, 2, 2, 8);
+		
+		tipRight = new ModelBox(this, 38, 0, textureWidth, textureHeight, 0, 1, 10, 1, 2, 4);
+
+		tipLeft = new ModelBox(this, 38, 0, textureWidth, textureHeight, 3, 1, 10, 1, 2, 4);
+
+		tipTop = new ModelBox(this, 38, 7, textureWidth, textureHeight, 1, 0, 10, 2, 1, 4);
+		
+		tipBottom = new ModelBox(this, 38, 7, textureWidth, textureHeight, 1, 3, 10, 2, 1, 4);
+		
+		plate = new ModelBox(this, 0, 9, textureWidth, textureHeight, -1, -1, -1, 6, 6, 1);
+		
+		handRight = new ModelBox(this, 0, 17, textureWidth, textureHeight, 4, 0, -6, 1, 4, 5);
+		
+		handLeft = new ModelBox(this, 0, 17, textureWidth, textureHeight, -1, 0, -6, 1, 4, 5);
+		
+		handTop = new ModelBox(this, 15, 11, textureWidth, textureHeight, 0, 4, -6, 4, 1, 5);
+		
+		handBottom = new ModelBox(this, 15, 11, textureWidth, textureHeight, 0, -1, -6, 4, 1, 5);
+		
+		display = new ModelBox(this, 13, 18, textureWidth, textureHeight, 0, 2.5F, 2F, 4, 2, 4);
+        display.rotateAngleX = -32F;
         
-        this.shaft = (new ModelRenderer(this, 17, 0)).setTextureSize(64, 32);
-        this.shaft.addBox(0F, 0F, 0F, 2, 2, 8);
-        this.shaft.rotationPointX = 1.0F;
-        this.shaft.rotationPointY = 1.0F;
-        this.shaft.rotationPointZ = 4.0F;
-		this.shaft.mirror = true;
-        
-        this.tipRight = (new ModelRenderer(this, 38, 0)).setTextureSize(64, 32);
-        this.tipRight.addBox(0F, 0F, 0F, 1, 2, 4);
-        this.tipRight.rotationPointX = 0.0F;
-        this.tipRight.rotationPointY = 1.0F;
-        this.tipRight.rotationPointZ = 10.0F;
-		this.tipRight.mirror = true;
-        this.tipLeft = (new ModelRenderer(this, 38, 0)).setTextureSize(64, 32);
-        this.tipLeft.addBox(0F, 0F, 0F, 1, 2, 4);
-        this.tipLeft.rotationPointX = 3.0F;
-        this.tipLeft.rotationPointY = 1.0F;
-        this.tipLeft.rotationPointZ = 10.0F;
-		this.tipLeft.mirror = true;
-        this.tipTop = (new ModelRenderer(this, 38, 7)).setTextureSize(64, 32);
-        this.tipTop.addBox(0F, 0F, 0F, 2, 1, 4);
-        this.tipTop.rotationPointX = 1.0F;
-        this.tipTop.rotationPointY = 0.0F;
-        this.tipTop.rotationPointZ = 10.0F;
-		this.tipTop.mirror = true;
-        this.tipBottom = (new ModelRenderer(this, 38, 7)).setTextureSize(64, 32);
-        this.tipBottom.addBox(0F, 0F, 0F, 2, 1, 4);
-        this.tipBottom.rotationPointX = 1.0F;
-        this.tipBottom.rotationPointY = 3.0F;
-        this.tipBottom.rotationPointZ = 10.0F;
-		this.tipBottom.mirror = true;
-        this.plate = (new ModelRenderer(this, 0, 9)).setTextureSize(64, 32);
-        this.plate.addBox(0F, 0F, 0F, 6, 6, 1);
-        this.plate.rotationPointX = -1.0F;
-        this.plate.rotationPointY = -1.0F;
-        this.plate.rotationPointZ = -1.0F;
-        this.plate.mirror = true;
-        this.handRight = (new ModelRenderer(this, 0, 17)).setTextureSize(64, 32);
-        this.handRight.addBox(0F, 0F, 0F, 1, 4, 5);
-        this.handRight.rotationPointX = 4.0F;
-        this.handRight.rotationPointY = 0.0F;
-        this.handRight.rotationPointZ = -6.0F;
-        this.handRight.mirror = true;
-        this.handLeft = (new ModelRenderer(this, 0, 17)).setTextureSize(64, 32);
-        this.handLeft.addBox(0F, 0F, 0F, 1, 4, 5);
-        this.handLeft.rotationPointX = -1.0F;
-        this.handLeft.rotationPointY = 0.0F;
-        this.handLeft.rotationPointZ = -6.0F;
-        this.handLeft.mirror = true;
-        this.handTop = (new ModelRenderer(this, 15, 11)).setTextureSize(64, 32);
-        this.handTop.addBox(0F, 0F, 0F, 4, 1, 5);
-        this.handTop.rotationPointX = 0.0F;
-        this.handTop.rotationPointY = 4.0F;
-        this.handTop.rotationPointZ = -6.0F;
-        this.handTop.mirror = true;
-        this.handBottom = (new ModelRenderer(this, 15, 11)).setTextureSize(64, 32);
-        this.handBottom.addBox(0F, 0F, 0F, 4, 1, 5);
-        this.handBottom.rotationPointX = 0.0F;
-        this.handBottom.rotationPointY = -1.0F;
-        this.handBottom.rotationPointZ = -6.0F;
-        this.handBottom.mirror = true;
-        
-        this.display = (new ModelRenderer(this, 13, 18)).setTextureSize(64, 32);
-        this.display.addBox(0F, 0F, 0F, 4, 2, 4);
-        this.display.rotationPointX = 0.0F;
-        this.display.rotationPointY = 3.0F;
-        this.display.rotationPointZ = -0.0F;
-        this.display.rotateAngleX = -32F;
-        this.display.mirror = true;
 	}
+	
 	
 	/** Renders the model */
 	public void renderAll(float scale, ItemStack stack) {
