@@ -41,20 +41,20 @@ public class BlockBaseParts extends Block implements IDismantleable {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister ir) {
-		iconBuffer = new Icon[2];
+		iconBuffer = new Icon[3];
     	
 		String id = GlobalValues.ModIDCore + ":"; 
 		
 		iconBuffer[0] = ir.registerIcon(id + ItemBlockBaseParts.types[0]);
 		iconBuffer[1] = ir.registerIcon(id + ItemBlockBaseParts.types[1]);
-		
+		iconBuffer[2] = ir.registerIcon(id + ItemBlockBaseParts.types[2]);
 	}
     
     /** Returns the texture for the meta and side */
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return (meta < 2)? iconBuffer[meta] : iconBuffer[0];
+		return (meta < 3)? iconBuffer[meta] : iconBuffer[0];
 	}
    
 	/** Allows for metadata specific hardness values */
@@ -65,6 +65,8 @@ public class BlockBaseParts extends Block implements IDismantleable {
 				return 3.0F;
 			case 1:
 				return 4.0F;
+			case 2:
+				return 1000F;
 			default:
 				return this.blockHardness;
 		}
@@ -91,6 +93,8 @@ public class BlockBaseParts extends Block implements IDismantleable {
 				return false;
 			case 1 : 
 				return true;
+			case 2 : 
+				return true;
 		}
 		return false;
 	}
@@ -103,6 +107,8 @@ public class BlockBaseParts extends Block implements IDismantleable {
 				return null;
 			case 1 : 
 				return new ItemStack(Block.blocksList[world.getBlockId(x, y, z)], 1, 1);
+			case 2 : 
+				return new ItemStack(Block.blocksList[world.getBlockId(x, y, z)], 1, 2);
 			default : 
 				return null;
 		}

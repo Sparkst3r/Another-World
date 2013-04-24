@@ -3,11 +3,12 @@ package mods.anotherworld.mechanical;
 import mods.anotherworld.core.APIInternal;
 import mods.anotherworld.core.AnotherWorld;
 import mods.anotherworld.mechanical.blocks.BlockBaseParts;
+import mods.anotherworld.mechanical.blocks.BlockManualCrusher;
 import mods.anotherworld.mechanical.blocks.BlockMechanicsTableParts;
 import mods.anotherworld.mechanical.blocks.ItemBlockBaseParts;
 import mods.anotherworld.mechanical.items.ItemBaseParts;
 import mods.anotherworld.mechanical.items.ItemTool;
-import mods.anotherworld.mechanical.tileentity.TileManualGrinder;
+import mods.anotherworld.mechanical.tileentity.TileManualCrusher;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
 import mods.anotherworld.mechanical.tool.ToolModeManager;
 import mods.anotherworld.util.RegistryUtils;
@@ -26,6 +27,8 @@ public class MechanicalValues {
 	// Blocks
 	public static Block BlockMechTablePartsField;
 	public static Block BlockBasePartsField;
+	public static Block BlockManualCrusherField;
+	
 	
 	public static Item ItemToolField;
 	public static Item ItemBasePartsField;
@@ -36,9 +39,12 @@ public class MechanicalValues {
 		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
+		BlockManualCrusherField = new BlockManualCrusher(713);
+		
 		
 		ItemToolField = new ItemTool(5001);
 		ItemBasePartsField = new ItemBaseParts(5002);
+		
 		
 		registerTileEntities();
 		
@@ -70,6 +76,6 @@ public class MechanicalValues {
 	
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileMechanicsTable.class, "tileMechTable");
-		GameRegistry.registerTileEntity(TileManualGrinder.class, "tileMechGrinder");
+		GameRegistry.registerTileEntity(TileManualCrusher.class, "tileMechGrinder");
 	}
 }

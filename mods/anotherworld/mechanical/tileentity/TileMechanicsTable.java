@@ -155,12 +155,7 @@ public class TileMechanicsTable extends TileEntity implements IInventory {
 	
 	@Override
 	public void updateEntity() {
-		//for (int i = 0; i < inv.length; i++) {
-		//	
-		//	if(inv[i] != null){
-		//		System.out.println(inv[i].getDisplayName());
-		//	}
-		//}
+
 	}
 
 }

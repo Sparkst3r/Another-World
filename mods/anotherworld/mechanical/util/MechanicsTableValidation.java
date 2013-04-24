@@ -102,6 +102,46 @@ public class MechanicsTableValidation {
 	
 	
 	/**
+	 * Converts the multi-block table to air based on a startBlock
+	 * 
+	 * @param world
+	 * @param xPosition
+	 * @param yPosition
+	 * @param zPosition
+	 * @param startBlock
+	 */
+	public static void breakTableCompletely(World world, int x, int y, int z, int startBlock) {
+		switch(startBlock) {
+			case 0:
+				world.setBlockToAir(x, y, z);
+				world.setBlockToAir(x + 1, y, z);
+				world.setBlockToAir(x, y, z + 1);
+				world.setBlockToAir(x + 1, y, z + 1);
+				break;
+			case 1:
+				world.setBlockToAir(x, y, z);
+				world.setBlockToAir(x, y, z + 1);
+				world.setBlockToAir(x - 1, y, z);
+				world.setBlockToAir(x - 1, y, z + 1);
+				break;
+				
+			case 2:
+				world.setBlockToAir(x, y, z);
+				world.setBlockToAir(x + 1, y, z);
+				world.setBlockToAir(x, y, z - 1);
+				world.setBlockToAir(x + 1, y, z - 1);
+				break;
+				
+			case 3:
+				world.setBlockToAir(x, y, z);
+				world.setBlockToAir(x - 1, y, z);
+				world.setBlockToAir(x, y, z - 1);
+				world.setBlockToAir(x - 1, y, z - 1);
+				break;
+		}
+	}
+	
+	/**
 	 * Converts the multi-block table to 4 mechanic blocks based on a startBlock
 	 * 
 	 * @param world
@@ -199,14 +239,16 @@ public class MechanicsTableValidation {
 
 
 		/* Valid for configuration 0 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 0) &&
+		if (startblock == 0 &&
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 0) &&
 				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 1) &&
 				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2) &&
 				WorldUtils.isBlockAt(world, x + 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3)) {
 			return true;
 			}
 		/* Valid for configuration 1 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 1) &&
+		if (startblock == 1 &&
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 1) &&
 				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3) &&
 				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 0) &&
 				WorldUtils.isBlockAt(world, x - 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2)) {
@@ -214,7 +256,8 @@ public class MechanicsTableValidation {
 			}
 		
 		/* Valid for configuration 2 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 2) &&
+		if (startblock == 2 &&
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 2) &&
 				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 3) &&
 				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0) &&
 				WorldUtils.isBlockAt(world, x + 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1)) {
@@ -223,7 +266,8 @@ public class MechanicsTableValidation {
 		
 
 		/* Valid for configuration 3 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 3) &&
+		if (startblock == 3 &&
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 3) &&
 				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 2) &&
 				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1) &&
 				WorldUtils.isBlockAt(world, x - 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0)) {

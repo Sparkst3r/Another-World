@@ -5,7 +5,6 @@ import java.util.Random;
 import mods.anotherworld.core.GlobalValues;
 import mods.anotherworld.mechanical.AnotherWorldExpansionMechanical;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
-import mods.anotherworld.mechanical.util.MechanicsTableValidation;
 import mods.anotherworld.util.EntityUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -37,7 +36,7 @@ public class BlockMechanicsTableParts extends Block{
 	 */
 	public BlockMechanicsTableParts(int id) {
 		super(id, GlobalValues.immovable);
-		this.setHardness(0.5F);
+		this.setBlockUnbreakable();
 		GameRegistry.registerBlock(this, ItemBlockMechanicsTableParts.class, "MechanicsTable");
 	}
 	
@@ -51,7 +50,6 @@ public class BlockMechanicsTableParts extends Block{
 					EntityUtils.dropItemInWorld(world, x, y, z, stack);
 	            }
 	        }
-			
 			try {
 				tile.invalidate();
 			}
@@ -119,13 +117,7 @@ public class BlockMechanicsTableParts extends Block{
 		return (meta < 4)? iconBuffer[meta][side] : iconBuffer[0][0];
 	}
 
-	/** Called when a neighbouring block is changed */
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int blockId) {
-		if(!MechanicsTableValidation.validateBlocksForCompleted(world, x, y, z, world.getBlockMetadata(x, y, z))) {
-			MechanicsTableValidation.breakTable(world, x, y, z, world.getBlockMetadata(x, y, z));
-		}		
-	}
+	
 
 	/** Is the meta block allowed to have a tile entity? */
 	@Override

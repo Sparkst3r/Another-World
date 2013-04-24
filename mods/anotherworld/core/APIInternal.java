@@ -6,6 +6,7 @@ import mods.anotherworld.mechanical.crafting.WorldCraftingManager;
 import mods.anotherworld.mechanical.tool.ToolActionAWDismantle;
 import mods.anotherworld.mechanical.tool.ToolActionAssemble;
 import mods.anotherworld.mechanical.tool.ToolActionAssembleMechTable;
+import mods.anotherworld.mechanical.tool.ToolActionDismantleMechTable;
 import mods.anotherworld.mechanical.tool.ToolActionManager;
 import mods.anotherworld.mechanical.tool.ToolModeActivate;
 import mods.anotherworld.mechanical.tool.ToolModeDismantle;
@@ -34,6 +35,7 @@ public class APIInternal {
 		Managers.toolModeManager.addMode(new ToolModeHelp());
 		Managers.toolModeManager.addMode(new ToolModeSetting());
 		Managers.toolActionManager.addAction(new ToolActionAWDismantle());
+		Managers.toolActionManager.addAction(new ToolActionDismantleMechTable());
 		Managers.toolActionManager.addAction(new ToolActionAssemble());
 		Managers.toolActionManager.addAction(new ToolActionAssembleMechTable());
 	}

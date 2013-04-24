@@ -7,8 +7,8 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockBaseParts extends ItemBlock{
-	public static String[] types = {"stoneSmooth", "blockMechanic"};
-	public static String[] names = {"Smooth Stone", "Mechanical Block"};
+	public static String[] types = {"stoneSmooth", "blockMechanic", "blockMechanicAdv"};
+	public static String[] names = {"Smooth Stone", "Mechanical Block", "Advanced Mechanics Block"};
 	
 	public ItemBlockBaseParts(int id) {
 		super(id);
@@ -30,7 +30,7 @@ public class ItemBlockBaseParts extends ItemBlock{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void getSubItems(int id, CreativeTabs tab, List list) {
-		for (int meta = 0; meta < 2; meta++) {
+		for (int meta = 0; meta < 3; meta++) {
 			list.add(new ItemStack(id, 1, meta));
 		}
 	}
