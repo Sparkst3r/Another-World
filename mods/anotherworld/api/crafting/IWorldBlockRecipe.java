@@ -3,11 +3,9 @@ package mods.anotherworld.api.crafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public interface IWorldBlockRecipe {
+public abstract interface IWorldBlockRecipe {
 
-    boolean matches(ItemStack[] inputStacks, World world);
-
-    ItemStack getCraftingResult(ItemStack[] inputStacks);
+    public abstract boolean matches(ItemStack[] inputStacks, World world);
 
     ItemStack getRecipeOutput();
 }

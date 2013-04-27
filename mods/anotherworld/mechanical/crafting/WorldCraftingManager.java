@@ -119,10 +119,7 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 			return true;
 		}
 
-		@Override
-		public ItemStack getCraftingResult(ItemStack[] inputStacks) {
-			return new ItemStack(recipeOutput.itemID, 1, recipeOutput.getItemDamage());
-		}
+		
 
 		@Override
 		public ItemStack getRecipeOutput() {

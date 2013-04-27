@@ -125,4 +125,12 @@ public class WorldUtils {
 		return world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ));
 	}
 	
+	public static boolean isServerSide(World world) {
+		return !world.isRemote;
+	}
+	
+	public static boolean isClientSide(World world) {
+		return world.isRemote;
+	}
+	
 }

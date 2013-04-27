@@ -1,5 +1,6 @@
 package mods.anotherworld.api;
 
+import mods.anotherworld.api.crafting.IManualCrusherManager;
 import mods.anotherworld.api.crafting.IMechanicsTableManager;
 import mods.anotherworld.api.crafting.IWorldCraftingManager;
 import mods.anotherworld.api.tool.IToolActionManager;
@@ -16,6 +17,11 @@ public class Managers {
 	 * In-World Crafting manager
 	 */
 	public static IWorldCraftingManager worldCrafting;
+	
+	/**
+	 * In-World Crafting manager
+	 */
+	public static IManualCrusherManager manualCrusher;
 	
 	/**
 	 * Tinkering tool action manager

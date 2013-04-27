@@ -41,7 +41,6 @@ public class ToolActionDismantleMechTable implements IToolAction{
 				orient = orientation;
 			}
 		}
-		
 		if (orient != -1) {
 			return true;
 		}

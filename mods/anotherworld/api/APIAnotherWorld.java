@@ -5,7 +5,7 @@ import mods.anotherworld.api.dummy.ToolManagerDummy;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 
-public class APIBase {
+public class APIAnotherWorld {
 	
 	public static boolean reMapIfNotLoaded() {
 		if (!Loader.isModLoaded("anotherworld")) {
@@ -15,6 +15,8 @@ public class APIBase {
 		if (!Loader.isModLoaded("anotherworld|mech")) {
 			Managers.mechanicsTableCrafting = new CraftingManagerDummy();
 			Managers.worldCrafting = new CraftingManagerDummy();
+			Managers.manualCrusher = new CraftingManagerDummy();
+			
 			Managers.toolActionManager = new ToolManagerDummy();
 			Managers.toolModeManager = new ToolManagerDummy();
 			

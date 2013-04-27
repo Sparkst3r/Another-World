@@ -20,10 +20,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemBaseParts extends Item {
 	/** Texture file names + code name */
-	public static String[] types = new String[] { "gearTin", "gearCopper", "tinkerHead", "tinkerRod", "tinkerGrip" };
+	public static String[] types = new String[] { "gearTin", "gearCopper", "tinkerHead", "tinkerRod", "tinkerGrip", "dustQuartzCoarse", "dustQuartzFine"};
 	
 	/** Human-Readable names */
-	public static String[] names = new String[] { "Tin Gear", "Copper Gear", "Tinkering Head Assembly", "Tinkering Rod Assembly", "Tinkering Grip Assembly" };
+	public static String[] names = new String[] { "Tin Gear", "Copper Gear", "Tinkering Head Assembly", "Tinkering Rod Assembly", "Tinkering Grip Assembly", "","" };
 	
 	/** Icon Array */
 	@SideOnly(Side.CLIENT)

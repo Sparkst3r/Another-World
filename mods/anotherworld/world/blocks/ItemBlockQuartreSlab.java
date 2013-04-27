@@ -6,10 +6,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
-public class ItemBlockOre extends ItemBlock {
-	public static String[] types = {"oreCopper","oreTin","oreSilver","oreLead"};
-	public static String[] names = {"Copper Ore","Tin Ore","Silver Ore", "Lead Ore"};
-	public ItemBlockOre(int id) {
+public class ItemBlockQuartreSlab extends ItemBlock {
+	public static String[] types = {"blockPaverStone", "blockPaverSandStone", "blockPaverCobble", "blockPaverBrick", "blockPaverStoneBrick", "blockPaverNetherBrick", "blockPaverQuartz", "blockPaverWood1","blockPaverWood2", "blockPaverWood3", "blockPaverWood4"};
+	public static String[] names = {"Quartz Paving stone", "Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone","Quartz Paving stone"};
+	public ItemBlockQuartreSlab(int id) {
 		super(id);
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);

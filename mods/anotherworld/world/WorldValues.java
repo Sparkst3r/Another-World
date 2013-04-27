@@ -2,6 +2,7 @@ package mods.anotherworld.world;
 
 import mods.anotherworld.core.AnotherWorld;
 import mods.anotherworld.util.RegistryUtils;
+import mods.anotherworld.world.blocks.BlockQuartreSlab;
 import mods.anotherworld.world.blocks.BlockOre;
 import mods.anotherworld.world.blocks.BlockStorage;
 import mods.anotherworld.world.blocks.ItemBlockOre;
@@ -22,12 +23,14 @@ public class WorldValues {
 	public static Block BlockOreField;
 	public static Block BlockStorageField;
 	public static Item ItemIngotField;
+	public static Block BlockQuartreSlabField;
 	
 	
 	public static boolean initialise() {
 		ItemIngotField = new ItemIngot(5000);
 		BlockOreField = new BlockOre(700);
 		BlockStorageField = new BlockStorage(701);
+		BlockQuartreSlabField = new BlockQuartreSlab(702);
 		
 		addInfoForMeta();
 		

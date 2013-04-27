@@ -5,11 +5,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockOre extends Block {
+
+		
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconBuffer;
@@ -21,8 +24,9 @@ public class BlockOre extends Block {
 	 */
 	public BlockOre(int id) {
 		super(id, Material.rock);
-		this.setHardness(6F);
+		this.setHardness(4F);
 		GameRegistry.registerBlock(this, ItemBlockOre.class, "BlockOre");
+		MinecraftForge.setBlockHarvestLevel(this, "pickaxe", 1);
 		this.setCreativeTab(GlobalValues.AnotherTab);
 	}
 	
@@ -30,13 +34,11 @@ public class BlockOre extends Block {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IconRegister ir) {
-		iconBuffer = new Icon[4];
-    	
+		iconBuffer = new Icon[ItemBlockOre.types.length];
 		String id = GlobalValues.ModIDCore + ":"; 
-		iconBuffer[0] = ir.registerIcon(id + "oreCopper");
-		iconBuffer[1] = ir.registerIcon(id + "oreTin");
-		iconBuffer[2] = ir.registerIcon(id + "oreSilver");
-		iconBuffer[3] = ir.registerIcon(id + "oreLead");
+		for (int icon = 0; icon < ItemBlockOre.types.length; icon++) {
+			iconBuffer[icon] = ir.registerIcon(id + ItemBlockOre.types[icon]);
+		}
 	}
     
 	
@@ -45,7 +47,7 @@ public class BlockOre extends Block {
 	@Override
 	public Icon getIcon(int side, int meta) {
 		//If the meta is less than 4, stops ArrayIndexOutOfBoundsExceptions
-		return (meta < 4)? iconBuffer[meta] : iconBuffer[0];
+		return (meta < ItemBlockOre.types.length)? iconBuffer[meta] : iconBuffer[0];
 	}
 	
 }

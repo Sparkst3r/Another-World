@@ -1,6 +1,7 @@
 package mods.anotherworld.core;
 
 import mods.anotherworld.api.Managers;
+import mods.anotherworld.mechanical.crafting.ManualCrusherManager;
 import mods.anotherworld.mechanical.crafting.MechTableCraftingManager;
 import mods.anotherworld.mechanical.crafting.WorldCraftingManager;
 import mods.anotherworld.mechanical.tool.ToolActionAWDismantle;
@@ -23,6 +24,8 @@ public class APIInternal {
 	public static boolean mapMech() {
 		Managers.mechanicsTableCrafting = new MechTableCraftingManager();
 		Managers.worldCrafting = new WorldCraftingManager();
+		Managers.manualCrusher = new ManualCrusherManager();
+		
 		Managers.toolActionManager = new ToolActionManager();
 		Managers.toolModeManager = new ToolModeManager();
 		return true;	
