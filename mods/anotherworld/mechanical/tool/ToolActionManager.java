@@ -29,5 +29,9 @@ public class ToolActionManager implements IToolActionManager {
 		return validActions;
 	}
 	
+	public static IToolAction getAction(int index) {
+		return actions.get(index);
+	}
+	
 	
 }

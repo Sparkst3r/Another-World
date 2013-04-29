@@ -8,6 +8,7 @@ import mods.anotherworld.mechanical.blocks.BlockMechanicsTableParts;
 import mods.anotherworld.mechanical.blocks.ItemBlockBaseParts;
 import mods.anotherworld.mechanical.items.ItemBaseParts;
 import mods.anotherworld.mechanical.items.ItemTool;
+import mods.anotherworld.mechanical.tick.RenderTick;
 import mods.anotherworld.mechanical.tileentity.TileManualCrusher;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
 import mods.anotherworld.mechanical.tool.ToolModeManager;
@@ -15,6 +16,8 @@ import mods.anotherworld.util.RegistryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * Values associated with the mechanical expansion
@@ -36,6 +39,8 @@ public class MechanicalValues {
 	public static void initialise() {
 		APIInternal.mapMech();
 		APIInternal.addToolModesAndActions();
+		APIInternal.addVanillaInfoBlockPages();
+		TickRegistry.registerTickHandler(new RenderTick(), Side.CLIENT);
 		
 		BlockBasePartsField = new BlockBaseParts(712);
 		BlockMechTablePartsField = new BlockMechanicsTableParts(711);

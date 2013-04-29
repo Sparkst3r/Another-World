@@ -37,6 +37,10 @@ public class ItemTool extends Item implements IItemTool{
 	@SideOnly(Side.CLIENT)
 	public static Icon[] iconBuffer;
     
+	public String currentModeIdentifier = "";
+	
+	public IToolAction currentAction = null;
+	
 	/** 
 	 * Constructor
 	 * @param id
@@ -68,7 +72,7 @@ public class ItemTool extends Item implements IItemTool{
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if(/*player.isSneaking() && */!world.isRemote) {
+		if(!player.isSneaking() && !world.isRemote) {
 			if(stack.getTagCompound() == null) {
 				stack.setTagCompound(new NBTTagCompound());
 				stack.getTagCompound().setString("type", ToolModeManager.getModes().get(ToolModeManager.getModes().size() - 1).identifier().substring(12));
@@ -88,6 +92,8 @@ public class ItemTool extends Item implements IItemTool{
 				newStack.setItemDamage(stack.getItemDamage() + 1);
 				newStack.getTagCompound().setString("type", stack.getTagCompound().getString("type"));
 			}
+			
+			((ItemTool)newStack.getItem()).currentModeIdentifier = ToolModeManager.getModes().get(newStack.getItemDamage()).identifier().substring(12);
 			return newStack;
 		}
 		return stack;
@@ -100,8 +106,10 @@ public class ItemTool extends Item implements IItemTool{
 			List<IToolAction> list = ToolActionManager.getActions(stack);
 			if (list != null) {
 				for(int action = 0; action < list.size(); action++){
-					if (list.get(action).canTriggerAction(stack, player, world, x, y, z, side, locX, locY, locZ)) {
-						list.get(action).triggerAction(player, world, x, y, z, side, locX, locY, locZ);
+					IToolAction thisAction = list.get(action);
+					currentAction = thisAction;
+					if (thisAction.canTriggerAction(stack, player, world, x, y, z, side, locX, locY, locZ)) {
+						thisAction.triggerAction(player, world, x, y, z, side, locX, locY, locZ);
 						return true;
 					}
 				}

@@ -3,6 +3,7 @@ package mods.anotherworld.api;
 import mods.anotherworld.api.crafting.IManualCrusherManager;
 import mods.anotherworld.api.crafting.IMechanicsTableManager;
 import mods.anotherworld.api.crafting.IWorldCraftingManager;
+import mods.anotherworld.api.info.IBlockInfoManager;
 import mods.anotherworld.api.tool.IToolActionManager;
 import mods.anotherworld.api.tool.IToolModeManager;
 
@@ -32,5 +33,10 @@ public class Managers {
 	 * Tinkering tool mode manager
 	 */
 	public static IToolModeManager toolModeManager;
+	
+	/**
+	 * Info page manager
+	 */
+	public static IBlockInfoManager pageManager;
 	
 }
