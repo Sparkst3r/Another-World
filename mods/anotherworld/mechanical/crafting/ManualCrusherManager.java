@@ -11,8 +11,8 @@ public class ManualCrusherManager implements IManualCrusherManager {
 	public static List<ManualCrusherRecipe> recipes  = new ArrayList<ManualCrusherRecipe>();
 	
 	@Override
-	public boolean addRecipe(ItemStack outputStack, ItemStack inputStack) {
-		recipes.add(new ManualCrusherRecipe(outputStack, inputStack));
+	public boolean addRecipe(ItemStack inputStack, ItemStack outputStack) {
+		recipes.add(new ManualCrusherRecipe(inputStack, outputStack));
 		return true;
 	}
 	
@@ -32,7 +32,7 @@ public class ManualCrusherManager implements IManualCrusherManager {
 			private ItemStack recipeStack;
 			private ItemStack recipeOutputStack;
 			
-			public ManualCrusherRecipe(ItemStack outputStack, ItemStack inputStack) {
+			public ManualCrusherRecipe(ItemStack inputStack, ItemStack outputStack) {
 				recipeStack = inputStack;
 				recipeOutputStack = outputStack;
 			}

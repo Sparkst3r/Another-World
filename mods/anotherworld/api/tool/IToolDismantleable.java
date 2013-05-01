@@ -9,7 +9,7 @@ import net.minecraft.world.World;
  * @author Sparkst3r
  *
  */
-public abstract interface IDismantleable {
+public abstract interface IToolDismantleable {
 	
 	/**
 	 * 

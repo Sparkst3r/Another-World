@@ -7,7 +7,7 @@ import mods.anotherworld.api.crafting.IWorldCraftingManager;
 
 public class CraftingManagerDummy implements IMechanicsTableManager, IWorldCraftingManager, IManualCrusherManager {
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see mods.anotherworld.api.crafting.IWorldCraftingManager#addRecipe(net.minecraft.item.ItemStack, net.minecraft.item.ItemStack, net.minecraft.item.ItemStack[])
 	 */
@@ -16,7 +16,7 @@ public class CraftingManagerDummy implements IMechanicsTableManager, IWorldCraft
 		return false;
 	}
 
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see mods.anotherworld.api.crafting.IMechanicsTableManager#addRecipe(net.minecraft.item.ItemStack, java.lang.Object[])
 	 */
@@ -24,14 +24,13 @@ public class CraftingManagerDummy implements IMechanicsTableManager, IWorldCraft
 	public boolean addRecipe(ItemStack outputStack, Object... recipe) {
 		return false;
 	}
-	
-	/* 
+
+	/**
 	 * (non-Javadoc)
 	 * @see mods.anotherworld.api.crafting.IManualCrusherManager#addRecipe(net.minecraft.item.ItemStack, net.minecraft.item.ItemStack)
 	 */
 	@Override
-	public boolean addRecipe(ItemStack outputStack, ItemStack inputStack) {
+	public boolean addRecipe(ItemStack inputStack, ItemStack outputStack) {
 		return false;
 	}
-	
 }

@@ -22,10 +22,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class ItemIngot extends Item {
 	/** Texture file names + code name */
-    public static String[] types = new String[] {"ingotCopper", "ingotTin", "ingotSilver", "ingotLead"};     
+    public static String[] types = new String[] {"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "dustCopper", "dustTin", "dustSilver", "dustLead", "dustIron", "dustGold"};     
     
     /** Human-Readable names */
-    public static String[] names = new String[] {"Copper Ingot", "Tin Ingot", "Silver Ingot", "Lead Ingot"};
+    public static String[] names = new String[] {"Copper Ingot", "Tin Ingot", "Silver Ingot", "Lead Ingot", "Crushed Copper", "Crushed Tin", "Crushed Silver", "Crushed Lead", "Crushed Iron", "Crushed Gold"};
     
     /** Icon Array */
 	@SideOnly(Side.CLIENT)

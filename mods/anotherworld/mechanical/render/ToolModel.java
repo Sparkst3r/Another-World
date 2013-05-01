@@ -81,7 +81,7 @@ public class ToolModel extends ModelBase {
 		handBottom.render(scale);
 		display.render(scale);
     	
-    	/* Draw the mode icon. */
+		/* Draw the mode icon. */
 		GL11.glPushMatrix();
 			calibrateForIcon();	
 			RenderingUtils.drawIconAt(0, 0, ItemTool.iconBuffer[stack.getItemDamage() + ToolModeManager.getModes().size()]);
@@ -96,7 +96,7 @@ public class ToolModel extends ModelBase {
 			Minecraft.getMinecraft().fontRenderer.drawString("Mode", 1, 1, 0xFFFF00);
 			RenderHelper.enableStandardItemLighting();
 		GL11.glPopMatrix();
-    }
+	}
 	
 	public void calibrateForIcon() {
 		GL11.glTranslatef(0.3F, 0.61F, 0.00F);

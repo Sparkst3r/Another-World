@@ -54,7 +54,7 @@ public class BlockMechanicsTableParts extends Block{
 				tile.invalidate();
 			}
 			catch (NullPointerException e) {
-				FMLLog.warning("A block is unable to invalidate a TileEntity");
+				FMLLog.warning("A block at (" + tile.xCoord + "," + tile.yCoord + "," + tile.zCoord + ") is unable to invalidate a TileEntity");
 			}
 
 		}

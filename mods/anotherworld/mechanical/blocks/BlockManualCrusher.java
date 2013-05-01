@@ -1,5 +1,6 @@
 package mods.anotherworld.mechanical.blocks;
 
+import mods.anotherworld.api.tool.IToolDismantleable;
 import mods.anotherworld.core.GlobalValues;
 import mods.anotherworld.mechanical.crafting.ManualCrusherManager;
 import mods.anotherworld.mechanical.crafting.ManualCrusherManager.ManualCrusherRecipe;
@@ -11,14 +12,17 @@ import mods.anotherworld.util.basic.BasicBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import cofh.api.block.IDismantleable;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockManualCrusher extends BasicBlock {
+public class BlockManualCrusher extends BasicBlock implements IToolDismantleable, IDismantleable {
 
 	
 	
@@ -132,9 +136,24 @@ public class BlockManualCrusher extends BasicBlock {
 		
 	}
 	
-	/** Drops the contents of the input and output slots. Output slot gets priority in order */
-	public void dropSlots(TileManualCrusher tile, EntityPlayer player) {
+	/** Called when the block is broken. Drops the contents of the TileEntity when a block is broken */
+	public void breakBlock(World world, int x, int y, int z, int block, int meta) {
+		if(meta == 0) {
+			TileManualCrusher tile = (TileManualCrusher) world.getBlockTileEntity(x, y, z);
+			if (tile != null) {
+				for (int slot = 0; slot < tile.getSizeInventory(); slot++) {
+					ItemStack stack = tile.getStackInSlot(slot);
+					EntityUtils.dropItemInWorld(world, x, y, z, stack);
+	            }
+	        }
+			try {
+				tile.invalidate();
+			}
+			catch (NullPointerException e) {
+				FMLLog.warning("A block at (" + tile.xCoord + "," + tile.yCoord + "," + tile.zCoord + ") is unable to invalidate a TileEntity");
+			}
 
+		}
 	}
 	
 	
@@ -148,6 +167,21 @@ public class BlockManualCrusher extends BasicBlock {
 	@Override
 	public TileEntity createTileEntity(World world, int meta){
 		return new TileManualCrusher();
+	}
+
+	@Override
+	public boolean canDismantle(EntityPlayer player, World world, int x, int y, int z) {
+		return true;
+	}
+
+	@Override
+	public ItemStack dismantle(EntityPlayer player, World world, int x, int y, int z) {
+		return new ItemStack(this, 1, 0);
+	}
+
+	@Override
+	public ItemStack dismantleBlock(EntityPlayer thePlayer, World world, int x, int y, int z, boolean returnBlock) {
+		return this.dismantle(thePlayer, world, x, y, z);
 	}
 	
 	

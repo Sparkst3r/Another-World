@@ -14,6 +14,8 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+//TODO RE-Write all of this
+
 public class ContainerMechanicsTable extends Container {
 	private static int slots = 17;
 	
@@ -89,48 +91,38 @@ public class ContainerMechanicsTable extends Container {
 		return true;
 	}
 
-        /** Handle shift clicking */
-        @Override
-        public ItemStack transferStackInSlot(EntityPlayer player, int slot) {
-        	ItemStack stack = null;
-        	Slot slotObject = (Slot) inventorySlots.get(slot);
+	/** Handle shift clicking */
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
+		ItemStack stack = null;
+		Slot slot = (Slot) inventorySlots.get(slotIndex);
+		
+			if (slot != null && slot.getHasStack()) {
+				ItemStack stackInSlot = slot.getStack();
+				stack = stackInSlot.copy();
+				
+             
+				if (slotIndex < slots) {
+					if (!this.mergeItemStack(stackInSlot, slots, 41, true)) {
+						return null;
+					}
+				}
+				
 
-             //null checks and checks if the item can be stacked (maxStackSize > 1)
-             if (slotObject != null && slotObject.getHasStack())
-             {
-                 ItemStack stackInSlot = slotObject.getStack();
-                 stack = stackInSlot.copy();
-
-                 //merges the item into player inventory since its in the tileEntity
-                 if (slot < slots)
-                 {
-                     if (!this.mergeItemStack(stackInSlot, slots, 41, true))
-                     {
-                         return null;
-                     }
-                 }
-                 //places it into the tileEntity is possible since its in the player inventory
-                 else if (!this.mergeItemStack(stackInSlot, 0, slots, false))
-                 {
-                 return null;
-                 }
-
-                 if (stackInSlot.stackSize == 0)
-                 {
-                     slotObject.putStack(null);
-                 }
-                 else
-                 {
-                     slotObject.onSlotChanged();
-                 }
-
-                 if (stackInSlot.stackSize == stack.stackSize)
-                 {
-                     return null;
-                 }
-                 slotObject.onPickupFromSlot(player, stackInSlot);
-             }
-             return stack;
-        }
-
+				else if (!this.mergeItemStack(stackInSlot, 0, slots, false))
+					return null;
+				
+				if (stackInSlot.stackSize == 0) {
+					slot.putStack(null);
+				}
+				else {slot.onSlotChanged();}
+				
+				if (stackInSlot.stackSize == stack.stackSize) {
+					return null;
+				}
+				
+				slot.onPickupFromSlot(player, stackInSlot);
+			}
+			return stack;
+	}
 }

@@ -1,6 +1,6 @@
 package mods.anotherworld.mechanical.blocks;
 
-import mods.anotherworld.api.tool.IDismantleable;
+import mods.anotherworld.api.tool.IToolDismantleable;
 import mods.anotherworld.core.GlobalValues;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -20,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Sparkst3r
  *
  */
-public class BlockBaseParts extends Block implements IDismantleable {
+public class BlockBaseParts extends Block implements IToolDismantleable {
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconBuffer;

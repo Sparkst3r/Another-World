@@ -6,10 +6,11 @@ import mods.anotherworld.api.info.IStandardBlockInfoPage;
 
 public class StandardBlockInfoGrass implements IStandardBlockInfoPage {
 	String[] infoBlurb = new String[] {
-			"Grass covers the majority of the exposed ground in Minecraft.",
+			"Grass covers the majority of the exposed ",
+			"ground in Minecraft.",
 			"Dirt is found underneath this layer of grass.",
-			"Grass can be broken with a bare hand or more efficiently",
-			"with a shovel of any material"
+			"Grass can be broken with a bare hand or more",
+			"efficiently with a shovel of any material"
 	};
 	
 	String[] infoComplete = new String[] { 

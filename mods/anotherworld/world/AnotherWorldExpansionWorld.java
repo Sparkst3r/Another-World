@@ -42,16 +42,16 @@ public class AnotherWorldExpansionWorld {
 	
 	
 	//Called during the pre-load phase
-    @PreInit
-    public void PreLoad(FMLPreInitializationEvent event) {
+	@PreInit
+	public void PreLoad(FMLPreInitializationEvent event) {
 		EntityRegistry.registerModEntity(EntityBee.class, "Bee", 0, this, 40, 3, true);
-    	EntityRegistry.addSpawn(EntityBee.class, 90, 1, 10, EnumCreatureType.monster, BiomeGenBase.desert);
+		EntityRegistry.addSpawn(EntityBee.class, 90, 1, 10, EnumCreatureType.monster, BiomeGenBase.desert);
 		
-    	EntityUtils.registerEntityEgg(EntityBee.class, 0x000000, 0xFFFFFF);
+		EntityUtils.registerEntityEgg(EntityBee.class, 0x000000, 0xFFFFFF);
     	
 		WorldValues.initialise();
-    	GameRegistry.registerWorldGenerator(new WorldGenerator());
-    }
+		GameRegistry.registerWorldGenerator(new WorldGenerator());
+	}
     
 	//Called during the loading phase
 	@Init 

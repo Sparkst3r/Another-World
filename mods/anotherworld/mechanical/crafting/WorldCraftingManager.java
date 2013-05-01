@@ -43,13 +43,15 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 			ItemStack[] nearbyItems = EntityUtils.getItemsInRadius(world, x, y, z, 2, 2, 2);
 			boolean[] hasItems;
 			
+			System.out.println(nearbyItems.length);
+			
 			for (int recipe = 0; recipe < recipes.size(); recipe++) {
 				WorldBlockRecipe currentRecipe = getRecipe(recipe);
 				hasItems = new boolean[currentRecipe.getItems().length];
 				boolean[][] itemInArray = new boolean[nearbyItems.length][currentRecipe.getItems().length];
 				int recipeItemCount = 0;
 				
-				if (WorldUtils.isBlockAt(world, x, y, z, Block.blocksList[currentRecipe.getBlock().itemID], currentRecipe.recipeBlock.getItemDamage())) {			
+				if (WorldUtils.isBlockAt(world, x, y, z, Block.blocksList[currentRecipe.getBlock().itemID], currentRecipe.recipeBlock.getItemDamage())) {
 					for(int recipeItem = 0; recipeItem < currentRecipe.getItems().length; recipeItem++) {
 						for (int item = 0; item < nearbyItems.length; item++) {
 							if (ItemStackUtils.areStacksOfSameType(currentRecipe.getItems()[recipeItem], nearbyItems[item]) && nearbyItems[item].stackSize >= currentRecipe.getItems()[recipeItem].stackSize) {

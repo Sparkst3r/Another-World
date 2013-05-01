@@ -174,8 +174,7 @@ public class RenderingUtils {
     /**
      * Draws a textured rectangle at the stored z-value. Args: x, y, u, v, width, height
      */
-    public void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6)
-    {
+    public static void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6)  {
         float f = 0.00390625F;
         float f1 = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;

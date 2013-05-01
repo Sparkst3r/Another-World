@@ -34,8 +34,10 @@ public class ToolActionAssemble implements IToolAction{
 
 	@Override
 	public boolean canTriggerAction(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
+		
 		newBlock = WorldCraftingManager.getOutput(world, x, y, z);
 		if (this.newBlock != null) { 
+			System.out.println("BLAOC");
 			return true;
 		}
 		
