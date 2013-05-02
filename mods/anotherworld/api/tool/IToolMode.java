@@ -1,5 +1,10 @@
 package mods.anotherworld.api.tool;
 
+/**
+ * A tool mode
+ * @author Sparkst3r
+ *
+ */
 public interface IToolMode {
 	
 	/**

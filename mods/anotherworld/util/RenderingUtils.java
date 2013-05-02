@@ -32,9 +32,6 @@ public class RenderingUtils {
 		drawIconPartial(x, y, icon, 0, 0, 16, 16);
 	}
 	
-	public static void drawTextureAt(double x, double y, String name) {
-		drawTexturePartial(x, y, name, 0, 0, 1, 1);
-	}
 	/**
 	 * 'adapted from MachineMuse's Modular Powersuits'~
 	 * Draws a MuseIcon
@@ -80,38 +77,6 @@ public class RenderingUtils {
 		GL11.glPopMatrix();
 	}
 	
-	public static void drawTexturePartial(double x, double y, String name, double left, double top, double right, double bottom) {
-		GL11.glPushMatrix();
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_CULL_FACE);
-		//GL11.glDisable(GL11.GL_DEPTH_TEST);
-		texturelessOff();
-		blendingOn();
-		getRenderEngine().bindTexture("/mods/AnotherWorld/textures/iconActivate.png");
-		Tessellator tess = Tessellator.instance;
-		tess.startDrawingQuads();
-		float u1 = 0;
-		float v1 = 0;
-		float u2 = 16;
-		float v2 = 16;
-		double xoffset1 = left * (u2 - u1) / 16.0f;
-		double yoffset1 = top * (v2 - v1) / 16.0f;
-		double xoffset2 = right * (u2 - u1) / 16.0f;
-		double yoffset2 = bottom * (v2 - v1) / 16.0f;
-
-		tess.addVertexWithUV(x + left, y + top, 0, u1 + xoffset1, v1 + yoffset1);
-		tess.addVertexWithUV(x + left, y + bottom, 0, u1 + xoffset1, v1 + yoffset2);
-		tess.addVertexWithUV(x + right, y + bottom, 0, u1 + xoffset2, v1 + yoffset2);
-		tess.addVertexWithUV(x + right, y + top, 0, u1 + xoffset2, v1 + yoffset1);
-		tess.draw();
-
-		blendingOff();
-		GL11.glEnable(GL11.GL_CULL_FACE);
-		// GL11.glDepthFunc(GL11.GL_LEQUAL);
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
-		GL11.glPopMatrix();
-	}
 	
 	/**
 	 * 'adapted from MachineMuse's Modular Powersuits'~

@@ -1,5 +1,6 @@
 package mods.anotherworld.mechanical.blocks;
 
+import cofh.api.block.IDismantleable;
 import mods.anotherworld.api.tool.IToolDismantleable;
 import mods.anotherworld.core.GlobalValues;
 import net.minecraft.block.Block;
@@ -20,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Sparkst3r
  *
  */
-public class BlockBaseParts extends Block implements IToolDismantleable {
+public class BlockBaseParts extends Block implements IToolDismantleable, IDismantleable {
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconBuffer;
@@ -99,7 +100,7 @@ public class BlockBaseParts extends Block implements IToolDismantleable {
 		return false;
 	}
 
-	/** On dismantled */
+	/** On dismantled by a Tinkering tool*/
 	@Override
 	public ItemStack dismantle(EntityPlayer player, World world, int x, int y, int z) {
 		switch(world.getBlockMetadata(x, y, z)) {
@@ -112,5 +113,11 @@ public class BlockBaseParts extends Block implements IToolDismantleable {
 			default : 
 				return null;
 		}
+	}
+
+	/** On dismantled by a CoFH Crescent Hammer */
+	@Override
+	public ItemStack dismantleBlock(EntityPlayer thePlayer, World world, int x, int y, int z, boolean returnBlock) {
+		return this.dismantle(thePlayer, world, x, y, z);
 	}
 }

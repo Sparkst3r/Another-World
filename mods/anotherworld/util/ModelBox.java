@@ -3,6 +3,11 @@ package mods.anotherworld.util;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
+/**
+ * A bare bones box in a model.
+ * @author Sparkst3r
+ *
+ */
 public class ModelBox extends ModelRenderer {
 
 	/**
@@ -25,7 +30,4 @@ public class ModelBox extends ModelRenderer {
 		this.addBox(originX, originY, originZ, boxWidth, boxHeight, boxDepth, 0.0F);
         this.mirror = true;
 	}
-
-	
-	
 }

@@ -5,7 +5,7 @@ import mods.anotherworld.core.GlobalValues;
 import mods.anotherworld.mechanical.MechanicalValues;
 import mods.anotherworld.mechanical.container.ContainerMechanicsTable;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
-import net.minecraft.client.gui.inventory.GuiContainer;
+import mods.anotherworld.util.GUIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 
-public class GuiMechanicsTable extends GuiContainer {
+public class GuiMechanicsTable extends GUIBase {
 	/** The tile entity associated with the GUI*/
 	public TileMechanicsTable tileEntity;
 	

@@ -16,7 +16,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 		modid = GlobalValues.ModIDMachines, 
 		name = GlobalValues.ModNameMachines, 
 		version = GlobalValues.ModVersion,
-		dependencies = GlobalValues.World
+		dependencies = GlobalValues.Mechanical
 		)
 
 

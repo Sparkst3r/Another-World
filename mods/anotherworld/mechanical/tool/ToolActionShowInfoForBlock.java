@@ -4,6 +4,7 @@ import mods.anotherworld.api.info.IStandardBlockInfoPage;
 import mods.anotherworld.api.tool.IToolAction;
 import mods.anotherworld.core.blockinfo.BlockInfoManager;
 import mods.anotherworld.mechanical.tick.RenderTick;
+import mods.anotherworld.util.MetaSensitiveBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -50,12 +51,15 @@ public class ToolActionShowInfoForBlock implements IToolAction{
 	public boolean canTriggerAction(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
 		Block block = Block.blocksList[world.getBlockId(x, y, z)];
 		int metadata = world.getBlockMetadata(x, y, z);
-		for (IStandardBlockInfoPage info : BlockInfoManager.standardInfo) {
-			if (info.block().itemID == block.blockID && info.block().getItemDamage() == metadata) {
-				this.info = info;
-				return true;
-			}
+		
+		IStandardBlockInfoPage infoPage = BlockInfoManager.standardInfo.get(new MetaSensitiveBlock(block, metadata));
+		
+		
+		if (infoPage != null) {
+			this.info = infoPage;
+			return true;
 		}
+		
 		return false;
 	}
 	

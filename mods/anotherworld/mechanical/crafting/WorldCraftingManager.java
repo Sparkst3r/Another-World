@@ -4,7 +4,6 @@ package mods.anotherworld.mechanical.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
-import mods.anotherworld.api.crafting.IWorldBlockRecipe;
 import mods.anotherworld.api.crafting.IWorldCraftingManager;
 import mods.anotherworld.util.EntityUtils;
 import mods.anotherworld.util.ItemStackUtils;
@@ -13,23 +12,51 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+/**
+ * Crafting Manager for the world.
+ * 
+ * @author Sparkst3r
+ *
+ */
 public class WorldCraftingManager implements IWorldCraftingManager{
+	
+	/** The list of world recipes */
 	private static List<WorldBlockRecipe> recipes = new ArrayList<WorldBlockRecipe>();
 	
-	
+	/**
+	 * Adds a recipe to the world crafting recipes
+	 * @param outputBlock The block that will be placed if the recipe is fulfilled
+	 * @param inputBlock The block that will be used in the recipe
+	 * @param items The items required to be surrounding the block when assembled
+	 * @return If the recipe was added.
+	 */
 	@Override
 	public boolean addRecipe(ItemStack outputBlock, ItemStack inputBlock, ItemStack[] items) {
-		if(items != null) {
+		if(items != null && inputBlock != null) {
 			WorldBlockRecipe shapedRecipe = new WorldBlockRecipe(outputBlock, inputBlock, items);
 			recipes.add(shapedRecipe);
 		}
 		return true;
 	}
 	
+	/**
+	 * Gets a recipe at a certain index
+	 * @param index The index in the list of recipes
+	 * @return
+	 */
 	public static WorldBlockRecipe getRecipe(int index) {
 		return (WorldBlockRecipe) recipes.get(index);
 	}
 	
+	/**
+	 * Returns the list of all recipes
+	 * @return The list
+	 */
+	public static List<WorldBlockRecipe> getAllRecipes() {
+		return recipes;
+	}
+	
+	/*TODO Rewrite this */
 	/**
 	 * Returns an ItemStack result based on the block clicked and the items surrounding the block
 	 * @param world The world
@@ -51,7 +78,7 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 				boolean[][] itemInArray = new boolean[nearbyItems.length][currentRecipe.getItems().length];
 				int recipeItemCount = 0;
 				
-				if (WorldUtils.isBlockAt(world, x, y, z, Block.blocksList[currentRecipe.getBlock().itemID], currentRecipe.recipeBlock.getItemDamage())) {
+				if (WorldUtils.isBlockAt(world, x, y, z, Block.blocksList[currentRecipe.getInputBlock().itemID], currentRecipe.recipeBlock.getItemDamage())) {
 					for(int recipeItem = 0; recipeItem < currentRecipe.getItems().length; recipeItem++) {
 						for (int item = 0; item < nearbyItems.length; item++) {
 							if (ItemStackUtils.areStacksOfSameType(currentRecipe.getItems()[recipeItem], nearbyItems[item]) && nearbyItems[item].stackSize >= currentRecipe.getItems()[recipeItem].stackSize) {
@@ -107,22 +134,34 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 			recipeOutput = outputBlock;
 		}
 
-		
-		public ItemStack[] getItems() {
-			return recipeItems;
-		}
-		
-		public ItemStack getBlock() {
-			return recipeBlock;
-		}
-		
 		@Override
 		public boolean matches(ItemStack[] inputStacks, World world) {
 			return true;
 		}
 
-		
 
+		/**
+		 * Returns the array of input ItemStacks required for this recipe
+		 * @return The ItemStack array
+		 */
+		@Override
+		public ItemStack[] getItems() {
+			return recipeItems;
+		}
+		
+		/**
+		 * Returns the ItemStack of the inputBlock for this recipe
+		 * @return ItemStack of the input block
+		 */
+		@Override
+		public ItemStack getInputBlock() {
+			return new ItemStack(recipeBlock.itemID, 1, recipeBlock.getItemDamage());
+		}
+		
+		/**
+		 * Gets the output block for this recipe
+		 * @return ItemStack of the output block of this recipe
+		 */
 		@Override
 		public ItemStack getRecipeOutput() {
 			return new ItemStack(recipeOutput.itemID, 1, recipeOutput.getItemDamage());
@@ -130,6 +169,35 @@ public class WorldCraftingManager implements IWorldCraftingManager{
 		
 	}
 	
+	
+	/**
+	 * World Block Recipe 
+	 * @author Sparkst3r
+	 *
+	 */
+	public abstract interface IWorldBlockRecipe {
+		
+		public abstract boolean matches(ItemStack[] inputStacks, World world);
+
+
+		/**
+		 * Returns the array of input ItemStacks required for this recipe
+		 * @return The ItemStack array
+		 */
+		public abstract ItemStack[] getItems();
+			
+		/**
+		 * Returns the ItemStack of the inputBlock for this recipe
+		 * @return
+		 */
+		public abstract ItemStack getInputBlock();
+				
+		/**
+		 * Gets the output block for this recipe
+		 * @return ItemStack of the output block of this recipe
+		 */
+		public ItemStack getRecipeOutput();
+	}
 	
 	
 }

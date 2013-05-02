@@ -43,20 +43,20 @@ public class AnotherWorldExpansionMechanical {
 	public static CommonProxy proxy;
 	
 	
-	//Called during the pre-load phase
+	/** Called during the pre-load phase */
     @PreInit
     public void PreLoad(FMLPreInitializationEvent event) {
     	MechanicalValues.initialise();
     	NetworkRegistry.instance().registerGuiHandler(this, GlobalValues.GUIMechanical);
     }
     
-	//Called during the loading phase
+	/** Called during the loading phase */
 	@Init 
 	public void load(FMLInitializationEvent event) {
 		
 	}
 	
-	//Called during the post-load phase
+	/** Called during the post-load phase */
 	@PostInit 
 	public void PostLoad(FMLPostInitializationEvent event) {
 	}

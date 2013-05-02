@@ -10,8 +10,5 @@ public class BlockCrafting {
 		GameRegistry.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 4, 0),
 				"SSS", "SCS", "SSS", 'S', new ItemStack(Block.stoneSingleSlab, 1, 0), 'C', Block.blockClay);
 	
-	}
-	
-	
-	
+	}	
 }

@@ -7,6 +7,11 @@ import mods.anotherworld.api.info.IBlockInfoManager;
 import mods.anotherworld.api.tool.IToolActionManager;
 import mods.anotherworld.api.tool.IToolModeManager;
 
+/**
+ * Access to managers for many features
+ * @author Sparkst3r
+ *
+ */
 public class Managers {
 	
 	/**
