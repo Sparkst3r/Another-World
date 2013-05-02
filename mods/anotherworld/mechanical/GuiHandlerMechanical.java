@@ -1,7 +1,10 @@
 package mods.anotherworld.mechanical;
 
+import mods.anotherworld.mechanical.container.ContainerLogicSimple;
 import mods.anotherworld.mechanical.container.ContainerMechanicsTable;
+import mods.anotherworld.mechanical.gui.GuiLogicSimple;
 import mods.anotherworld.mechanical.gui.GuiMechanicsTable;
+import mods.anotherworld.mechanical.tileentity.TileLogicSimple;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -40,6 +43,12 @@ public class GuiHandlerMechanical implements IGuiHandler{
 					if (teMechTable != null) {
 						return new GuiMechanicsTable(player.inventory, (TileMechanicsTable) teMechTable);
 					}
+				case 4:
+					TileLogicSimple teLogicSimple = (TileLogicSimple) world.getBlockTileEntity(x, y, z);
+					if (teLogicSimple != null) {
+						return new GuiLogicSimple(player.inventory, teLogicSimple);
+					}
+					
 			}
 			return null;
 	}
@@ -68,6 +77,11 @@ public class GuiHandlerMechanical implements IGuiHandler{
 				teMechTable = world.getBlockTileEntity(x - 1, y, z - 1);
 				if (teMechTable != null) {
 					return new ContainerMechanicsTable(player.inventory, (TileMechanicsTable) teMechTable);
+				}
+			case 4:
+				TileLogicSimple teLogicSimple = (TileLogicSimple) world.getBlockTileEntity(x, y, z);
+				if (teLogicSimple != null) {
+					return new ContainerLogicSimple(player.inventory, teLogicSimple);
 				}
 		}
 		return null;

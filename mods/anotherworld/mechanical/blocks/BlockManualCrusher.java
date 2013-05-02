@@ -25,7 +25,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockManualCrusher extends BasicBlock implements IToolDismantleable, IDismantleable {
 
 	
-	
 	/**
 	 * Icon Buffer
 	 */

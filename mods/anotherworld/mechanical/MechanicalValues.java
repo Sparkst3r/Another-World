@@ -3,12 +3,14 @@ package mods.anotherworld.mechanical;
 import mods.anotherworld.core.APIInternal;
 import mods.anotherworld.core.AnotherWorld;
 import mods.anotherworld.mechanical.blocks.BlockBaseParts;
+import mods.anotherworld.mechanical.blocks.BlockLogicSimple;
 import mods.anotherworld.mechanical.blocks.BlockManualCrusher;
 import mods.anotherworld.mechanical.blocks.BlockMechanicsTableParts;
 import mods.anotherworld.mechanical.blocks.ItemBlockBaseParts;
 import mods.anotherworld.mechanical.items.ItemBaseParts;
 import mods.anotherworld.mechanical.items.ItemTool;
 import mods.anotherworld.mechanical.tick.RenderTick;
+import mods.anotherworld.mechanical.tileentity.TileLogicSimple;
 import mods.anotherworld.mechanical.tileentity.TileManualCrusher;
 import mods.anotherworld.mechanical.tileentity.TileMechanicsTable;
 import mods.anotherworld.mechanical.tool.ToolModeManager;
@@ -31,7 +33,7 @@ public class MechanicalValues {
 	public static Block BlockMechTablePartsField;
 	public static Block BlockBasePartsField;
 	public static Block BlockManualCrusherField;
-	
+	public static Block BlockLogicSimpleField;
 	
 	public static Item ItemToolField;
 	public static Item ItemBasePartsField;
@@ -42,10 +44,10 @@ public class MechanicalValues {
 		APIInternal.addVanillaInfoBlockPages();
 		TickRegistry.registerTickHandler(new RenderTick(), Side.CLIENT);
 		
-		BlockBasePartsField = new BlockBaseParts(712);
-		BlockMechTablePartsField = new BlockMechanicsTableParts(711);
+		BlockBasePartsField = new BlockBaseParts(711);
+		BlockMechTablePartsField = new BlockMechanicsTableParts(712);
 		BlockManualCrusherField = new BlockManualCrusher(713);
-		
+		BlockLogicSimpleField = new BlockLogicSimple(714);
 		
 		ItemToolField = new ItemTool(5001);
 		ItemBasePartsField = new ItemBaseParts(5002);
@@ -82,5 +84,6 @@ public class MechanicalValues {
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileMechanicsTable.class, "tileMechTable");
 		GameRegistry.registerTileEntity(TileManualCrusher.class, "tileMechGrinder");
+		GameRegistry.registerTileEntity(TileLogicSimple.class, "tileLogicSimple");
 	}
 }
