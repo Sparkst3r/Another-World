@@ -40,6 +40,11 @@ public class BlockOre extends Block {
 			iconBuffer[icon] = ir.registerIcon(id + ItemBlockOre.types[icon]);
 		}
 	}
+	// Drops the metadata block
+	public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
     
 	
     /** Returns the texture for the meta and side */
