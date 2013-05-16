@@ -51,4 +51,10 @@ public class BlockOre extends Block {
 		return (meta < ItemBlockOre.types.length)? iconBuffer[meta] : iconBuffer[0];
 	}
 	
+	/** The damage value of the ItemStack dropped. */
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+	
 }
