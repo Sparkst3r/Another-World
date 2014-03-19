@@ -1,6 +1,7 @@
 package com.sparkst3r.anotherworld.mechanical.gui;
 
 
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -13,10 +14,9 @@ import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.mechanical.MechanicalValues;
 import com.sparkst3r.anotherworld.mechanical.container.ContainerMechanicsTable;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileMechanicsTable;
-import com.sparkst3r.anotherworld.util.GUIBase;
 
 
-public class GuiMechanicsTable extends GUIBase {
+public class GuiMechanicsTable extends GuiContainer {
 	/** The tile entity associated with the GUI*/
 	public TileMechanicsTable tileEntity;
 	
@@ -60,7 +60,7 @@ public class GuiMechanicsTable extends GUIBase {
 		int z = this.tileEntity.zCoord;
 		World world = this.tileEntity.getWorldObj();
 		
-		if(!world.getBlock(x, y, z).equals(MechanicalValues.BlockMechTablePartsField) && world.getBlockMetadata(x, y, z) != 0) {
+		if(!world.getBlock(x, y, z).equals(MechanicalValues.blockMechTable) && world.getBlockMetadata(x, y, z) != 0) {
 			//player.closeScreen();
 		}
 		

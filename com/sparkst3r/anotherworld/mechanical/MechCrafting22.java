@@ -12,13 +12,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author Sparkst3r
  *
  */
-public class BlockCrafting {
+public class MechCrafting22 {
 	
 	/**
 	 * Init the recipes
 	 */
 	public static void initialise() {
-		GameRegistry.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 6, 0),
+		GameRegistry.addRecipe(new ItemStack(MechanicalValues.blockBaseParts, 6, 0),
 				"SSS", "SCS", "SSS", 'S', new ItemStack(Block.getBlockFromName("stoneSingleSlab"), 1, 0), 'C', Block.getBlockFromName("clay"));
 	
 	}	

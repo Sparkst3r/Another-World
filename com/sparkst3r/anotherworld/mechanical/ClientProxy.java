@@ -25,7 +25,7 @@ public class ClientProxy extends CommonProxy{
 	 */
 	@Override
 	public void registerRendersForMechanical() {
-		MinecraftForgeClient.registerItemRenderer(MechanicalValues.ItemToolField, new ToolRenderer());
+		MinecraftForgeClient.registerItemRenderer(MechanicalValues.itemTinkeringTool, new ToolRenderer());
 	
 	}
 }

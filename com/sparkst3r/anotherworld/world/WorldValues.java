@@ -1,12 +1,9 @@
 package com.sparkst3r.anotherworld.world;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-
-import com.sparkst3r.anotherworld.core.AnotherWorld;
 import com.sparkst3r.anotherworld.world.blocks.BlockOre;
 import com.sparkst3r.anotherworld.world.blocks.ItemBlockOre;
 import com.sparkst3r.anotherworld.world.items.ItemIngot;
+import com.sparkst3r.anotherworld.world.items.ItemTodolist;
 
 
 /**
@@ -32,6 +29,11 @@ public class WorldValues {
 	 * @see ItemIngot
 	 */
 	public static final ItemIngot ItemIngotField = new ItemIngot();
+	
+	/**
+	 * Todolist item
+	 */
+	public static final ItemTodolist itemTodoList = new ItemTodolist();
 	
 	/**
 	 * Initialise world expansion features

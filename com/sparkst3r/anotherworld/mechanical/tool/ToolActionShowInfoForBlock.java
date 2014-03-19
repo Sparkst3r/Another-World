@@ -8,7 +8,6 @@ import net.minecraft.world.World;
 import com.sparkst3r.anotherworld.api.info.IStandardBlockInfoPage;
 import com.sparkst3r.anotherworld.api.tool.IToolAction;
 import com.sparkst3r.anotherworld.mechanical.blockinfo.BlockInfoManager;
-import com.sparkst3r.anotherworld.util.MetaSensitiveBlock;
 
 
 public class ToolActionShowInfoForBlock implements IToolAction{

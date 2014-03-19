@@ -14,6 +14,7 @@ import org.lwjgl.opengl.GL11;
 import com.sparkst3r.anotherworld.core.GlobalValues;
 
 /** 
+ * TODO Use Numina library when it updates.
  * Some rendering methods. 
  * Credit to MachineMuse for these methods from 'MuseRenderer.class'.
  *
@@ -27,12 +28,16 @@ public class RenderingUtils {
 	 * @param x
 	 * @param y
 	 * @param icon
-	 * @param colour
 	 */
 	public static void drawIconAt(double x, double y, IIcon icon) {
 		drawIconPartial(x, y, icon, 0, 0, 16, 16);
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @param texture
+	 */
 	public static void drawTextureAt(double x, double y, ResourceLocation texture) {
 		drawTexturePartial(x, y, texture, 0, 0, 16, 16);
 	}
@@ -44,7 +49,10 @@ public class RenderingUtils {
 	 * @param x
 	 * @param y
 	 * @param icon
-	 * @param colour
+	 * @param left 
+	 * @param top 
+	 * @param right 
+	 * @param bottom 
 	 */
 	public static void drawIconPartial(double x, double y, IIcon icon, double left, double top, double right, double bottom) {
 		if (icon == null) {
@@ -81,6 +89,15 @@ public class RenderingUtils {
 		GL11.glPopMatrix();
 	}
 	
+	/**
+	 * @param x
+	 * @param y
+	 * @param texture
+	 * @param left
+	 * @param top
+	 * @param right
+	 * @param bottom
+	 */
 	public static void drawTexturePartial(double x, double y, ResourceLocation texture, double left, double top, double right, double bottom) {
 		if (texture == null || texture.equals("")) {
 			return;
@@ -132,6 +149,7 @@ public class RenderingUtils {
 	/**
 	 * 'adapted from MachineMuse's Modular Powersuits'~
 	 * Singleton pattern for RenderEngine
+	 * @return texture manager
 	 */
 	public static TextureManager getRenderEngine() {
 		return Minecraft.getMinecraft().renderEngine;
@@ -162,6 +180,9 @@ public class RenderingUtils {
 	/**
 	 *  'adapted from MachineMuse's Modular Powersuits'~
 	 * Does the necessary openGL calls and calls the Minecraft font renderer to draw a string such that the xcoord is halfway through the string
+	 * @param s 
+	 * @param x 
+	 * @param y 
 	 */
     public static void drawString(String s, double x, double y) {
     	RenderHelper.disableStandardItemLighting();
@@ -170,6 +191,7 @@ public class RenderingUtils {
     
     /**
      * Singleton pattern for FontRenderer
+     * @return fontrenderer
      */
     public static FontRenderer getFontRenderer() {
     	return Minecraft.getMinecraft().fontRenderer;
@@ -178,6 +200,12 @@ public class RenderingUtils {
 	
     /**
      * Draws a textured rectangle at the stored z-value. Args: x, y, u, v, width, height
+     * @param par1 
+     * @param par2 
+     * @param par3 
+     * @param par4 
+     * @param par5 
+     * @param par6 
      */
     public static void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6)  {
         float f = 0.00390625F;

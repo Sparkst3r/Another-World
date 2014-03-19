@@ -1,8 +1,8 @@
 package com.sparkst3r.anotherworld.mechanical;
 
-import com.sparkst3r.anotherworld.mechanical.container.ContainerLogicSimple;
+import com.sparkst3r.anotherworld.mechanical.container.TODOWIPContainerLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.container.ContainerMechanicsTable;
-import com.sparkst3r.anotherworld.mechanical.gui.GuiLogicSimple;
+import com.sparkst3r.anotherworld.mechanical.gui.TODOWIPGuiLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.gui.GuiMechanicsTable;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileMechanicsTable;
@@ -50,7 +50,7 @@ public class GuiHandlerMechanical implements IGuiHandler {
 				case 4:
 					TileLogicSimple teLogicSimple = (TileLogicSimple) world.getTileEntity(x, y, z);
 					if (teLogicSimple != null) {
-						return new GuiLogicSimple(player.inventory, teLogicSimple);
+						return new TODOWIPGuiLogicSimple(player.inventory, teLogicSimple);
 					}
 					
 			}
@@ -85,7 +85,7 @@ public class GuiHandlerMechanical implements IGuiHandler {
 			case 4:
 				TileLogicSimple teLogicSimple = (TileLogicSimple) world.getTileEntity(x, y, z);
 				if (teLogicSimple != null) {
-					return new ContainerLogicSimple(player.inventory, teLogicSimple);
+					return new TODOWIPContainerLogicSimple(player.inventory, teLogicSimple);
 				}
 		}
 		return null;

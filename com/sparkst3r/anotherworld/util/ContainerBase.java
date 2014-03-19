@@ -5,8 +5,16 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 
+/** ContainerBase
+ *
+ * @author Sparkst3r(Josh Lockheed)
+ * @since 14 Mar 2014
+ */
 public class ContainerBase extends Container {
 
+	/** (non-Javadoc)
+	 * @see net.minecraft.inventory.Container#canInteractWith(net.minecraft.entity.player.EntityPlayer)
+	 */
 	@Override
 	public boolean canInteractWith(EntityPlayer entityplayer) {
 		return false;

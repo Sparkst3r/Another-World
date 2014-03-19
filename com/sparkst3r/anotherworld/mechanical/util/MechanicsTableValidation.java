@@ -25,34 +25,34 @@ public class MechanicsTableValidation {
 
 
 		/* Valid for configuration 0 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z + 1, MechanicalValues.BlockBasePartsField, 1)) {
+		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z + 1, MechanicalValues.blockBaseParts, 1)) {
 			return 0;
 			}
 		/* Valid for configuration 1 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z + 1, MechanicalValues.BlockBasePartsField, 1)) {
+		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z + 1, MechanicalValues.blockBaseParts, 1)) {
 			return 1;
 			}
 		
 		/* Valid for configuration 2 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z - 1, MechanicalValues.BlockBasePartsField, 1)) {
+		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z - 1, MechanicalValues.blockBaseParts, 1)) {
 			return 2;
 			}
 		
 
 		/* Valid for configuration 3 */
-		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockBasePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z - 1, MechanicalValues.BlockBasePartsField, 1)) {
+		if (	WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.blockBaseParts, 1) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z - 1, MechanicalValues.blockBaseParts, 1)) {
 			return 3;
 			}
 		
@@ -72,31 +72,31 @@ public class MechanicsTableValidation {
 	public static void placeTable(World world, int x, int y, int z, int startBlock) {
 		switch(startBlock) {
 			case 0:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 0, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 0, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.blockMechTable, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.blockMechTable, 2, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z + 1, MechanicalValues.blockMechTable, 3, false);
 				break;
 			
 			case 1:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 0, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.blockMechTable, 3, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.blockMechTable, 0, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z + 1, MechanicalValues.blockMechTable, 2, false);
 				break;
 				
 			case 2:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 2, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 3, false);
-				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 2, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.blockMechTable, 3, false);
+				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.blockMechTable, 0, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z - 1, MechanicalValues.blockMechTable, 1, false);
 				break;
 				
 			case 3:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 3, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 2, false);
-				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 3, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.blockMechTable, 2, false);
+				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.blockMechTable, 1, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z - 1, MechanicalValues.blockMechTable, 0, false);
 				break;
 				
 		}
@@ -155,30 +155,30 @@ public class MechanicsTableValidation {
 	public static void breakTable(World world, int x, int y, int z, int startBlock) {
 		switch(startBlock) {
 			case 0:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z + 1, MechanicalValues.BlockBasePartsField, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z + 1, MechanicalValues.blockBaseParts, 1, false);
 				break;
 			case 1:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z + 1, MechanicalValues.BlockBasePartsField, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z + 1, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z + 1, MechanicalValues.blockBaseParts, 1, false);
 				break;
 				
 			case 2:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x + 1, y, z - 1, MechanicalValues.BlockBasePartsField, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x + 1, y, z - 1, MechanicalValues.blockBaseParts, 1, false);
 				break;
 				
 			case 3:
-				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.BlockBasePartsField, 1, false);
-				WorldUtils.setBlockAt(world, x - 1, y, z - 1, MechanicalValues.BlockBasePartsField, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x, y, z - 1, MechanicalValues.blockBaseParts, 1, false);
+				WorldUtils.setBlockAt(world, x - 1, y, z - 1, MechanicalValues.blockBaseParts, 1, false);
 				break;
 		}
 	}
@@ -242,37 +242,37 @@ public class MechanicsTableValidation {
 
 		/* Valid for configuration 0 */
 		if (startblock == 0 &&
-				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 0) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3)) {
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 0) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.blockMechTable, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.blockMechTable, 2) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z + 1, MechanicalValues.blockMechTable, 3)) {
 			return true;
 			}
 		/* Valid for configuration 1 */
 		if (startblock == 1 &&
-				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.BlockMechTablePartsField, 3) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 0) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z + 1, MechanicalValues.BlockMechTablePartsField, 2)) {
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 1) &&
+				WorldUtils.isBlockAt(world, x, y, z + 1, MechanicalValues.blockMechTable, 3) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.blockMechTable, 0) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z + 1, MechanicalValues.blockMechTable, 2)) {
 			return true;
 			}
 		
 		/* Valid for configuration 2 */
 		if (startblock == 2 &&
-				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 2) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.BlockMechTablePartsField, 3) &&
-				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0) &&
-				WorldUtils.isBlockAt(world, x + 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1)) {
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 2) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z, MechanicalValues.blockMechTable, 3) &&
+				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.blockMechTable, 0) &&
+				WorldUtils.isBlockAt(world, x + 1, y, z - 1, MechanicalValues.blockMechTable, 1)) {
 			return true;
 			}
 		
 
 		/* Valid for configuration 3 */
 		if (startblock == 3 &&
-				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockMechTablePartsField, 3) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.BlockMechTablePartsField, 2) &&
-				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.BlockMechTablePartsField, 1) &&
-				WorldUtils.isBlockAt(world, x - 1, y, z - 1, MechanicalValues.BlockMechTablePartsField, 0)) {
+				WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockMechTable, 3) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z, MechanicalValues.blockMechTable, 2) &&
+				WorldUtils.isBlockAt(world, x, y, z - 1, MechanicalValues.blockMechTable, 1) &&
+				WorldUtils.isBlockAt(world, x - 1, y, z - 1, MechanicalValues.blockMechTable, 0)) {
 			return true;
 			}
 		

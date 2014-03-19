@@ -1,16 +1,13 @@
 package com.sparkst3r.anotherworld.mechanical;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
-import com.sparkst3r.anotherworld.core.AnotherWorld;
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockBaseParts;
-import com.sparkst3r.anotherworld.mechanical.blocks.BlockLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockManualCrusher;
-import com.sparkst3r.anotherworld.mechanical.blocks.BlockMechanicsTableParts;
+import com.sparkst3r.anotherworld.mechanical.blocks.BlockMechanicsTable;
 import com.sparkst3r.anotherworld.mechanical.event.RenderHelpOverlay;
 import com.sparkst3r.anotherworld.mechanical.items.ItemMechBaseParts;
+import com.sparkst3r.anotherworld.mechanical.items.ItemMilkshake;
 import com.sparkst3r.anotherworld.mechanical.items.ItemTinkeringTool;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileManualCrusher;
@@ -19,38 +16,48 @@ import com.sparkst3r.anotherworld.mechanical.tileentity.TileMechanicsTable;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
- * Values associated with the mechanical expansion
- * 
- * @author Sparkst3r
- * 
+ * MechanicalValues
+ *
+ * Mechanical Expansion values
+ *
+ * @author Sparkst3r(Josh Lockheed)
+ * @since 14 Mar 2014
  */
 public class MechanicalValues {
 	
 	// Blocks
-	public static Block BlockMechTablePartsField;
-	public static Block BlockBasePartsField;
-	public static Block BlockManualCrusherField;
-	public static Block BlockLogicSimpleField;
+	/** Mechanical base block parts */
+	public static BlockBaseParts blockBaseParts = new BlockBaseParts();
+	/** Mechanics table block */
+	public static BlockMechanicsTable blockMechTable = new BlockMechanicsTable();
 	
-	public static Item ItemToolField;
-	public static Item ItemBasePartsField;
+	/** Mechanical crusher block */
+	public static BlockManualCrusher blockManualCrusher = new BlockManualCrusher();
 	
+	
+	//public static Block blockLogicSimpleField;
+	
+	/** Mechanical base item parts */
+	public static ItemMechBaseParts itemMechBaseParts = new ItemMechBaseParts();
+	
+	/** Tinkering tool item */
+	public static ItemTinkeringTool itemTinkeringTool = new ItemTinkeringTool();
+	
+	public static ItemMilkshake itemMilkshake = new ItemMilkshake();
+	
+	
+	/**
+	 * Initialise the features of the mechanics expansion
+	 */
 	public static void initialise() {
 		
 		APIInternalMech.mapMech();
 		APIInternalMech.addToolModesAndActions();
 		APIInternalMech.addVanillaInfoBlockPages();
-		//TickRegistry.registerTickHandler(new RenderTick(), Side.CLIENT);
 		MinecraftForge.EVENT_BUS.register(new RenderHelpOverlay());
-		
-		BlockBasePartsField = new BlockBaseParts();
-		BlockMechTablePartsField = new BlockMechanicsTableParts();
-		BlockManualCrusherField = new BlockManualCrusher();
-		BlockLogicSimpleField = new BlockLogicSimple();
-		
-		ItemToolField = new ItemTinkeringTool();
-		ItemBasePartsField = new ItemMechBaseParts();
-		
+
+		//BlockLogicSimpleField = new BlockLogicSimple();
+
 		
 		registerTileEntities();
 		
@@ -80,6 +87,9 @@ public class MechanicalValues {
 		//}
 	}
 	
+	/**
+	 * Register TileEntities for mechanical blocks
+	 */
 	public static void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileMechanicsTable.class, "tileMechTable");
 		GameRegistry.registerTileEntity(TileManualCrusher.class, "tileMechGrinder");

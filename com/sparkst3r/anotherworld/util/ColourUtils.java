@@ -3,7 +3,10 @@ package com.sparkst3r.anotherworld.util;
 import org.lwjgl.opengl.GL11;
 
 /**
+ * TODO Use Numina library when it updates.
+ * 
  * 'adapted from MachineMuse's Modular Powersuits'~
+ * 
  * Credit to MachineMuse for this class.
  * 'Permission to use this class kindly provided by MachineMuse'~
  * 
@@ -14,21 +17,38 @@ import org.lwjgl.opengl.GL11;
  * @author MachineMuse
  */
 public class ColourUtils {
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils LIGHTBLUE = new ColourUtils(0.5, 0.5, 1.0, 1.0);
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils DARKBLUE = new ColourUtils(0.0, 0.0, 0.5, 1.0);
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils ORANGE = new ColourUtils(0.9, 0.6, 0.2, 1.0);
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils YELLOW = new ColourUtils(0.0, 0.0, 0.5, 1.0);
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils WHITE = new ColourUtils(1.0, 1.0, 1.0, 1.0);
+
+	@SuppressWarnings("javadoc")
 	public static final ColourUtils BLACK = new ColourUtils(0.0, 0.0, 0.0, 1.0);
 
 	/**
 	 * The RGBA values are stored as floats from 0.0F (nothing) to 1.0F (full
 	 * saturation/opacity)
 	 */
+	@SuppressWarnings("javadoc")
 	public double r, g, b, a;
 
 	/**
 	 * Constructor. Just sets the RGBA values to the parameters.
+	 * @param r 
+	 * @param g 
+	 * @param b 
+	 * @param a 
 	 */
 	public ColourUtils(double r, double g, double b, double a) {
 		this.r = r;
@@ -41,6 +61,7 @@ public class ColourUtils {
 	 * Secondary constructor. Sets RGB accordingly and sets alpha to 1.0F (full
 	 * opacity)
 	 */
+	@SuppressWarnings("javadoc")
 	public ColourUtils(float r, float g, float b) {
 		this(r, g, b, 1.0F);
 	}
@@ -48,6 +69,7 @@ public class ColourUtils {
 	/**
 	 * Takes colours in the integer format that Minecraft uses, and converts.
 	 */
+	@SuppressWarnings("javadoc")
 	public ColourUtils(int c) {
 		this.a = (c >> 24 & 255) / 255.0F;
 		this.r = (c >> 16 & 255) / 255.0F;
@@ -72,13 +94,16 @@ public class ColourUtils {
 
 	/**
 	 * Returns a colour with RGB set to the same value ie. a shade of grey.
+	 * @param value 
+	 * @param alpha 
+	 * @return colour
 	 */
 
 	public static ColourUtils getGreyscale(float value, float alpha) {
 		return new ColourUtils(value, value, value, alpha);
 	}
 
-	/**
+	/**Archie
 	 * Returns a colour at interval interval along a linear gradient from this
 	 * to target
 	 */

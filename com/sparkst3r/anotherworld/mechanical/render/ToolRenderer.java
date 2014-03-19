@@ -37,7 +37,7 @@ public class ToolRenderer implements IItemRenderer{
 	}
 
 	
-	//TODO Oh so much broken stuff. Requires waiting for Numina to update
+	//TODO Oh so much broken stuff. Fix Rendering in 3rd person
 	/** Renders the item */
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
@@ -57,7 +57,7 @@ public class ToolRenderer implements IItemRenderer{
 			/** Called when the item is in the inventory as an item */
 			case INVENTORY:
 				//MachineMuse's code to draw the item sprite
-				RenderingUtils.drawIconAt(0, 0, ((ItemTinkeringTool)MechanicalValues.ItemToolField).getIconFromDamage(item.getItemDamage()));
+				RenderingUtils.drawIconAt(0, 0, ((ItemTinkeringTool)MechanicalValues.itemTinkeringTool).getIconFromDamage(item.getItemDamage()));
 				break;
 				
 			/** Called when the item is in the players hand */

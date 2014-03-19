@@ -28,7 +28,7 @@ public class ToolActionDismantleMechTable implements IToolAction{
 	@Override
 	public void triggerAction(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
 		MechanicsTableValidation.breakTableCompletely(world, x, y, z, orient);
-		EntityUtils.dropItemInWorld(world, x, y, z, new ItemStack(MechanicalValues.BlockBasePartsField, 4, 1));
+		EntityUtils.dropItemInWorld(world, x, y, z, new ItemStack(MechanicalValues.blockBaseParts, 4, 1));
 	}
 
 	@Override

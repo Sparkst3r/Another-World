@@ -70,15 +70,6 @@ public class EntityUtils {
 	}
 	
 	/**
-	 * Returns the ItemStack from an EntityItem
-	 * @param item The EntityItem
-	 * @return The ItemStack of the EntityItem
-	 */
-	public static ItemStack getStackFromEntity(EntityItem item) {
-		return item.getEntityItem();
-	}
-	
-	/**
 	 * Gets all EntityItems in a radius
 	 * 
 	 * @param world The world
@@ -97,12 +88,15 @@ public class EntityUtils {
 		
 		for (int item = 0; item <itemList.size(); item++) {
 			EntityItem tempItem = itemList.get(item);
-			itemStackArray[item] = EntityUtils.getStackFromEntity(tempItem);
+			itemStackArray[item] = tempItem.getEntityItem();
 		}
 		
 		return itemStackArray;
 	}
 	
+	/**
+	 * @return entity id
+	 */
 	public static int getUniqueEntityId() {
 		do {
 			startEntityId++;
@@ -111,6 +105,11 @@ public class EntityUtils {
 			return startEntityId;
 	}
 	
+	/**
+	 * @param entity
+	 * @param primaryColor
+	 * @param secondaryColor
+	 */
 	@SuppressWarnings("unchecked")
 	public static void registerEntityEgg(Class<? extends Entity> entity, int primaryColor, int secondaryColor) {
 		int id = getUniqueEntityId();

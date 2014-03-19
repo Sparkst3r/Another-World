@@ -30,7 +30,7 @@ public class ToolActionAssembleMechTable implements IToolAction{
 
 	@Override
 	public boolean canTriggerAction(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float locX, float locY, float locZ) {
-		if(WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.BlockBasePartsField, 1)) {
+		if(WorldUtils.isBlockAt(world, x, y, z, MechanicalValues.blockBaseParts, 1)) {
 			return true;
 		}
 		return false;

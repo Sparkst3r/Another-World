@@ -9,7 +9,17 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 
+
+/**
+ * AnotherWorldExpansionWorld
+ *
+ * AnotherWorld world expansion
+ *
+ * @author Sparkst3r(Josh Lockheed)
+ * @since 14 Mar 2014
+ */
 @Mod(
 		modid = GlobalValues.MODIDWORLD, 
 		name = GlobalValues.MODNAMEWORLD, 
@@ -18,8 +28,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 		)
 public class AnotherWorldExpansionWorld {
 	
+	/** Mod instance */
 	@Instance(GlobalValues.MODIDWORLD)
-	public static AnotherWorldExpansionWorld instance = new AnotherWorldExpansionWorld();
+	public static AnotherWorldExpansionWorld instance;
 	
 
 	/** Sided proxy */
@@ -29,7 +40,10 @@ public class AnotherWorldExpansionWorld {
 	public static CommonProxy proxy;
 	
 	
-	//Called during the pre-load phase
+	/**
+	 * Called from FML during the pre initialisation phase
+	 * @param event Pre-Init event
+	 */
     @EventHandler
     public void preInitialise(FMLPreInitializationEvent event) {
     	//EntityRegistry.registerModEntity(EntityBee.class, "Bee", 0, this, 40, 3, true);
@@ -38,16 +52,21 @@ public class AnotherWorldExpansionWorld {
 		//EntityUtils.registerEntityEgg(EntityBee.class, 0x000000, 0xFFFFFF);
     	
 		WorldValues.initialise();
-		//GameRegistry.registerWorldGenerator(new WorldGenerator());
+		GameRegistry.registerWorldGenerator(new WorldGenerator(), 3);
     }
     
-	//Called during the loading phase
+	/**
+	 * Called from FML during the initialisation phase
+	 * @param event Init event
+	 */
     @EventHandler 
 	public void initialise(FMLInitializationEvent event) {
-		WorldValues.initialise();
 	}
 	
-	//Called during the post-load phase
+	/**
+	 * Called from FML during the post initialisation phase
+	 * @param event Post-Init event
+	 */
     @EventHandler
 	public void postInitialise(FMLPostInitializationEvent event) {
 	}

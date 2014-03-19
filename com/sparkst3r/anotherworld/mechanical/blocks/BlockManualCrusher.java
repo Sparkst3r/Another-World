@@ -16,7 +16,7 @@ import com.sparkst3r.anotherworld.api.tool.IToolDismantleable;
 import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.mechanical.MechanicalValues;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileManualCrusher;
-import com.sparkst3r.anotherworld.network.packet.PacketManualCrusher;
+import com.sparkst3r.anotherworld.network.packet.PacketTodolist;
 import com.sparkst3r.anotherworld.util.EntityUtils;
 import com.sparkst3r.anotherworld.util.ItemStackUtils;
 import com.sparkst3r.anotherworld.util.MathUtils;
@@ -73,7 +73,7 @@ public class BlockManualCrusher extends BasicBlock implements IToolDismantleable
     public static void updateBlockState(int state, World world, int x, int y, int z) {
         TileEntity tileentity = world.getTileEntity(x, y, z);
         
-        world.setBlock(x, y, z, MechanicalValues.BlockManualCrusherField, state, 2);
+        world.setBlock(x, y, z, MechanicalValues.blockManualCrusher, state, 2);
         
         if (tileentity != null)
         {

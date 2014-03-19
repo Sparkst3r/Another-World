@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  * @author Sparkst3r
  *
  */
-public class BlockMechanicsTableParts extends Block{
+public class BlockMechanicsTable extends Block{
 	/**Icon array for the textures */
 	@SideOnly(Side.CLIENT)
 	private IIcon[][] iconBuffer;
@@ -38,7 +38,7 @@ public class BlockMechanicsTableParts extends Block{
 	 * Constructor
 	 * @param id
 	 */
-	public BlockMechanicsTableParts() {
+	public BlockMechanicsTable() {
 		super(GlobalValues.IMMOVABLE);
 		this.setBlockUnbreakable();
 		GameRegistry.registerBlock(this, ItemBlockMechanicsTableParts.class, "MechanicsTable");

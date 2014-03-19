@@ -21,7 +21,9 @@ tool.tinker.mode.setting=Setting
 item.tool.tinker.mode.setting.name=Tinkering Tool: Setting
 tool.tinker.text.mode=Mode
 
-
+item.milkshake.weak.name=Pansy milkshake
+item.milkshake.medium.name=Milkshake
+item.milkshake.strong.name=Heph Strength Milkshake
 
 item.worldIngots.ingotCopper.name=Copper Ingot
 item.worldIngots.ingotTin.name=Tin Ingot
@@ -35,3 +37,5 @@ item.worldIngots.dustLead.name=Powdered Lead
 item.mechItemBaseParts.gearBasic.name=Basic Gear
 item.mechItemBaseParts.gearCopper.name=Copper Clad Gear
 item.mechItemBaseParts.gearTin.name=Tin Clad Gear
+
+

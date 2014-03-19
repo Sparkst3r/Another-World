@@ -11,6 +11,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemIngot extends Item {
 	
 	/** Universal identifier */
-	public String identifier = "worldIngots";
+	public static final String identifier = "worldIngots";
 	
 	/** Copper meta value */
 	public static final int COPPER = 0;
@@ -58,11 +59,11 @@ public class ItemIngot extends Item {
 	public static final int GOLDDUST = 9;
 	
 	/** Unlocalised names */
-	public static String[] types = new String[] {"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "dustCopper", "dustTin", "dustSilver", "dustLead", "dustIron", "dustGold"};     
+	public static final String[] types = new String[] {"ingotCopper", "ingotTin", "ingotSilver", "ingotLead", "dustCopper", "dustTin", "dustSilver", "dustLead", "dustIron", "dustGold"};     
 	
 	/** Icon Array */
 	@SideOnly(Side.CLIENT)
-	private IIcon[] iconBuffer = new IIcon[types.length];;
+	private IIcon[] iconBuffer = new IIcon[types.length];
 
 	/** Constructor */
 	public ItemIngot() {
@@ -71,8 +72,16 @@ public class ItemIngot extends Item {
 		this.setHasSubtypes(true);
 		this.setMaxDamage(0);
 		GameRegistry.registerItem(this, identifier);
+		this.addOreDictionarySupport();
 	}
 	
+	/** Register OreDictionary names */
+	private void addOreDictionarySupport() {
+		for (int type = 0; type < types.length; type++) {
+			OreDictionary.registerOre(types[type], new ItemStack(this, 1, type));
+		}
+	}
+
 	/** Returns the texture based on the damage value */
 	@SideOnly(Side.CLIENT)
 	@Override

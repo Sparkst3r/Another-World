@@ -39,6 +39,6 @@ public class AnotherWorldTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() {
-		return MechanicalValues.ItemToolField;
+		return MechanicalValues.itemTinkeringTool;
 	}
 }

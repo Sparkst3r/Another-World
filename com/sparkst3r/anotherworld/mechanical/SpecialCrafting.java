@@ -26,15 +26,15 @@ public class SpecialCrafting {
 	public static void initialise() {
 		
 		/** Mechanics Block */
-		Managers.worldCrafting.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 1, 1), new ItemStack(MechanicalValues.BlockBasePartsField, 1, 0), new ItemStack[]{
-			new ItemStack(MechanicalValues.ItemBasePartsField, 2, ItemMechBaseParts.GEARTIN), 
-			new ItemStack(WorldValues.ItemIngotField, 4, ItemIngot.COPPER)});
+		//Managers.worldCrafting.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 1, 1), new ItemStack(MechanicalValues.BlockBasePartsField, 1, 0), new ItemStack[]{
+		//	new ItemStack(MechanicalValues.ItemBasePartsField, 2, ItemMechBaseParts.GEARTIN), 
+		//	new ItemStack(WorldValues.ItemIngotField, 4, ItemIngot.COPPER)});
 		
 		/** Advanced mechanics block */
-		Managers.worldCrafting.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 1, 2), new ItemStack(MechanicalValues.BlockBasePartsField, 1, 1), new ItemStack[]{
-			new ItemStack(MechanicalValues.ItemBasePartsField, 2, 1),
-			new ItemStack(MechanicalValues.ItemBasePartsField, 2, 2),
-			new ItemStack((Item)Item.itemRegistry.getObject("ingotGold"), 4)});
+		//Managers.worldCrafting.addRecipe(new ItemStack(MechanicalValues.BlockBasePartsField, 1, 2), new ItemStack(MechanicalValues.BlockBasePartsField, 1, 1), new ItemStack[]{
+		//	new ItemStack(MechanicalValues.ItemBasePartsField, 2, 1),
+		//	new ItemStack(MechanicalValues.ItemBasePartsField, 2, 2),
+		//	new ItemStack((Item)Item.itemRegistry.getObject("ingotGold"), 4)});
 		
 		/** Manual Crusher */
 		//Managers.mechanicsTableCrafting.addRecipe(new ItemStack(MechanicalValues.BlockManualCrusherField), new Object[]{

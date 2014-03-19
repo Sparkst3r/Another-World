@@ -1,0 +1,16 @@
+[
+{
+  "modid": "anotherworld",
+  "name": "AnotherWorld Core",
+  "description": "Core mod for AnotherWorld",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Sparkst3r, BrendanP123, GitHub"],
+  "credits": "CadenDonuts for fabulous textures",
+  "logoFile": "assets/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

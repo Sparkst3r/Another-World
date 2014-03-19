@@ -44,6 +44,8 @@ public class ItemTinkeringTool extends Item {
 	
 	public IToolAction currentAction = null;
 	
+	public static final String identifierBase = "item.tool.tinker";
+	
 	/** 
 	 * Constructor
 	 * @param id
@@ -65,10 +67,12 @@ public class ItemTinkeringTool extends Item {
 	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
 		if (!world.isRemote) {
 			stack.setTagCompound(new NBTTagCompound());
-			stack.stackTagCompound.setString("type", ToolModeManager.getModes().get(stack.getItemDamage()).identifier().substring(12));
+			stack.stackTagCompound.setString("type", ToolModeManager.getModes().get(stack.getItemDamage()).identifier());
+			//this.currentModeIdentifier = ToolModeManager.getModes().get(stack.getItemDamage()).identifier();
 		}
 
 	}
+	
 	
 	/** Callback for item use(Right click)
 	 * Switches between tools
@@ -96,7 +100,7 @@ public class ItemTinkeringTool extends Item {
 				newStack.getTagCompound().setString("type", stack.getTagCompound().getString("type"));
 			}
 			
-			((ItemTinkeringTool)newStack.getItem()).currentModeIdentifier = ToolModeManager.getModes().get(newStack.getItemDamage()).identifier().substring(12);
+			((ItemTinkeringTool)newStack.getItem()).currentModeIdentifier = ToolModeManager.getModes().get(newStack.getItemDamage()).identifier();
 			return newStack;
 		}
 		return stack;

@@ -6,6 +6,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import org.lwjgl.opengl.GL11;
 
@@ -19,35 +20,27 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 
 public class RenderHelpOverlay {
-	public static int timeSinceRenderRequest = 0;
 	
 	@SubscribeEvent
-	public void renderOverlay(ClientTickEvent tick) {
-		System.out.println("Really intelligent output to signify a BLOODY DOODLING TICK");
+	public void renderOverlay(RenderGameOverlayEvent event) {
         Minecraft mc = Minecraft.getMinecraft();
-        ScaledResolution screen = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
+        ScaledResolution screen = event.resolution;
 		
 		EntityClientPlayerMP player = mc.thePlayer;
-
-		 //if (timeSinceRenderRequest > 0) {
-			if (player != null ) { //&& mc.currentScreen == null) {
+			if (player != null ) {
 				
 				ItemStack heldItem = player.getHeldItem();
-				if (heldItem != null && heldItem.getUnlocalizedName() == MechanicalValues.ItemToolField.getUnlocalizedName()) {
+				if (heldItem != null && heldItem.getUnlocalizedName().contains(MechanicalValues.itemTinkeringTool.identifierBase)) {
 					ItemTinkeringTool currentTool = ((ItemTinkeringTool)heldItem.getItem());
-					
-					if (currentTool.currentModeIdentifier.equals("tool.tinker.mode.help") && currentTool.currentAction instanceof ToolActionShowInfoForBlock) {
-						ToolActionShowInfoForBlock action = (ToolActionShowInfoForBlock) currentTool.currentAction;
-						System.out.println("Maybe this worked?");
-						if (action.blurbInfo != null) {
-							
-							renderHelp(action, screen);
+					if (currentTool.currentModeIdentifier.equals("tool.tinker.mode.help")) {
+						if (currentTool.currentAction instanceof ToolActionShowInfoForBlock) {
+							ToolActionShowInfoForBlock action = (ToolActionShowInfoForBlock) currentTool.currentAction;
+							if (action.blurbInfo != null) {
+								renderHelp(action, screen);
+							}
 						}
-
 					}
 				}
-			//}
-			//timeSinceRenderRequest--;
 		}
 
 	}

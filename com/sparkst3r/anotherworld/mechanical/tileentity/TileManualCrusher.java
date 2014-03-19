@@ -15,7 +15,7 @@ import com.sparkst3r.anotherworld.api.crafting.IManualCrusherRecipe;
 import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockManualCrusher;
 import com.sparkst3r.anotherworld.mechanical.crafting.ManualCrusherManager;
-import com.sparkst3r.anotherworld.network.packet.PacketManualCrusher;
+import com.sparkst3r.anotherworld.network.packet.PacketTodolist;
 import com.sparkst3r.anotherworld.util.WorldUtils;
 
 

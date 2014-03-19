@@ -1,20 +1,19 @@
 package com.sparkst3r.anotherworld.mechanical.gui;
 
-import com.sparkst3r.anotherworld.core.GlobalValues;
-import com.sparkst3r.anotherworld.mechanical.container.ContainerLogicSimple;
-import com.sparkst3r.anotherworld.mechanical.tileentity.TileLogicSimple;
-import com.sparkst3r.anotherworld.util.GUIBase;
-import com.sparkst3r.anotherworld.util.RenderingUtils;
-
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 
-public class GuiLogicSimple extends GUIBase {
+import com.sparkst3r.anotherworld.mechanical.container.TODOWIPContainerLogicSimple;
+import com.sparkst3r.anotherworld.mechanical.tileentity.TileLogicSimple;
+import com.sparkst3r.anotherworld.util.RenderingUtils;
+
+public class TODOWIPGuiLogicSimple extends GuiContainer {
 
 	public TileLogicSimple te;
 	
 	
-	public GuiLogicSimple(InventoryPlayer inventoryPlayer, TileLogicSimple tileEntity) {
-		super(new ContainerLogicSimple(inventoryPlayer, tileEntity));
+	public TODOWIPGuiLogicSimple(InventoryPlayer inventoryPlayer, TileLogicSimple tileEntity) {
+		super(new TODOWIPContainerLogicSimple(inventoryPlayer, tileEntity));
 		this.te = tileEntity;
 	}
 

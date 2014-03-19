@@ -1,18 +1,18 @@
-package com.sparkst3r.anotherworld.util;
+//package com.sparkst3r.anotherworld.util;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.Container;
+//import net.minecraft.client.gui.inventory.GuiContainer;
+//import net.minecraft.inventory.Container;
 
-public abstract class GUIBase extends GuiContainer {
+//public abstract class GUIBase extends GuiContainer {
+//
+//	public GUIBase(Container container) {
+//		super(container);
+//	}
 
-	public GUIBase(Container container) {
-		super(container);
-	}
-
-	@Override
-	protected abstract void drawGuiContainerBackgroundLayer(float f, int i, int j);
+//	@Override
+//	protected abstract void drawGuiContainerBackgroundLayer(float f, int i, int j);
 	
 
 	
 	
-}
+//}

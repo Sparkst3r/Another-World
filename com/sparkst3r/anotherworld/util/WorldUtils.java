@@ -22,7 +22,6 @@ public class WorldUtils {
 	 * @param y
 	 * @param z
 	 * @param block
-	 * @param meta
 	 * @return Is the block at (x,y,z) the block specified.
 	 */
 	public static boolean isBlockAt(World world, int x, int y, int z, Block block) {
@@ -118,17 +117,25 @@ public class WorldUtils {
 	 * @param maxX MaxX
 	 * @param maxY MaxY
 	 * @param maxZ MaxZ
-	 * @return
+	 * @return items
 	 */
 	@SuppressWarnings("unchecked")
 	public static List<EntityItem> getItemsInAABB(World world, double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
 		return world.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(minX, minY, minZ, maxX, maxY, maxZ));
 	}
 	
+	/**
+	 * @param world
+	 * @return is client side
+	 */
 	public static boolean isServerSide(World world) {
 		return !world.isRemote;
 	}
 	
+	/**
+	 * @param world
+	 * @return is client side
+	 */
 	public static boolean isClientSide(World world) {
 		return world.isRemote;
 	}
