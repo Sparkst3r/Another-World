@@ -12,6 +12,11 @@
             If mixed incorrectly can give player wither, poison and nausea
     
 
+    *Fibre optic cables.
+        For data and power
+
+   *Power transport fibre optic cables.
+
     Targeted explosive 
         ~Machines expansion
         ~Towards the end of early game resource gathering.
@@ -21,6 +26,7 @@
             Causes withering and nausea to player. ~10blocks of explosive
         
         
+* laser focussing equipment uses 
       
 
     Ecto-Encapsulation Unit
@@ -42,6 +48,8 @@
                 Transformers, reduce power consumption
             Fixed exit.
             Remote and fixed entry.
+            Screen slowly pixelates while teleporting until it looks like tv static. Reverse is true for rematerialising.
+
         
     
     

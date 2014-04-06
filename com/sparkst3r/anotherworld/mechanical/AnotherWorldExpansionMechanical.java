@@ -50,7 +50,7 @@ public class AnotherWorldExpansionMechanical {
     @EventHandler
     public void preInitialise(FMLPreInitializationEvent event) {
     	MechanicalValues.initialise();
-    	NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, GlobalValues.MECHGUI);
+    	NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, MechanicalValues.MECHGUI);
 		
     }
     

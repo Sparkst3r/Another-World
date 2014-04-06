@@ -25,11 +25,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockOre extends Block {
 
 		
-	/**Icon array for the textures */
+	/**
+	 * Icon array of textures
+	 */
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconBuffer;
 
-	/** Constructor */
+	/** 
+	 * Constructor 
+	 */
 	public BlockOre() {
 		super(Material.rock);
 		GameRegistry.registerBlock(this, ItemBlockOre.class, ItemBlockOre.identifier);

@@ -20,6 +20,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.sparkst3r.anotherworld.core.AnotherWorldTab;
 import com.sparkst3r.anotherworld.core.GlobalValues;
+import com.sparkst3r.anotherworld.util.WorldUtils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -42,7 +43,7 @@ public class ItemMilkshake extends Item {
 	public static final int STRONG = 2;
 	
 	/** Unlocalised names */
-	public static final String[] types = new String[] {"weak"/*, "medium", "strong"*/};     
+	public static final String[] types = new String[] {"weak", "medium", "strong"};     
 	
 	/** Icon Array */
 	@SideOnly(Side.CLIENT)
@@ -52,24 +53,24 @@ public class ItemMilkshake extends Item {
 	public ItemMilkshake() {
 		super();
         this.setCreativeTab(AnotherWorldTab.TAB);
-		//this.setHasSubtypes(true);
-		//this.setMaxDamage(0);
+		this.setHasSubtypes(true);
+		this.setMaxDamage(0);
 		GameRegistry.registerItem(this, identifier);
 	}
 
 
 	@Override
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
 		
-		if (!par3EntityPlayer.capabilities.isCreativeMode) {
-			--par1ItemStack.stackSize;
+		if (!player.capabilities.isCreativeMode) {
+			stack.stackSize--;
 		}
 
-		if (!par2World.isRemote) {
-			par3EntityPlayer.curePotionEffects(new ItemStack(Items.milk_bucket));
+		if (WorldUtils.isServerSide(world)) {
+			player.curePotionEffects(new ItemStack(Items.milk_bucket)); //Cure all potion effects as a milk bucket would
 		}
 
-        return par1ItemStack.stackSize <= 0 ? new ItemStack(Items.bucket) : par1ItemStack;
+        return stack.stackSize <= 0 ? new ItemStack(Items.glass_bottle) : stack;
     }
 
     /**

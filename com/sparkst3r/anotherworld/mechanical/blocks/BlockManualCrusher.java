@@ -1,32 +1,29 @@
 package com.sparkst3r.anotherworld.mechanical.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.sparkst3r.anotherworld.api.tool.IToolDismantleable;
+import com.sparkst3r.anotherworld.core.AnotherWorldTab;
 import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.mechanical.MechanicalValues;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileManualCrusher;
-import com.sparkst3r.anotherworld.network.packet.PacketTodolist;
 import com.sparkst3r.anotherworld.util.EntityUtils;
 import com.sparkst3r.anotherworld.util.ItemStackUtils;
-import com.sparkst3r.anotherworld.util.MathUtils;
 import com.sparkst3r.anotherworld.util.WorldUtils;
-import com.sparkst3r.anotherworld.util.basic.BasicBlock;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockManualCrusher extends BasicBlock implements IToolDismantleable {
+public class BlockManualCrusher extends Block implements IToolDismantleable {
 
 	//public int clickState = 0;
 	
@@ -40,7 +37,9 @@ public class BlockManualCrusher extends BasicBlock implements IToolDismantleable
 	public String[] sides = new String[] {"manualCrusher_bottom","manualCrusher_top","manualCrusher_side1","manualCrusher_side2","manualCrusher_side3","manualCrusher_side4"};
 	
 	public BlockManualCrusher() {
-		super(Material.rock, "blockHandCrusher");
+		super(Material.rock);
+        this.setCreativeTab(AnotherWorldTab.TAB);
+		GameRegistry.registerBlock(this, "blockHandCrusher");
 	}
 	
 	/** Registers the block's textures with the IconRegister */

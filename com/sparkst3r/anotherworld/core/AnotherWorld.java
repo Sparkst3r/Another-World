@@ -48,6 +48,7 @@ public class AnotherWorld {
 	 */
     @EventHandler
     public void preInitialise(FMLPreInitializationEvent event) {
+    	GlobalValues.preinitialise();
     }
     
 	/**
@@ -65,7 +66,7 @@ public class AnotherWorld {
 	 */
     @EventHandler
 	public void postInitialise(FMLPostInitializationEvent event) {
-		GlobalValues.packetPipeline.postInitialise();
+		GlobalValues.postInitialise();
 	}
 	
 }

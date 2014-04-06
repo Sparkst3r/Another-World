@@ -43,7 +43,7 @@ public class ItemBlockOre extends ItemBlock {
 	public static String[] types = {"oreCopper", "oreTin", "oreSilver", "oreLead", "blockCopper", "blockTin", "blockSilver", "blockLead"};
 	
 	/** Constructor 
-	 * @param block The block that this item block represents
+	 * @param block The block that this ItemBlock represents
 	 */
 	public ItemBlockOre(Block block) {
 		super(block);

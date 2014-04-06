@@ -1,9 +1,13 @@
 package com.sparkst3r.anotherworld.world;
 
+import com.sparkst3r.anotherworld.mechanical.GuiHandlerMechanical;
+import com.sparkst3r.anotherworld.mechanical.MechanicalValues;
 import com.sparkst3r.anotherworld.world.blocks.BlockOre;
 import com.sparkst3r.anotherworld.world.blocks.ItemBlockOre;
 import com.sparkst3r.anotherworld.world.items.ItemIngot;
 import com.sparkst3r.anotherworld.world.items.ItemTodolist;
+
+import cpw.mods.fml.common.network.NetworkRegistry;
 
 
 /**
@@ -32,14 +36,21 @@ public class WorldValues {
 	
 	/**
 	 * Todolist item
+	 * @see ItemTodolist
 	 */
 	public static final ItemTodolist itemTodoList = new ItemTodolist();
+	
+	/**
+	 * World Expansion gui handler
+	 */
+	public static final GuiHandlerWorld WORLDGUI = new GuiHandlerWorld();
 	
 	/**
 	 * Initialise world expansion features
 	 */
 	public static void initialise() {
-		ItemCrafting.initialise();
+		NetworkRegistry.INSTANCE.registerGuiHandler(AnotherWorldExpansionWorld.instance, WorldValues.WORLDGUI);
+		WorldCrafting.addSmelting();
 		BlockCrafting.initialise();
 	}
 }

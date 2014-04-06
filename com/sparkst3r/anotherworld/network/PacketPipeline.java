@@ -19,7 +19,6 @@ import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 
 import com.sparkst3r.anotherworld.network.packet.AbstractPacket;
-import com.sparkst3r.anotherworld.network.packet.PacketTodolist;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
@@ -121,8 +120,7 @@ private boolean isPostInitialised = false;
 		registerPackets();
 	}
 
-	public void registerPackets(){
-		this.registerPacket(PacketTodolist.class);
+	public void registerPackets() {
 	}
 
 	// Method to call from FMLPostInitializationEvent

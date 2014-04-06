@@ -1,5 +1,8 @@
 package com.sparkst3r.anotherworld.core;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 
@@ -55,7 +58,8 @@ public class GlobalValues {
 	/** Depends on AnotherWorld-World */
 	public static final String DEPENDMECHANICAL = "required-after:" + GlobalValues.MODIDMECHANICAL + ";";
 	
-	
+	/** Global logger */
+	public static final Logger LOGGER = LogManager.getLogger("AnotherWorld");
 	
 	/** Texture location */
 	public static final String TEXTURE = MODIDCORE + ":";
@@ -66,11 +70,27 @@ public class GlobalValues {
 	/** Material set to immovable */
 	public static final Material IMMOVABLE = new MaterialImmovable(MapColor.woodColor);
 	
-	/** GuiHandlers */
-	public static GuiHandlerMechanical MECHGUI = new GuiHandlerMechanical();
+	/**
+	 * Pre initialise
+	 */
+	public static void preinitialise() {
+		
+	}
 	
-	/** Initialize */
+	/**
+	 *  Initialise 
+	 */
 	public static void initialise() {
 		GlobalValues.packetPipeline.initalise();
 	}
+	
+	/**
+	 * Post initialise
+	 */
+	public static void postInitialise() {
+		GlobalValues.packetPipeline.postInitialise();
+	}
+	
+	
+	
 }

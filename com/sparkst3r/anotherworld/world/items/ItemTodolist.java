@@ -7,6 +7,8 @@ package com.sparkst3r.anotherworld.world.items;
 
 import com.sparkst3r.anotherworld.core.AnotherWorldTab;
 import com.sparkst3r.anotherworld.core.GlobalValues;
+import com.sparkst3r.anotherworld.world.AnotherWorldExpansionWorld;
+import com.sparkst3r.anotherworld.world.GuiHandlerWorld;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -46,7 +48,7 @@ public class ItemTodolist extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		
-		
+		player.openGui(AnotherWorldExpansionWorld.instance, GuiHandlerWorld.TODOLIST, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		
 		return stack;
 	}

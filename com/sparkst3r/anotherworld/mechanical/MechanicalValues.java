@@ -3,12 +3,14 @@ package com.sparkst3r.anotherworld.mechanical;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockBaseParts;
+import com.sparkst3r.anotherworld.mechanical.blocks.BlockDisappearDoor;
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockManualCrusher;
 import com.sparkst3r.anotherworld.mechanical.blocks.BlockMechanicsTable;
 import com.sparkst3r.anotherworld.mechanical.event.RenderHelpOverlay;
 import com.sparkst3r.anotherworld.mechanical.items.ItemMechBaseParts;
 import com.sparkst3r.anotherworld.mechanical.items.ItemMilkshake;
 import com.sparkst3r.anotherworld.mechanical.items.ItemTinkeringTool;
+import com.sparkst3r.anotherworld.mechanical.tileentity.TileDisappearDoor;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileLogicSimple;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileManualCrusher;
 import com.sparkst3r.anotherworld.mechanical.tileentity.TileMechanicsTable;
@@ -25,26 +27,30 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 public class MechanicalValues {
 	
-	// Blocks
 	/** Mechanical base block parts */
-	public static BlockBaseParts blockBaseParts = new BlockBaseParts();
+	public static final BlockBaseParts blockBaseParts = new BlockBaseParts();
 	/** Mechanics table block */
-	public static BlockMechanicsTable blockMechTable = new BlockMechanicsTable();
+	public static final BlockMechanicsTable blockMechTable = new BlockMechanicsTable();
 	
 	/** Mechanical crusher block */
-	public static BlockManualCrusher blockManualCrusher = new BlockManualCrusher();
+	public static final BlockManualCrusher blockManualCrusher = new BlockManualCrusher();
 	
+	/** Disappearing door block */
+	public static final BlockDisappearDoor blockDisappearDoor = new BlockDisappearDoor();
 	
 	//public static Block blockLogicSimpleField;
 	
 	/** Mechanical base item parts */
-	public static ItemMechBaseParts itemMechBaseParts = new ItemMechBaseParts();
+	public static final ItemMechBaseParts itemMechBaseParts = new ItemMechBaseParts();
 	
 	/** Tinkering tool item */
-	public static ItemTinkeringTool itemTinkeringTool = new ItemTinkeringTool();
+	public static final ItemTinkeringTool itemTinkeringTool = new ItemTinkeringTool();
 	
-	public static ItemMilkshake itemMilkshake = new ItemMilkshake();
+	/** Milkshake item */
+	public static final ItemMilkshake itemMilkshake = new ItemMilkshake();
 	
+	
+	public static final GuiHandlerMechanical MECHGUI = new GuiHandlerMechanical();
 	
 	/**
 	 * Initialise the features of the mechanics expansion
@@ -63,6 +69,7 @@ public class MechanicalValues {
 		
 		//ItemCrafting.addRecipes();
 		//BlockCrafting.initialise();
+		MechCrafting.addItemRecipes();
 		
 		addInfoForMeta();
 		//SpecialCrafting.initialise();
@@ -94,5 +101,6 @@ public class MechanicalValues {
 		GameRegistry.registerTileEntity(TileMechanicsTable.class, "tileMechTable");
 		GameRegistry.registerTileEntity(TileManualCrusher.class, "tileMechGrinder");
 		GameRegistry.registerTileEntity(TileLogicSimple.class, "tileLogicSimple");
+		GameRegistry.registerTileEntity(TileDisappearDoor.class, "tileDisappearDoor");
 	}
 }

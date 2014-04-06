@@ -38,8 +38,7 @@ public class MechCrafting {
 		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1, ItemMechBaseParts.GEARCOPPER), " C ", "CGC", " C ", 'C', new ItemStack(WorldValues.ItemIngotField, 1, ItemIngot.COPPER), 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, ItemMechBaseParts.GEARBASIC));
 		
 		/** Tin Gear */
-		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1,ItemMechBaseParts.GEARTIN),
-			" T ", "TGT", " T ", 'T', new ItemStack(WorldValues.ItemIngotField, 1, 1), 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, 0));
+		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1,ItemMechBaseParts.GEARTIN), " T ", "TGT", " T ", 'T', new ItemStack(WorldValues.ItemIngotField, 1, ItemIngot.TIN), 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, ItemMechBaseParts.GEARBASIC));
 		
 		
 		/** Tinkering Head Assembly */
@@ -47,8 +46,7 @@ public class MechCrafting {
 			"I I", "I I", "GIG", 'I', new ItemStack(Items.iron_ingot, 1, 0), 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, 0));
 		
 		/** Tinkering Rod Assembly */
-		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1, 4),
-			"GTR", "TRT", "RTG", 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, 1), 'T', new ItemStack(WorldValues.ItemIngotField, 1, 1), 'R', new ItemStack((Item)Item.itemRegistry.getObject("blazerod"), 1, 0));
+		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1, ItemMechBaseParts.TINKERROD), "GTR", "TRT", "RTG", 'G', new ItemStack(MechanicalValues.itemMechBaseParts, 1, 1), 'T', new ItemStack(WorldValues.ItemIngotField, 1, ItemIngot.TIN), 'R', Items.blaze_rod);
 		
 		/** Tinkering Grip Assembly */
 		GameRegistry.addRecipe(new ItemStack(MechanicalValues.itemMechBaseParts, 1, 5),
