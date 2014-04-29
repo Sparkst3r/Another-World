@@ -1,0 +1,55 @@
+    TODO list
+        ~World Expansion
+        ~Can be done at spawn
+            A paged todo list.
+            Checklist for each task allows prerequisite tasks.
+            Similar to writing a book in vanilla but optimised for tasks.
+    
+    Potion mixing station
+        ~Mechanical expansion
+        ~Early game
+            Allows potions to be mixed for combined effects.
+            If mixed incorrectly can give player wither, poison and nausea
+    
+
+    *Fibre optic cables.
+        For data and power
+
+   *Power transport fibre optic cables.
+
+    Targeted explosive 
+        ~Machines expansion
+        ~Towards the end of early game resource gathering.
+            Infused with chemicals which dissolve cobble and dirt but not ores, gravel or gen'ed structures
+            Chemicals are liquid and are placed when the explosive goes off.
+            Liquids continue eating with the chance of 40% depreciation of probability each iteration
+            Causes withering and nausea to player. ~10blocks of explosive
+        
+        
+* laser focussing equipment uses 
+      
+
+    Ecto-Encapsulation Unit
+        ~Machines Expansion
+        ~Middle game
+            Placeable and acts like a vanilla spawner
+            Place next to a spawner sucks the entity from the spawner
+            Spawns entities at half speed
+            Relatively unstable, could spawn entities randomly while in the unit unless the unit has been stabilised using 'X' means.
+          
+          
+    Applied Material Extrapolation Nometediser (AMEN) Teleportation
+        ~Space Expansion
+        ~Late game
+            In the most basic configuration it takes 10 seconds to fully teleport. Body is transfered in 5 seconds followed by inventory in another 5 seconds.
+            If the player walks out of the teleporter before the inventory materialises, random items are picked from the inventory and rendered spinning around a glowing ball. When the player walks into the ball it will give the player their inventory.
+            Multi-block customisable teleporter.
+                Lasers, Speeds up teleport time. Maximum, 1 tick or as fast as the server can update.
+                Transformers, reduce power consumption
+            Fixed exit.
+            Remote and fixed entry.
+            Screen slowly pixelates while teleporting until it looks like tv static. Reverse is true for rematerialising.
+
+        
+    
+    

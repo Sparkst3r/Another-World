@@ -1,0 +1,4 @@
+include "Forge"
+project(":Forge").projectDir = file("../Forge")
+
+include "AnotherWorld-Core", "AnotherWorld-World", "AnotherWorld-Mechanical", "AnotherWorld-Machines", "AnotherWorld-Space"
