@@ -18,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
 
+import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.network.packet.AbstractPacket;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -116,7 +117,7 @@ private boolean isPostInitialised = false;
 
 	// Method to call from FMLInitializationEvent
 	public void initalise() {
-		this.channels = NetworkRegistry.INSTANCE.newChannel("TConstruct", this);
+		this.channels = NetworkRegistry.INSTANCE.newChannel(GlobalValues.MODIDCORE, this);
 		registerPackets();
 	}
 

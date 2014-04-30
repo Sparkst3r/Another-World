@@ -27,7 +27,7 @@ import com.sparkst3r.anotherworld.core.GlobalValues;
 public class GuiTodoList extends GuiScreen {
 	
 	/** GUI texture */
-	private static final ResourceLocation texture = new ResourceLocation(GlobalValues.MODIDCORE, "textures/gui/TODO.png");
+	private static final ResourceLocation texture = new ResourceLocation(GlobalValues.MODIDWORLD, "textures/gui/TODO.png");
 	
 	/** The width of the texture */
 	private static final int xTextSize = 240;

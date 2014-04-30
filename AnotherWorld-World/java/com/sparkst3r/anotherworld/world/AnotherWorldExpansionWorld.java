@@ -52,7 +52,8 @@ public class AnotherWorldExpansionWorld {
 		//EntityUtils.registerEntityEgg(EntityBee.class, 0x000000, 0xFFFFFF);
     	
 		WorldValues.initialise();
-		GameRegistry.registerWorldGenerator(new WorldGenerator(), 3);
+		proxy.registerKeyBindings();
+		GameRegistry.registerWorldGenerator(new WorldGenerator(), 1);
     }
     
 	/**

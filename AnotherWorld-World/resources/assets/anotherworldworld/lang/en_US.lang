@@ -1,4 +1,7 @@
-﻿tile.worldBlockOre.oreCopper.name=Copper Ore
+key.catagories.anotherworld=AnotherWorld
+key.anotherworldworld.backpack=Open Backpack
+
+tile.worldBlockOre.oreCopper.name=Copper Ore
 tile.worldBlockOre.oreTin.name=Tin Ore
 tile.worldBlockOre.oreSilver.name=Silver Ore
 tile.worldBlockOre.oreLead.name=Lead Ore

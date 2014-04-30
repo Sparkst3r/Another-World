@@ -1,9 +1,12 @@
 package com.sparkst3r.anotherworld.world;
 
+import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.world.blocks.BlockOre;
 import com.sparkst3r.anotherworld.world.blocks.ItemBlockOre;
+import com.sparkst3r.anotherworld.world.items.ItemBackpack;
 import com.sparkst3r.anotherworld.world.items.ItemIngot;
 import com.sparkst3r.anotherworld.world.items.ItemTodolist;
+import com.sparkst3r.anotherworld.world.network.packet.OpenBackpackPacket;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 
@@ -38,6 +41,8 @@ public class WorldValues {
 	 */
 	public static final ItemTodolist itemTodoList = new ItemTodolist();
 	
+	public static final ItemBackpack itemBackpack = new ItemBackpack();
+	
 	/**
 	 * World Expansion gui handler
 	 */
@@ -47,6 +52,7 @@ public class WorldValues {
 	 * Initialise world expansion features
 	 */
 	public static void initialise() {
+		GlobalValues.packetPipeline.registerPacket(OpenBackpackPacket.class);
 		NetworkRegistry.INSTANCE.registerGuiHandler(AnotherWorldExpansionWorld.instance, WorldValues.WORLDGUI);
 		WorldCrafting.addSmelting();
 		BlockCrafting.initialise();

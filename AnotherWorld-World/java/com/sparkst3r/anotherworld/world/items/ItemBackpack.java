@@ -5,6 +5,13 @@
  */
 package com.sparkst3r.anotherworld.world.items;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
+
 import com.sparkst3r.anotherworld.core.AnotherWorldTab;
 import com.sparkst3r.anotherworld.core.GlobalValues;
 import com.sparkst3r.anotherworld.world.AnotherWorldExpansionWorld;
@@ -13,45 +20,41 @@ import com.sparkst3r.anotherworld.world.GuiHandlerWorld;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
-/** 
- * ItemTodolist
+/**
+ * ItemBackpack
  *
- * @author Sparkst3r(Josh Lockheed)
- * @since 14 Mar 2014
+ * Extra player inventory space with storage upgrades
+ *
+ * @author Sparkst3r
+ * @since 29 Apr 2014
  */
-public class ItemTodolist extends Item {
+public class ItemBackpack extends Item {
 
 	/** Universal identifier */
-	public static final String identifier = "todolist";
+	public static final String identifier = "backpack";
 	
-	
-	/** Constructor */
-	public ItemTodolist() {
+	/**
+	 * Constructor
+	 */
+	public ItemBackpack() {
 		super();
         this.setCreativeTab(AnotherWorldTab.TAB);
         this.setMaxStackSize(1);
 		GameRegistry.registerItem(this, identifier);
+		
 	}
-	
 	
 	/**
 	 * Called when the item is right clicked in the hand
-	 * Opens the todolist GUI
+	 * Opens the backpack GUI
 	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(AnotherWorldExpansionWorld.instance, GuiHandlerWorld.TODOLIST, world, (int)player.posX, (int)player.posY, (int)player.posZ);
+
+		player.openGui(AnotherWorldExpansionWorld.instance, GuiHandlerWorld.BACKPACKUPG, world, (int)player.posX, (int)player.posY, (int)player.posZ);
 		return stack;
 	}
-	
-	
 	
 	/** Register the textures with the IconRegister */
 	@SideOnly(Side.CLIENT)
@@ -65,4 +68,5 @@ public class ItemTodolist extends Item {
 	public String getUnlocalizedName(ItemStack is) {
 		return "item." + identifier;
 	}
+	
 }
